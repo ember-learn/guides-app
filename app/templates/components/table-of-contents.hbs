@@ -1,0 +1,15 @@
+{{!-- #{build_toc_for(pages)} --}}
+{{#each data as |page|}}
+  {{#unless page.skipToc}}
+    <li>
+      {{#if page.pages}}
+        {{table-of-contents data=page.pages}}
+      {{else}}
+        {{log 'linking' page}}
+        {{#link-to 'show' (concat page.url '.md')}}
+          {{page.title}}
+        {{/link-to}}
+      {{/if}}
+    </li>
+  {{/unless}}
+{{/each}}

@@ -1,0 +1,15 @@
+
+
+<article class="chapter">
+  <h1>
+    {{model.title}}
+    <a href="https://github.com/emberjs/guides/edit/master/source/<%= current_page.path.gsub('html', 'md') %>"
+       target="_blank" class="edit-page icon-pencil">Edit Page</a>
+  </h1>
+  <hr>
+
+  {{markdown-to-html model.content}}
+
+
+  {{!-- <%= chapter_links %>  --}}
+</article>
