@@ -1,12 +1,20 @@
 {{!-- #{build_toc_for(pages)} --}}
 {{#each data as |page|}}
   {{#unless page.skipToc}}
-    <li>
+    <li class={{tocLevel}}>
       {{#if page.pages}}
-        {{table-of-contents data=page.pages}}
+        {{#cp-panel as |p|}}
+          {{#p.toggle}}
+            {{page.title}}
+          {{/p.toggle}}
+
+          {{#p.body}}
+            {{table-of-contents data=page.pages level=(inc level)}}
+          {{/p.body}}
+        {{/cp-panel}}
+
       {{else}}
-        {{log 'linking' page}}
-        {{#link-to 'show' (concat page.url '.md')}}
+        {{#link-to 'show' page.url}}
           {{page.title}}
         {{/link-to}}
       {{/if}}
