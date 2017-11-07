@@ -1,0 +1,6 @@
+{
+  "name": "guides-app",
+  "dependencies": {
+    "bourbon": "4.2.6"
+  }
+}
