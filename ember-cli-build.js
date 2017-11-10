@@ -11,12 +11,11 @@ const jsonTree = new StaticSiteJson('node_modules/@stonecircle/guides-source/v2.
 
 module.exports = function(defaults) {
   let app = new EmberApp(defaults, {
-    sassOptions: {
-      includePaths: [
-        'node_modules/bourbon-neat/core',
-      ]
+    'ember-prism': {
+      'theme': 'okaidia',
+      'components': ['scss', 'javascript'], //needs to be an array, or undefined.
+      'plugins': ['line-numbers']
     }
-
   });
 
   // Use `app.import` to add additional libraries to the generated
