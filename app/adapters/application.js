@@ -1,22 +1,13 @@
 import DS from 'ember-data';
-import { pluralize } from 'ember-inflector';
-import { decamelize } from '@ember/string';
 
 export default DS.JSONAPIAdapter.extend({
-  buildURL(type) {
-    if(type === 'page') {
-      return `/content/pages.json`;
+  buildURL(modelName, id, snapshot, requestType, query) {
+    if (requestType === 'queryRecord') {
+      return `/${modelName}/${query.version}/${query.path}.json`;
+    } else if(requestType === 'query' && modelName === 'page') {
+      return `/content/${query.version}/pages.json`;
     }
 
-    return `${this._super(...arguments)}.json`;
+    return this._super(...arguments);
   },
-
-  pathForType: function(modelName) {
-    if (modelName === 'content' || modelName === 'page') {
-      return 'content';
-    }
-
-    var decamelized = decamelize(modelName);
-    return pluralize(decamelized);
-  }
 });

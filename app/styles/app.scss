@@ -1496,7 +1496,7 @@ body {
   }
 }
 
-.sidebar .select2 {
+.sidebar .ember-power-select-trigger {
   margin-bottom: 1em;
 }
 
@@ -1992,3 +1992,5 @@ a code {
   position: absolute !important;
   width: 1px !important;
 }
+
+@import "ember-power-select";

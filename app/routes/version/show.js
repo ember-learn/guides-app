@@ -4,10 +4,18 @@ import { next } from '@ember/runloop';
 
 export default Route.extend({
   model(params) {
-    return this.store.findRecord('content', params.path.replace(/\/$/, ''))
+    let versionModel = this.modelFor('version');
+
+    return this.store.queryRecord('content', {
+      path: params.path.replace(/\/$/, ''),
+      version: versionModel.version,
+    })
     .catch((e) => {
       if (get(e, 'errors.0.status') === "404") {
-        return this.store.findRecord('content', `${params.path.replace(/\/$/, '')}/index`)
+        return this.store.queryRecord('content', {
+          path: `${params.path.replace(/\/$/, '')}/index`,
+          version: versionModel.version,
+        });
       }
       throw e;
     });

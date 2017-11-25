@@ -7,7 +7,31 @@ const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
 const BroccoliMergeTrees = require('broccoli-merge-trees');
 
-const jsonTree = new StaticSiteJson('node_modules/@stonecircle/guides-source/v2.15.0', {});
+const versions = [
+  'v1.10.0',
+  'v1.11.0',
+  'v1.12.0',
+  'v1.13.0',
+  'v2.0.0',
+  'v2.1.0',
+  'v2.2.0',
+  'v2.3.0',
+  'v2.4.0',
+  'v2.5.0',
+  'v2.6.0',
+  'v2.7.0',
+  'v2.8.0',
+  'v2.9.0',
+  'v2.10.0',
+  'v2.11.0',
+  'v2.12.0',
+  'v2.13.0',
+  'v2.15.0',
+];
+
+const jsonTrees = versions.map((version) => new StaticSiteJson(`node_modules/@stonecircle/guides-source/guides/${version}`, {
+  contentFolder: `content/${version}`
+}));
 
 module.exports = function(defaults) {
   let app = new EmberApp(defaults, {
@@ -31,5 +55,5 @@ module.exports = function(defaults) {
   // please specify an object with the list of modules as keys
   // along with the exports of each module as its value.
 
-  return new BroccoliMergeTrees([app.toTree(), jsonTree]);
+  return new BroccoliMergeTrees([app.toTree(), ...jsonTrees]);
 };
