@@ -137,7 +137,9 @@ ol.toc-level-1 li:hover {
 
 ol.toc-level-1 a {
   color: #444;
-  padding-left: 1.618em;
+  padding: 0.33em 0 0.33em 1.618em;
+  display: block;
+  line-height: 1.25;
 }
 
 ol.toc-level-1 .selected a {

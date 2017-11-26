@@ -1,20 +1,20 @@
 {{!-- #{build_toc_for(pages)} --}}
 {{#each data as |page|}}
   {{#unless page.skipToc}}
-    <li class={{tocLevel}}>
+    <li class="{{tocLevel}} {{if (eq currentPage.url page.url) 'selected'}}">
       {{#if page.pages}}
-        {{#cp-panel as |p|}}
+        {{#cp-panel open=(eq currentSection.id page.id) as |p|}}
           {{#p.toggle}}
             {{page.title}}
           {{/p.toggle}}
 
           {{#p.body}}
-            {{table-of-contents data=page.pages level=(inc level)}}
+            {{table-of-contents data=page.pages currentPage=currentPage level=(inc level)}}
           {{/p.body}}
         {{/cp-panel}}
 
       {{else}}
-        {{#link-to 'version.show' page.url}}
+        {{#link-to 'version.show' page.url activeClass="selected"}}
           {{page.title}}
         {{/link-to}}
       {{/if}}

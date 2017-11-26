@@ -1,6 +1,9 @@
 import Controller from '@ember/controller';
+import { inject as service } from '@ember/service';
 
 export default Controller.extend({
+  page: service(),
+
   init() {
     this.versions = [
       'v1.10.0',
