@@ -29,7 +29,7 @@ const versions = [
   'v2.15.0',
 ];
 
-const jsonTrees = versions.map((version) => new StaticSiteJson(`node_modules/@stonecircle/guides-source/guides/${version}`, {
+const jsonTrees = versions.map((version) => new StaticSiteJson(`node_modules/@ember/guides-source/guides/${version}`, {
   contentFolder: `content/${version}`
 }));
 
