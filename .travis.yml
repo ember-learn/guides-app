@@ -6,6 +6,10 @@ node_js:
 sudo: false
 dist: trusty
 
+branches:
+  only:
+    - master
+
 addons:
   chrome: stable
 
@@ -19,4 +23,5 @@ env:
     - JOBS=1
 
 before_install:
+  - npm install -g npm@5
   - npm config set spin false
