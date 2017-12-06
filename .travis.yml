@@ -23,4 +23,5 @@ env:
     - JOBS=1
 
 before_install:
+  - npm install -g npm@5
   - npm config set spin false
