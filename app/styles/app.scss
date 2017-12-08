@@ -1538,9 +1538,9 @@ article h3 {
   margin-top: 1.5em;
 }
 
-article hr+h2,
-article hr+h3 {
-  margin-top: 0;
+article hr + div > h2,
+article hr + div > h3 {
+  margin-top: 0
 }
 
 article h4 {
