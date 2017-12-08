@@ -6,7 +6,7 @@ export default {
       "title": "Guides and Tutorials",
       "pages": [{
         "title": "Ember.js Guides",
-        "url": "index"
+        "url": "index/"
       }],
       "skip-toc": true
     }
@@ -24,6 +24,9 @@ export default {
       }, {
         "title": "Core Concepts",
         "url": "getting-started/core-concepts"
+      }, {
+        "title": "JavaScript Primer",
+        "url": "getting-started/js-primer"
       }]
     }
   }, {

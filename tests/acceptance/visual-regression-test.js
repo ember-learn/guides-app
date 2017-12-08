@@ -10,7 +10,7 @@ pages.data.forEach((section) => {
     test(`visiting visual regressions on ${section.id}:${page.url} with Percy`, function(assert) {
       assert.expect(0);
 
-      visit(`/v2.15.0/${page.url}`);
+      visit(`/v2.16.0/${page.url}`);
 
       andThen(function() {
         let name;

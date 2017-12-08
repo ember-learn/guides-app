@@ -1538,8 +1538,10 @@ article h3 {
   margin-top: 1.5em;
 }
 
-article hr + div > h2,
-article hr + div > h3 {
+article hr + h2,
+article hr + h3,
+article hr + div > h2:first-child,
+article hr + div > h3:first-child {
   margin-top: 0
 }
 
