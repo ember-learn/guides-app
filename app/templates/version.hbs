@@ -8,16 +8,14 @@
     {{version}}
   {{/power-select}}
 
-  {{!-- <input id="toc-toggle" class="toc-toggle visually-hidden" type="checkbox" />
-  <label for="toc-toggle">Table of Contents <span class="visually-hidden">toggle</span></label> --}}
+  <input id="toc-toggle" class="toc-toggle visually-hidden" type="checkbox" />
+  <label for="toc-toggle">Table of Contents <span class="visually-hidden">toggle</span></label>
 
   <nav class='toc-container' aria-label='table of contents'>
     {{table-of-contents data=model.pages version=model.version currentPage=page.currentPage currentSection=page.currentSection}}
   </nav>
 
-  {{!-- <%= toc_for(data.pages) %>
-
-  <%= link_to "&#11014; Back to Top".html_safe, "#", class: "back-to-top" %> --}}
+  {{!-- <%= link_to "&#11014; Back to Top".html_safe, "#", class: "back-to-top" %> --}}
 </aside>
 
 {{outlet}}
