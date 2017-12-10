@@ -27,6 +27,7 @@ const versions = [
   'v2.12.0',
   'v2.13.0',
   'v2.15.0',
+  'v2.16.0',
 ];
 
 const jsonTrees = versions.map((version) => new StaticSiteJson(`node_modules/@ember/guides-source/guides/${version}`, {

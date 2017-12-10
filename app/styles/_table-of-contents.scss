@@ -1,3 +1,20 @@
+@media only percy {
+  .version-select {
+    display: none;
+  }
+
+  .sidebar .ember-power-select-trigger {
+    display: none;
+  }
+
+  header.header {
+    display: none;
+  }
+
+  pre {
+    display: none;
+  }
+}
 
 .anchorable-toc {
   position: relative;

@@ -25,6 +25,7 @@ export default Controller.extend({
       'v2.12.0',
       'v2.13.0',
       'v2.15.0',
+      'v2.16.0',
     ];
     this._super(...arguments);
   },
