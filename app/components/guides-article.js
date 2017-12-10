@@ -22,6 +22,11 @@ export default Component.extend({
 
     if (filenameNodeList) {
       filenameNodeList.each((index, code) => {
+        if(code.parentNode.parentNode.classList.contains('filename')) {
+          //do nothing
+          return;
+        }
+
         let filename = code.attributes['data-filename'].value;
         let match = filename.match(/\.(\w+)$/);
 
