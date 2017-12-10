@@ -17,6 +17,8 @@ pages.data.forEach((section) => {
 
         if (page.url.endsWith('index')) {
           name = `/${page.url}.html`;
+        } else if (page.url.endsWith('index/')) {
+          name = '/index.html';
         } else {
           name = `/${page.url}/index.html`;
         }
