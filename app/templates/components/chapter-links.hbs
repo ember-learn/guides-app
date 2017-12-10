@@ -1,11 +1,18 @@
 {{#if page.isFirstPage}}
-  {{#link-to 'version.show' page.previousSection.pages.lastObject.url class="previous-guide"}}{{page.previousSection.pages.lastObject.title}}{{/link-to}}
+  {{#if page.previousSection}}
+    {{#link-to 'version.show' page.previousSection.pages.lastObject.url class="previous-guide"}}{{page.previousSection.pages.lastObject.title}}{{/link-to}}
+  {{/if}}
 {{else}}
-  {{#link-to 'version.show' page.previousPage.url class="previous-guide"}}{{page.previousPage.title}}{{/link-to}}
+  {{#if page.previousPage}}
+    {{#link-to 'version.show' page.previousPage.url class="previous-guide"}}{{page.previousPage.title}}{{/link-to}}
+  {{/if}}
 {{/if}}
 
+
 {{#if page.isLastPage}}
-  {{#link-to 'version.show' page.nextSection.pages.firstObject.url class="next-guide"}}We've finished covering {{page.currentSection.title}}. Next up: {{page.nextSection.title}} - {{page.nextSection.pages.firstObject.title}}{{/link-to}}
+  {{#if page.nextSection}}
+    {{#link-to 'version.show' page.nextSection.pages.firstObject.url class="next-guide"}}We've finished covering {{page.currentSection.title}}. Next up: {{page.nextSection.title}} - {{page.nextSection.pages.firstObject.title}}{{/link-to}}
+  {{/if}}
 {{else}}
   {{#link-to 'version.show' page.nextPage.url class="next-guide"}}{{page.nextPage.title}}{{/link-to}}
 {{/if}}
