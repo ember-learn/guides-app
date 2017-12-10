@@ -7,7 +7,7 @@ export default Component.extend({
 
   page: service(),
 
-  didInsertElement() {
+  didRender() {
 
     let nodeList = this.$('pre:not(.no-line-numbers) > code');
 
