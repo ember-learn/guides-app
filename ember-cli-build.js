@@ -34,8 +34,8 @@ module.exports = function(defaults) {
   let app = new EmberApp(defaults, {
     'ember-prism': {
       'theme': 'okaidia',
-      'components': ['scss', 'javascript'], //needs to be an array, or undefined.
-      'plugins': ['line-numbers']
+      'components': ['scss', 'javascript', 'handlebars'],
+      'plugins': ['line-numbers', 'normalize-whitespace']
     }
   });
 

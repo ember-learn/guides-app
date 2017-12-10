@@ -1,0 +1,42 @@
+div.filename {
+  background-color: #292929;
+}
+
+pre[class*="language-"] {
+  background-color: #444545;
+}
+
+.filename {
+  border-radius: 0.3em;
+}
+
+.ribbon {
+  margin-top: 0.33em;
+  float: right;
+  height: 20px;
+  width: 52px;
+  background: 0 0 no-repeat;
+  background-size: 52px 20px;
+}
+
+.filename > span {
+  font-family: Menlo, "DejaVu Sans Mono", "Bitstream Vera Sans Mono", Courier, monospace;
+  font-size: 0.8em;
+  color: lightgrey;
+  display: block;
+  padding: 5px 0 0 10px;
+}
+
+.filename.javascript .ribbon,
+.filename.js .ribbon {
+  background-image: url("../images/ribbon-js.svg");
+}
+
+.filename.html .ribbon {
+  background-image: url("../images/ribbon-html.svg");
+}
+
+.filename.handlebars .ribbon,
+.filename.hbs .ribbon {
+  background-image: url("../images/ribbon-hbs.svg");
+}

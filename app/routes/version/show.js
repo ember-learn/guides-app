@@ -21,12 +21,6 @@ export default Route.extend({
     });
   },
 
-  afterModel() {
-    next(this, () => {
-      Prism.highlightAll();
-    })
-  },
-
   actions: {
     didTransition() {
       this._super();
