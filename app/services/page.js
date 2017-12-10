@@ -20,7 +20,7 @@ export default Service.extend({
       return DS.PromiseObject.create({
         promise,
       })
-    } else if (get(this, 'router.currentURL').match(/^\/v\d+\.\d+\.\d+\/$/)){
+    } else if (get(this, 'router.currentURL').match(/^\/v\d+\.\d+\.\d+\/?$/)){
       let promise = get(this, 'pages')
         .then((pages) => pages.find((page) => page.id === 'index'));
 
@@ -77,7 +77,7 @@ export default Service.extend({
       if (pages) {
         return pages.find((page) => page.url === match[1]);
       }
-    } else if (get(this, 'router.currentURL').match(/^\/v\d+\.\d+\.\d+\/$/)){
+    } else if (get(this, 'router.currentURL').match(/^\/v\d+\.\d+\.\d+\/?$/)){
       let pages = get(this, 'currentSection.pages');
 
       if (pages) {
