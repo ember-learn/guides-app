@@ -6,7 +6,7 @@ import DS from 'ember-data';
 export default Service.extend({
   router: service(),
   store: service(),
-  pages: computed('currentVersoin', function() {
+  pages: computed('currentVersion', function() {
     return get(this, 'store').query('page', { version: get(this, 'currentVersion') });
   }),
 
