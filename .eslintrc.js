@@ -11,6 +11,7 @@ module.exports = {
   rules: {
   },
   globals: {
-    Prism: true
+    Prism: true,
+    compareVersions: true
   }
 };
