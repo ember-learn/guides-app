@@ -1,6 +1,6 @@
 {{!-- #{build_toc_for(pages)} --}}
 {{#each data as |page|}}
-  {{#unless page.skipToc}}
+  {{#unless (or page.skipToc (get page 'skip-toc'))}}
     <li class="{{tocLevel}} {{if (eq currentPage.url page.url) 'selected'}}">
       {{#if page.pages}}
         {{#cp-panel open=(eq currentSection.id page.id) as |p|}}
