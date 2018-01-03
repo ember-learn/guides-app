@@ -1,38 +1,31 @@
 /* eslint-env node */
 'use strict';
 
+const { readFileSync } = require('fs');
 const StaticSiteJson = require('broccoli-static-site-json');
-
 const EmberApp = require('ember-cli/lib/broccoli/ember-app');
-
 const BroccoliMergeTrees = require('broccoli-merge-trees');
+const yaml = require('js-yaml');
+const { Serializer } = require('jsonapi-serializer');
+const writeFile = require('broccoli-file-creator');
 
-const versions = [
-  'v1.10.0',
-  'v1.11.0',
-  'v1.12.0',
-  'v1.13.0',
-  'v2.0.0',
-  'v2.1.0',
-  'v2.2.0',
-  'v2.3.0',
-  'v2.4.0',
-  'v2.5.0',
-  'v2.6.0',
-  'v2.7.0',
-  'v2.8.0',
-  'v2.9.0',
-  'v2.10.0',
-  'v2.11.0',
-  'v2.12.0',
-  'v2.13.0',
-  'v2.15.0',
-  'v2.16.0',
-];
+const VersionsSerializer = new Serializer('version', {
+  attributes: [
+    'allVersions',
+    'currentVersion',
+  ],
+});
 
-const jsonTrees = versions.map((version) => new StaticSiteJson(`node_modules/@ember/guides-source/guides/${version}`, {
+const versions = yaml.safeLoad(readFileSync('node_modules/@ember/guides-source/versions.yml', 'utf8'));
+
+// setting an ID so that it's not undefined
+versions.id = 'versions';
+
+const jsonTrees = versions.allVersions.map((version) => new StaticSiteJson(`node_modules/@ember/guides-source/guides/${version}`, {
   contentFolder: `content/${version}`
 }));
+
+var versionsFile = writeFile('/content/versions.json', JSON.stringify(VersionsSerializer.serialize(versions)));
 
 module.exports = function(defaults) {
   let app = new EmberApp(defaults, {
@@ -43,18 +36,5 @@ module.exports = function(defaults) {
     }
   });
 
-  // Use `app.import` to add additional libraries to the generated
-  // output files.
-  //
-  // If you need to use different assets in different
-  // environments, specify an object as the first parameter. That
-  // object's keys should be the environment name and the values
-  // should be the asset to use in that environment.
-  //
-  // If the library that you are including contains AMD or ES6
-  // modules that you would like to import into your application
-  // please specify an object with the list of modules as keys
-  // along with the exports of each module as its value.
-
-  return new BroccoliMergeTrees([app.toTree(), ...jsonTrees]);
+  return new BroccoliMergeTrees([app.toTree(), versionsFile, ...jsonTrees]);
 };
