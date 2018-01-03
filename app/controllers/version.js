@@ -1,34 +1,33 @@
-import Controller from '@ember/controller';
+import Controller, {
+  inject as controller,
+} from '@ember/controller';
 import { inject as service } from '@ember/service';
+import { get, computed } from '@ember/object';
+
+function semverCompare (a, b) {
+    let pa = a.replace('v', '').split('.').map((num) => parseInt(num, 10));
+    let pb = b.replace('v', '').split('.').map((num) => parseInt(num, 10));
+
+    for (var i = 0; i < 3; i++) {
+        var na = Number(pa[i]);
+        var nb = Number(pb[i]);
+        if (na > nb) return -1;
+        if (nb > na) return 1;
+        if (!isNaN(na) && isNaN(nb)) return -1;
+        if (isNaN(na) && !isNaN(nb)) return 1;
+    }
+    return 0;
+}
 
 export default Controller.extend({
   page: service(),
+  application: controller(),
 
-  init() {
-    this.versions = [
-      'v1.10.0',
-      'v1.11.0',
-      'v1.12.0',
-      'v1.13.0',
-      'v2.0.0',
-      'v2.1.0',
-      'v2.2.0',
-      'v2.3.0',
-      'v2.4.0',
-      'v2.5.0',
-      'v2.6.0',
-      'v2.7.0',
-      'v2.8.0',
-      'v2.9.0',
-      'v2.10.0',
-      'v2.11.0',
-      'v2.12.0',
-      'v2.13.0',
-      'v2.15.0',
-      'v2.16.0',
-    ];
-    this._super(...arguments);
-  },
+  versions: computed('application.model.allVersions.[]', function () {
+    let allVersions = get(this, 'application.model.allVersions');
+
+    return allVersions.sort(semverCompare)
+  }),
 
   actions: {
     selectVersion(version) {

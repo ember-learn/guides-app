@@ -1,7 +1,8 @@
 import Route from '@ember/routing/route';
+import { get } from '@ember/object';
 
 export default Route.extend({
   redirect() {
-    this.transitionTo('version', 'v2.16.0');
+    this.transitionTo('version', get(this.modelFor('application'), 'currentVersion'));
   }
 });
