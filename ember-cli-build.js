@@ -39,5 +39,7 @@ module.exports = function(defaults) {
     }
   });
 
+  app.import('node_modules/compare-versions/index.js');
+
   return new BroccoliMergeTrees([app.toTree(), versionsFile, guidesSourcePublic, ...jsonTrees]);
 };

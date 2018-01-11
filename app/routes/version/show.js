@@ -25,5 +25,12 @@ export default Route.extend({
     next(this, () => {
       Prism.highlightAll();
     })
+  },
+
+  actions: {
+    didTransition() {
+      this._super();
+      window.scrollTo(0,0);
+    }
   }
 });
