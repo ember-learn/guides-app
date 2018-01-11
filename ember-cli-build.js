@@ -8,6 +8,9 @@ const BroccoliMergeTrees = require('broccoli-merge-trees');
 const yaml = require('js-yaml');
 const { Serializer } = require('jsonapi-serializer');
 const writeFile = require('broccoli-file-creator');
+const Funnel = require('broccoli-funnel');
+
+const guidesSourcePublic = new Funnel('node_modules/@ember/guides-source/public');
 
 const VersionsSerializer = new Serializer('version', {
   attributes: [
@@ -38,5 +41,5 @@ module.exports = function(defaults) {
 
   app.import('node_modules/compare-versions/index.js');
 
-  return new BroccoliMergeTrees([app.toTree(), versionsFile, ...jsonTrees]);
+  return new BroccoliMergeTrees([app.toTree(), versionsFile, guidesSourcePublic, ...jsonTrees]);
 };
