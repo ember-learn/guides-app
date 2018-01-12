@@ -1,6 +1,5 @@
 import Route from '@ember/routing/route';
 import { get } from '@ember/object';
-import { next } from '@ember/runloop';
 
 export default Route.extend({
   model(params) {
@@ -19,12 +18,6 @@ export default Route.extend({
       }
       throw e;
     });
-  },
-
-  afterModel() {
-    next(this, () => {
-      Prism.highlightAll();
-    })
   },
 
   actions: {
