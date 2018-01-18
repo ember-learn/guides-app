@@ -1,13 +1,28 @@
 import DS from 'ember-data';
+import { get } from '@ember/object';
 
 export default DS.JSONAPIAdapter.extend({
   buildURL(modelName, id, snapshot, requestType, query) {
+    let url;
+
     if (requestType === 'queryRecord') {
-      return `/${modelName}/${query.version}/${query.path}.json`;
+      url = [modelName, query.version, `${query.path}.json`];
     } else if(requestType === 'query' && modelName === 'page') {
-      return `/content/${query.version}/pages.json`;
+      url = ['content', query.version, 'pages.json'];
+    } else {
+      return this._super(...arguments);
     }
 
-    return this._super(...arguments);
+    let host = get(this, 'host');
+    let prefix = this.urlPrefix();
+
+    if (prefix) { url.unshift(prefix); }
+
+    url = url.join('/');
+    if (!host && url && url.charAt(0) !== '/') {
+      url = '/' + url;
+    }
+
+    return url;
   },
 });

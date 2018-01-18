@@ -9,6 +9,8 @@ const yaml = require('js-yaml');
 const { Serializer } = require('jsonapi-serializer');
 const writeFile = require('broccoli-file-creator');
 const Funnel = require('broccoli-funnel');
+const walkSync = require('walk-sync');
+const { extname } = require('path');
 
 const guidesSourcePublic = new Funnel('node_modules/@ember/guides-source/public');
 
@@ -20,6 +22,18 @@ const VersionsSerializer = new Serializer('version', {
 });
 
 const versions = yaml.safeLoad(readFileSync('node_modules/@ember/guides-source/versions.yml', 'utf8'));
+
+const urls = versions.allVersions.map(version => `/${version}`);
+
+versions.allVersions.forEach((version) => {
+  const paths = walkSync(`node_modules/@ember/guides-source/guides/${version}`);
+
+  const mdFiles = paths.filter(path => extname(path) === '.md').map(path => path.replace(/\.md/, ''));
+
+  mdFiles.forEach((file) => {
+    urls.push(`/${version}/${file}`)
+  })
+});
 
 // setting an ID so that it's not undefined
 versions.id = 'versions';
@@ -36,6 +50,9 @@ module.exports = function(defaults) {
       'theme': 'okaidia',
       'components': ['scss', 'javascript', 'handlebars', 'http', 'json'],
       'plugins': ['line-numbers', 'normalize-whitespace']
+    },
+    prember: {
+      urls,
     }
   });
 
