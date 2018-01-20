@@ -23,9 +23,12 @@ const VersionsSerializer = new Serializer('version', {
 
 const versions = yaml.safeLoad(readFileSync('node_modules/@ember/guides-source/versions.yml', 'utf8'));
 
-const urls = versions.allVersions.map(version => `/${version}`);
+const premberVersions = versions.allVersions
+  // .filter(version => version === 'v2.17.0');
 
-versions.allVersions.forEach((version) => {
+const urls = premberVersions.map(version => `/${version}`);
+
+premberVersions.forEach((version) => {
   const paths = walkSync(`node_modules/@ember/guides-source/guides/${version}`);
 
   const mdFiles = paths.filter(path => extname(path) === '.md').map(path => path.replace(/\.md/, ''));
