@@ -25,7 +25,12 @@ module.exports = function(environment) {
 
     fastboot: {
       hostWhitelist: ['emberguides.stonecircle.io', 'localhost:4200']
-    }
+    },
+
+    showdown: {
+      ghCompatibleHeaderId: true,
+      prefixHeaderId: 'toc_'
+    },
   };
 
   if (environment === 'development') {
