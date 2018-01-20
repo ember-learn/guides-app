@@ -6,7 +6,7 @@ module.exports = function(environment) {
     modulePrefix: 'guides-app',
     environment,
     rootURL: '/',
-    locationType: 'auto',
+    locationType: 'trailing-history',
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
