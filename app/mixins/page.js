@@ -1,32 +1,18 @@
-import Service from '@ember/service';
+import Mixin from '@ember/object/mixin';
 import { inject as service } from '@ember/service';
 import { get, computed } from '@ember/object';
-import DS from 'ember-data';
 
-export default Service.extend({
+export default Mixin.create({
   router: service(),
-  store: service(),
-  pages: computed('currentVersion', function() {
-    return get(this, 'store').query('page', { version: get(this, 'currentVersion') });
-  }),
 
   currentSection: computed('router.currentURL', 'pages.[]', function() {
     let match = get(this, 'router.currentURL').match(/^\/v\d+\.\d+\.\d+\/([\w-]+)/);
 
     if(match && match[1]) {
-      let promise = get(this, 'pages')
-        .then((pages) => pages.find((page) => page.id === match[1]));
+      return get(this, 'pages').find((page) => page.id === match[1]);
 
-      return DS.PromiseObject.create({
-        promise,
-      })
     } else if (get(this, 'router.currentURL').match(/^\/v\d+\.\d+\.\d+\/?$/)){
-      let promise = get(this, 'pages')
-        .then((pages) => pages.find((page) => page.id === 'index'));
-
-      return DS.PromiseObject.create({
-        promise,
-      })
+      return get(this, 'pages').find((page) => page.id === 'index');
     }
   }),
 
@@ -51,21 +37,16 @@ export default Service.extend({
   }),
 
   previousSection: computed('currentSection', 'pages.[]', function() {
-    let promise = get(this, 'currentSection').then((currentSection) => {
-      let pages = get(this, 'pages.content');
+    let currentSection = get(this, 'currentSection');
+    let pages = get(this, 'pages');
 
-      if (pages) {
-        let index = pages.indexOf(currentSection);
+    if (pages) {
+      let index = pages.indexOf(currentSection);
 
-        if (index > 0) {
-          return pages.objectAt(index-1);
-        }
+      if (index > 0) {
+        return pages.objectAt(index-1);
       }
-    });
-
-    return DS.PromiseObject.create({
-      promise,
-    })
+    }
   }),
 
   currentPage: computed('router.currentURL', 'currentSection.pages', function() {
@@ -87,7 +68,7 @@ export default Service.extend({
   }),
 
   isLastPage: computed('currentSection', 'currentPage', function() {
-    let pages = get(this, 'currentSection');
+    let pages = get(this, 'currentSection.pages');
 
     if(pages) {
       return pages.indexOf(get(this, 'currentPage')) === (pages.length-1);
@@ -107,21 +88,16 @@ export default Service.extend({
   }),
 
   nextSection: computed('currentSection', 'pages.[]', function() {
-    let promise = get(this, 'currentSection').then((currentSection) => {
-      let pages = get(this, 'pages.content');
+    let currentSection = get(this, 'currentSection')
+    let pages = get(this, 'pages');
 
-      if (pages) {
-        let index = pages.indexOf(currentSection);
+    if (pages) {
+      let index = pages.indexOf(currentSection);
 
-        if (index < get(pages, 'length') - 1) {
-          return pages.objectAt(index + 1);
-        }
+      if (index < get(pages, 'length') - 1) {
+        return pages.objectAt(index + 1);
       }
-    });
-
-    return DS.PromiseObject.create({
-      promise,
-    })
+    }
   }),
 
   currentVersion: computed('router.currentURL', function() {

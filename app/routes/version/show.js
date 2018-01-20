@@ -1,11 +1,12 @@
 import Route from '@ember/routing/route';
 import { get } from '@ember/object';
+import { hash } from 'rsvp';
 
 export default Route.extend({
   model(params) {
     let versionModel = this.modelFor('version');
 
-    return this.store.queryRecord('content', {
+    let contentPromise = this.store.queryRecord('content', {
       path: params.path.replace(/\/$/, ''),
       version: versionModel.version,
     })
@@ -18,6 +19,11 @@ export default Route.extend({
       }
       throw e;
     });
+
+    return hash({
+      content: contentPromise,
+      pages: get(this, 'store').query('page', { version: get(versionModel, 'version') })
+    })
   },
 
   actions: {

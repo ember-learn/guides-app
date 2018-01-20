@@ -39,7 +39,8 @@ versions.allVersions.forEach((version) => {
 versions.id = 'versions';
 
 const jsonTrees = versions.allVersions.map((version) => new StaticSiteJson(`node_modules/@ember/guides-source/guides/${version}`, {
-  contentFolder: `content/${version}`
+  contentFolder: `content/${version}`,
+  type: 'contents',
 }));
 
 var versionsFile = writeFile('/content/versions.json', JSON.stringify(VersionsSerializer.serialize(versions)));
