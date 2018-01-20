@@ -1,3 +1,6 @@
+@import 'main-header';
+@import 'main-footer';
+
 @font-face {
   font-family: 'fontello';
   src: url("../fonts/fontello.eot?60624967");
@@ -1364,78 +1367,6 @@ html {
   .header-search {
     margin-left: 4%;
   }
-}
-
-.footer {
-  background-color: #f7f3ee;
-  border-top: 1px solid #f9e7e4;
-  text-align: center;
-  font-family: proxima-nova, sans-serif;
-}
-
-.footer .container {
-  padding: 2em 1em;
-}
-@media screen and (min-width: 53.75em) {
-  .footer .container {
-    align-items: center;
-    display: flex;
-  }
-}
-
-.footer a {
-  text-decoration: none;
-}
-
-.footer .footer-info {
-  color: #999;
-  font-size: 0.75rem;
-  font-weight: 600;
-  line-height: 2;
-  margin: 1em 0;
-  text-transform: uppercase;
-}
-@media screen and (min-width: 53.75em) {
-  .footer .footer-info {
-    flex: 0 0 18em;
-    text-align: left;
-  }
-}
-
-.footer .footer-info a {
-  color: #dd6a58;
-}
-
-.footer .footer-statement {
-  color: #999;
-  flex: 1;
-  font-size: 1.1rem;
-  margin: 1em 0;
-}
-
-.footer .footer-social {
-  margin: 1em 0;
-}
-@media screen and (min-width: 53.75em) {
-  .footer .footer-social {
-    flex: 0 0 10em;
-    text-align: right;
-  }
-}
-
-.footer .footer-social a {
-  -webkit-transition: opacity 200ms, color 200ms;
-  -moz-transition: opacity 200ms, color 200ms;
-  transition: opacity 200ms, color 200ms;
-  color: #999;
-  font-size: 1.5rem;
-  margin-left: 0.5em;
-  opacity: 0.7;
-}
-
-.footer .footer-social a:hover {
-  color: #dd6a58;
-  opacity: 1;
 }
 
 body {
