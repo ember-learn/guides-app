@@ -25,13 +25,4 @@ export default Route.extend({
       pages: get(this, 'store').query('page', { version: get(versionModel, 'version') })
     })
   },
-
-  actions: {
-    didTransition() {
-      this._super();
-      if(window.scrollTo) {
-        window.scrollTo(0,0);
-      }
-    }
-  }
 });
