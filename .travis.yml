@@ -21,7 +21,32 @@ env:
   global:
     # See https://git.io/vdao3 for details.
     - JOBS=1
+    - secure: "ONYswtV0wqSDrz9QDebV0L37s0h4PGLvkmWR48J8lJyBTQdoIV02D4R1lmiz0LhVWOXFXlxn4DaLPuVPq8GxJaIjuoXunjw6fc1U8y/wtdvQWdOfpNfGZH7HAjNDhUBKuxTFYnVxmfReuWhHkd63JnfPK5wzabZ8/VVzwA1vFYZvNcM30nhJpOfNSJd+BBgUG6FLk4Nr1h7XyDjTVWeE5GfDyL4I4qbarjqDLZc63yPfAXL299/qpj9FHXN1vvhaYB1siKilrmquCuMrM5W/DY0+EB4gDouJcWPuL0ksGZ6+yKiGQTzOVkEySJtkxynqRKXLoMl001h1XDBZC2/ZOBwBhyxrrVdSsbTJjFWc2JudlQyMRxc74O6dVtDIv5MFQc+5X/xSDIpXpbJ4snfVdXpUkqPag156YHegwbZdDkMV6iCXs8C9mvKrqgvvDFsCIlzojToMwSqITMB9PbCpAekdT3TwOtx8kdArXyGXsaMhx2HbWNCLYGy/YhNS6Ceaj7VnypUUfy+hFciwX0Y9dYoI3rZTg/ED05IA45fZfrNUczn9Uh7U9APypMoYSsd+D6Evjs06C5a43wfonCpxMnSqlbZtU0kw7x+Vz4qHIfEp8VH3uOJLKEUqnaJ/mS59gNaUIn1wVDiXVDJy5lDz7VtP0mKh6fKISPlqNmVO4Ko="
+  matrix:
+    - GUIDES_VERSION="v1.10.0"
+    - GUIDES_VERSION="v1.11.0"
+    - GUIDES_VERSION="v1.12.0"
+    - GUIDES_VERSION="v1.13.0"
+    - GUIDES_VERSION="v2.0.0"
+    - GUIDES_VERSION="v2.1.0"
+    - GUIDES_VERSION="v2.2.0"
+    - GUIDES_VERSION="v2.3.0"
+    - GUIDES_VERSION="v2.4.0"
+    - GUIDES_VERSION="v2.5.0"
+    - GUIDES_VERSION="v2.6.0"
+    - GUIDES_VERSION="v2.7.0"
+    - GUIDES_VERSION="v2.8.0"
+    - GUIDES_VERSION="v2.9.0"
+    - GUIDES_VERSION="v2.10.0"
+    - GUIDES_VERSION="v2.11.0"
+    - GUIDES_VERSION="v2.12.0"
+    - GUIDES_VERSION="v2.13.0"
+    - GUIDES_VERSION="v2.15.0"
+    - GUIDES_VERSION="v2.16.0"
+    - GUIDES_VERSION="v2.17.0"
 
 before_install:
   - npm install -g npm@5
   - npm config set spin false
+
+after_success: ember deploy production --activate

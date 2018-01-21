@@ -29,12 +29,12 @@ module.exports = function(deployTarget) {
     const bucket = 'emberguides.stonecircle.io';
     const region = 'eu-west-1'
 
-    ENV.s3.accessKeyId = credentials.key;
-    ENV.s3.secretAccessKey = credentials.secret;
+    ENV.s3.accessKeyId = credentials.key || process.env.AWS_KEY;
+    ENV.s3.secretAccessKey = credentials.secret || process.env.AWS_SECRET;
     ENV.s3.bucket = bucket;
     ENV.s3.region = region;
-    ENV["s3-index"].accessKeyId = credentials.key;
-    ENV["s3-index"].secretAccessKey = credentials.secret;
+    ENV["s3-index"].accessKeyId = credentials.key || process.env.AWS_KEY;
+    ENV["s3-index"].secretAccessKey = credentials.secret || process.env.AWS_SECRET;
     ENV["s3-index"].bucket = bucket;
     ENV["s3-index"].region = region;
   }
