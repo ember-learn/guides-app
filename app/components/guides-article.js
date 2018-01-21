@@ -1,11 +1,10 @@
 import Component from '@ember/component';
-import { inject as service } from '@ember/service';
 
-export default Component.extend({
+import PageMixin from '../mixins/page';
+
+export default Component.extend(PageMixin, {
   tagName: 'article',
   classNames: 'chapter',
-
-  page: service(),
 
   didRender() {
 
