@@ -37,6 +37,7 @@
     "ember-cli-sass": "^7.0.0",
     "ember-cli-shims": "^1.1.0",
     "ember-cli-showdown": "^4.1.0",
+    "ember-cli-spinkit": "^2.0.0",
     "ember-cli-sri": "^2.1.0",
     "ember-cli-uglify": "^2.0.0",
     "ember-collapsible-panel": "^2.1.1",
