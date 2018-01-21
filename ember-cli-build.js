@@ -24,7 +24,7 @@ const VersionsSerializer = new Serializer('version', {
 const versions = yaml.safeLoad(readFileSync('node_modules/@ember/guides-source/versions.yml', 'utf8'));
 
 const premberVersions = versions.allVersions
-  .filter(version => version === process.env.GUIDES_VERSION);
+  .filter(version => version === 'v2.17.0');
 
 const urls = premberVersions.map(version => `/${version}`);
 
