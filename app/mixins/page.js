@@ -6,12 +6,12 @@ export default Mixin.create({
   router: service(),
 
   currentSection: computed('router.currentURL', 'pages.[]', function() {
-    let match = get(this, 'router.currentURL').match(/^\/v\d+\.\d+\.\d+\/([\w-]+)/);
+    let match = get(this, 'router.currentURL').match(/^\/v\d+\.\d+\.\d+\/([\w-]+)(#[\w_-]+)?/);
 
     if(match && match[1]) {
       return get(this, 'pages').find((page) => page.id === match[1]);
 
-    } else if (get(this, 'router.currentURL').match(/^\/v\d+\.\d+\.\d+\/?$/)){
+    } else if (get(this, 'router.currentURL').match(/^\/v\d+\.\d+\.\d+\/?(#[\w_-]+)?$/)){
       return get(this, 'pages').find((page) => page.id === 'index');
     }
   }),
@@ -50,7 +50,7 @@ export default Mixin.create({
   }),
 
   currentPage: computed('router.currentURL', 'currentSection.pages', function() {
-    let match = get(this, 'router.currentURL').match(/^\/v\d+\.\d+\.\d+\/([\w-/]+)/);
+    let match = get(this, 'router.currentURL').match(/^\/v\d+\.\d+\.\d+\/([\w-/]+)(#[\w_-]+)?/);
 
     if(match && match[1]) {
       let pages = get(this, 'currentSection.pages');
@@ -58,7 +58,7 @@ export default Mixin.create({
       if (pages) {
         return pages.find((page) => page.url === match[1]);
       }
-    } else if (get(this, 'router.currentURL').match(/^\/v\d+\.\d+\.\d+\/?$/)){
+    } else if (get(this, 'router.currentURL').match(/^\/v\d+\.\d+\.\d+\/?(#[\w_-]+)?$/)){
       let pages = get(this, 'currentSection.pages');
 
       if (pages) {
