@@ -11,7 +11,6 @@ export default Route.extend({
     }
 
     const { version } = this.modelFor('version');
-    const path = params.path.replace(/\/$/, '');
 
     let contentPromise = this.store.queryRecord('content', {
       path,
