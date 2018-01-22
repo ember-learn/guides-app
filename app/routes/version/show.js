@@ -12,6 +12,15 @@ export default Route.extend({
       path,
       version
     })
+    .catch((e) => {
+      if (get(e, 'errors.0.status') === "404") {
+        return this.store.queryRecord('content', {
+          path: `${path}/index`,
+          version
+        });
+      }
+      throw e;
+    });    
   },
 
   afterModel() {
