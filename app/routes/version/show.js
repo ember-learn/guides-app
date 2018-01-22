@@ -4,16 +4,22 @@ import { hash } from 'rsvp';
 
 export default Route.extend({
   model(params) {
+    const path = params.path.replace(/\/$/, '');
+
+    if (path.endsWith('/index')) {
+      return this.transitionTo('version.show', path.replace(/\/index$/, ''))
+    }
+
     let versionModel = this.modelFor('version');
 
     let contentPromise = this.store.queryRecord('content', {
-      path: params.path.replace(/\/$/, ''),
+      path,
       version: versionModel.version,
     })
     .catch((e) => {
-      if (get(e, 'errors.0.status') === "404") {
+      if (['404', '403'].includes(get(e, 'errors.0.status'))) {
         return this.store.queryRecord('content', {
-          path: `${params.path.replace(/\/$/, '')}/index`,
+          path: `${path}/index`,
           version: versionModel.version,
         });
       }

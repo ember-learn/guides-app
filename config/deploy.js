@@ -27,7 +27,9 @@ module.exports = function(deployTarget) {
     s3: {
       filePattern: '**/*.{js,css,png,gif,ico,jpg,map,xml,txt,svg,swf,eot,ttf,woff,woff2,json,html}',
     },
-    's3-index': {},
+    's3-index': {
+      allowOverwrite: true
+    },
   };
 
   if (deployTarget === 'production') {
