@@ -5,7 +5,6 @@ let credentials;
 try {
   credentials = require('./credentials.json');
 } catch (e) {
-  console.log(e);
   credentials = {};
 }
 
