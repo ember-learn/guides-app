@@ -10,9 +10,7 @@ export default Route.extend({
       return this.transitionTo('version.show', path.replace(/\/index$/, ''))
     }
 
-    let versionModel = this.modelFor('version');
-
-    const { version } = versionModel;
+    const { version } = this.modelFor('version');
     const path = params.path.replace(/\/$/, '');
 
     let contentPromise = this.store.queryRecord('content', {
