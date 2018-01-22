@@ -1,18 +1,18 @@
-{{#if page.isFirstPage}}
-  {{#if page.previousSection}}
-    {{#link-to 'version.show' page.previousSection.pages.lastObject.url class="previous-guide"}}{{page.previousSection.pages.lastObject.title}}{{/link-to}}
+{{#if isFirstPage}}
+  {{#if previousSection}}
+    {{#link-to 'version.show' previousSectionPage.url class="previous-guide"}}{{previousSectionPage.title}}{{/link-to}}
   {{/if}}
 {{else}}
-  {{#if page.previousPage}}
-    {{#link-to 'version.show' page.previousPage.url class="previous-guide"}}{{page.previousPage.title}}{{/link-to}}
+  {{#if previousPage}}
+    {{#link-to 'version.show' previousPage.url class="previous-guide"}}{{previousPage.title}}{{/link-to}}
   {{/if}}
 {{/if}}
 
 
-{{#if page.isLastPage}}
-  {{#if page.nextSection}}
-    {{#link-to 'version.show' page.nextSection.pages.firstObject.url class="next-guide"}}We've finished covering {{page.currentSection.title}}. Next up: {{page.nextSection.title}} - {{page.nextSection.pages.firstObject.title}}{{/link-to}}
+{{#if isLastPage}}
+  {{#if nextSection}}
+    {{#link-to 'version.show' nextSectionPage.url class="next-guide"}}We've finished covering {{currentSection.title}}. Next up: {{nextSection.title}} - {{nextSectionPage.title}}{{/link-to}}
   {{/if}}
 {{else}}
-  {{#link-to 'version.show' page.nextPage.url class="next-guide"}}{{page.nextPage.title}}{{/link-to}}
+  {{#link-to 'version.show' nextPage.url class="next-guide"}}{{nextPage.title}}{{/link-to}}
 {{/if}}

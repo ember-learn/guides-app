@@ -1,4 +1,3 @@
-/* eslint-env node */
 'use strict';
 
 module.exports = function(environment) {
@@ -6,7 +5,8 @@ module.exports = function(environment) {
     modulePrefix: 'guides-app',
     environment,
     rootURL: '/',
-    locationType: 'auto',
+    locationType: 'trailing-history',
+    historySupportMiddleware: true,
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
@@ -21,7 +21,16 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
-    }
+    },
+
+    fastboot: {
+      hostWhitelist: ['emberguides.stonecircle.io', 'localhost:4200']
+    },
+
+    showdown: {
+      ghCompatibleHeaderId: true,
+      prefixHeaderId: 'toc_'
+    },
   };
 
   if (environment === 'development') {
@@ -41,6 +50,7 @@ module.exports = function(environment) {
     ENV.APP.LOG_VIEW_LOOKUPS = false;
 
     ENV.APP.rootElement = '#ember-testing';
+    ENV.APP.autoboot = false;
   }
 
   if (environment === 'production') {

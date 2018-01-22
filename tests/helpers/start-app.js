@@ -6,6 +6,7 @@ import './percy/register-helpers';
 
 export default function startApp(attrs) {
   let attributes = merge({}, config.APP);
+  attributes.autoboot = true;
   attributes = merge(attributes, attrs); // use defaults, but you can override;
 
   return run(() => {
