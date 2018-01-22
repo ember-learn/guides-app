@@ -27,4 +27,8 @@ before_install:
   - npm install -g npm@5
   - npm config set spin false
 
+script:
+  - npm run lint:js
+  - npm test
+
 after_success: ember deploy production --activate
