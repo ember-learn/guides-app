@@ -10,6 +10,7 @@ Router.map(function() {
   this.route('version', { path: ':version' }, function() {
     this.route('show', { path: '*path' });
   });
+  this.route('404');
 });
 
 export default Router;
