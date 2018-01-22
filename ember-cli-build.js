@@ -30,7 +30,10 @@ const urls = premberVersions.map(version => `/${version}`);
 premberVersions.forEach((version) => {
   const paths = walkSync(`node_modules/@ember/guides-source/guides/${version}`);
 
-  const mdFiles = paths.filter(path => extname(path) === '.md').map(path => path.replace(/\.md/, ''));
+  const mdFiles = paths.
+    filter(path => extname(path) === '.md')
+    .map(path => path.replace(/\.md/, ''))
+    .map(path => path.replace(/\/index$/, ''));
 
   mdFiles.forEach((file) => {
     urls.push(`/${version}/${file}`)
