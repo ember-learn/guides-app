@@ -1,10 +1,10 @@
 <h1>
-  {{page.currentPage.title}}
-  <a href="https://github.com/ember-learn/guides-source/edit/cleanup/guides/{{page.currentVersion}}/{{page.currentPage.url}}.md"
+  {{currentPage.title}}
+  <a href="https://github.com/ember-learn/guides-source/edit/master/guides/{{currentVersion}}/{{currentPage.url}}.md"
      target="_blank" class="edit-page icon-pencil">Edit Page</a>
 </h1>
 <hr>
 
 {{markdown-to-html model.content}}
 
-{{chapter-links}}
+{{chapter-links pages=pages}}
