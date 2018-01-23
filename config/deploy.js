@@ -14,21 +14,24 @@ module.exports = function(deployTarget) {
       environment: "production"
     },
     pipeline: {
-      alias: {
-        s3: { as: ['s3-standard', 's3-static'] },
-      },
+      // alias: {
+      //   s3: { as: ['s3-standard', 's3-static'] },
+      // },
       activateOnDeploy: true
     },
     "revision-data": {
       "type": "version-commit"
     },
-    's3-standard': {
-      filePattern: '**/*.{js,css,ico,map,xml,txt,svg,swf,eot,ttf,woff,woff2,otf,wasm}'
-    },
-    's3-static': {
-      filePattern: '**/*.{json,html,jpg,png,gif}',
+    s3: {
       cacheControl: 'max-age=3600, public',
     },
+    // 's3-standard': {
+    //   filePattern: '**/*.{js,css,ico,map,xml,txt,svg,swf,eot,ttf,woff,woff2,otf,wasm}'
+    // },
+    // 's3-static': {
+    //   filePattern: "**/*.{png,gif,jpg,json}",
+    //   cacheControl: 'max-age=3600, public',
+    // },
     's3-index': {
       allowOverwrite: true
     },
@@ -39,15 +42,20 @@ module.exports = function(deployTarget) {
     const bucket = 'emberguides.stonecircle.io';
     const region = 'eu-west-1'
 
-    ENV['s3-standard'].accessKeyId = credentials.key || process.env.AWS_KEY;
-    ENV['s3-standard'].secretAccessKey = credentials.secret || process.env.AWS_SECRET;
-    ENV['s3-standard'].bucket = bucket;
-    ENV['s3-standard'].region = region;
+    ENV['s3'].accessKeyId = credentials.key || process.env.AWS_KEY;
+    ENV['s3'].secretAccessKey = credentials.secret || process.env.AWS_SECRET;
+    ENV['s3'].bucket = bucket;
+    ENV['s3'].region = region;
 
-    ENV['s3-static'].accessKeyId = credentials.key || process.env.AWS_KEY;
-    ENV['s3-static'].secretAccessKey = credentials.secret || process.env.AWS_SECRET;
-    ENV['s3-static'].bucket = bucket;
-    ENV['s3-static'].region = region;
+    // ENV['s3-standard'].accessKeyId = credentials.key || process.env.AWS_KEY;
+    // ENV['s3-standard'].secretAccessKey = credentials.secret || process.env.AWS_SECRET;
+    // ENV['s3-standard'].bucket = bucket;
+    // ENV['s3-standard'].region = region;
+    //
+    // ENV['s3-static'].accessKeyId = credentials.key || process.env.AWS_KEY;
+    // ENV['s3-static'].secretAccessKey = credentials.secret || process.env.AWS_SECRET;
+    // ENV['s3-static'].bucket = bucket;
+    // ENV['s3-static'].region = region;
 
     ENV["s3-index"].accessKeyId = credentials.key || process.env.AWS_KEY;
     ENV["s3-index"].secretAccessKey = credentials.secret || process.env.AWS_SECRET;
