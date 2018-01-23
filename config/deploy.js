@@ -23,13 +23,14 @@ module.exports = function(deployTarget) {
       "type": "version-commit"
     },
     s3: {
+      filePattern: '**/*.{js,css,png,gif,ico,jpg,map,xml,txt,svg,swf,eot,ttf,woff,woff2,otf,wasm,json,html}',
       cacheControl: 'max-age=3600, public',
     },
     // 's3-standard': {
     //   filePattern: '**/*.{js,css,ico,map,xml,txt,svg,swf,eot,ttf,woff,woff2,otf,wasm}'
     // },
     // 's3-static': {
-    //   filePattern: "**/*.{png,gif,jpg,json}",
+    //   filePattern: "**/*.{png,gif,jpg,json,html}",
     //   cacheControl: 'max-age=3600, public',
     // },
     's3-index': {
