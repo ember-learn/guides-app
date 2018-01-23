@@ -27,12 +27,12 @@ before_install:
   - npm install -g npm@5
   - npm config set spin false
 
-script:
-  - npm run lint:js
-  - npm test
-
 jobs:
   include:
+    - stage: test
+      script:
+        - npm run lint:js
+        - npm test
     - stage: 'Staging Deployment'
       if: branch = master AND NOT type = pull_request
       script: ember deploy production --activate
