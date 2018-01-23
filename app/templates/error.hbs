@@ -1,11 +1,21 @@
-{{#if (contains model.errors.0.status (array "404" "403"))}}
-  <h1 class="whoops">Ack! 404 friend, you're in the wrong place</h1>
+<article class="x404">
+  {{#if (contains model.errors.0.status (array "404" "403"))}}
+    <img src="/images/fishy.png" title="ACK! 404 FRIEND, YOU'RE IN THE WRONG PLACE">
+    <h1 class="whoops">Ack! 404 friend, you're in the wrong place</h1>
 
-  <p>
-    This page wasn't found. If you were looking for documentation, please try
-    the <a href="http://guides.emberjs.com">Guides</a> section of the site. If you expected
-    something else to be here, please <a href="https://github.com/emberjs/website/issues">file a ticket</a>.
-  </p>
-{{else}}
-  <p>An error occurred! Please try again.</p>
-{{/if}}
+    <p>
+      This page wasn't found. If you were looking for documentation, please try
+      the <a href="http://guides.emberjs.com">Guides</a> section of the site. If you expected
+      something else to be here, please <a href="https://github.com/ember-learn/guides-app/issues">file a ticket</a>.
+    </p>
+  {{else}}
+    <img src="/images/fishy.png" title="ACK! An unknown error has occured!">
+    <h1 class="whoops">Ack! An unknown error has occured!</h1>
+
+    <p>
+      We're not quite sure what happened. If you were looking for documentation, please try
+      the <a href="http://guides.emberjs.com">Guides</a> section of the site. If you expected
+      something else to be here, please <a href="https://github.com/ember-learn/guides-app/issues">file a ticket</a>.
+    </p>
+  {{/if}}
+</article>
