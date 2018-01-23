@@ -10,17 +10,17 @@ export default Route.extend({
       return this.transitionTo('version.show', path.replace(/\/index$/, ''))
     }
 
-    let versionModel = this.modelFor('version');
+    const { version } = this.modelFor('version');
 
     let contentPromise = this.store.queryRecord('content', {
       path,
-      version: versionModel.version,
+      version
     })
     .catch((e) => {
       if (['404', '403'].includes(get(e, 'errors.0.status'))) {
         return this.store.queryRecord('content', {
           path: `${path}/index`,
-          version: versionModel.version,
+          version
         });
       }
       throw e;
@@ -28,7 +28,7 @@ export default Route.extend({
 
     return hash({
       content: contentPromise,
-      pages: get(this, 'store').query('page', { version: get(versionModel, 'version') })
+      pages: get(this, 'store').query('page', { version })
     })
   },
 });
