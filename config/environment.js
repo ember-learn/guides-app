@@ -31,6 +31,10 @@ module.exports = function(environment) {
       ghCompatibleHeaderId: true,
       prefixHeaderId: 'toc_'
     },
+
+    'ember-body-class': {
+      includeRouteName: false
+    },
   };
 
   if (environment === 'development') {

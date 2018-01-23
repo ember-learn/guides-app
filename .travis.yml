@@ -21,18 +21,17 @@ env:
   global:
     # See https://git.io/vdao3 for details.
     - JOBS=1
-    - secure: "ONYswtV0wqSDrz9QDebV0L37s0h4PGLvkmWR48J8lJyBTQdoIV02D4R1lmiz0LhVWOXFXlxn4DaLPuVPq8GxJaIjuoXunjw6fc1U8y/wtdvQWdOfpNfGZH7HAjNDhUBKuxTFYnVxmfReuWhHkd63JnfPK5wzabZ8/VVzwA1vFYZvNcM30nhJpOfNSJd+BBgUG6FLk4Nr1h7XyDjTVWeE5GfDyL4I4qbarjqDLZc63yPfAXL299/qpj9FHXN1vvhaYB1siKilrmquCuMrM5W/DY0+EB4gDouJcWPuL0ksGZ6+yKiGQTzOVkEySJtkxynqRKXLoMl001h1XDBZC2/ZOBwBhyxrrVdSsbTJjFWc2JudlQyMRxc74O6dVtDIv5MFQc+5X/xSDIpXpbJ4snfVdXpUkqPag156YHegwbZdDkMV6iCXs8C9mvKrqgvvDFsCIlzojToMwSqITMB9PbCpAekdT3TwOtx8kdArXyGXsaMhx2HbWNCLYGy/YhNS6Ceaj7VnypUUfy+hFciwX0Y9dYoI3rZTg/ED05IA45fZfrNUczn9Uh7U9APypMoYSsd+D6Evjs06C5a43wfonCpxMnSqlbZtU0kw7x+Vz4qHIfEp8VH3uOJLKEUqnaJ/mS59gNaUIn1wVDiXVDJy5lDz7VtP0mKh6fKISPlqNmVO4Ko="
-
+    - secure: qoD5AxH2LcHYhbYDvorNtvci+u3VVbpGHT1LHIKny6P2v0QKoOEJz5o6liWHom8V5Rj4MO/LLUipMPo0Xi18HycWJxRNZIWzPOUzq1lpwPqN4F3qRWtyEuuSbECY34GEoOOFhzOivXuOkmpWSGY2UWYTCmWXuNKJh4bRmX/iPnhUj6SI7+atj75aCeJ0ckWJfv/NYGlelK2eWoixoQCeKtM9EpWR3ZwATJeV0PSVLLgPGHP/dW2U8pUGvzSu4+9v7EClemLG/6rBsJAFI3znAitpgjV76oGt2MaxMr4eRhO05j5h3I88DSjarRjMTmx33bM1+kQdCNI+tlmFQ2sYSReMfv5oN8lfS2eK8tLIiVGJk+lcQZ4MhRPcU4xUeUb6h36uYi0ho5ydN3MewZLGSLld7CmhRo6zPJlOiY6e4lfxBQxtZABGhYcK3AKSDN0Mf2mEeDDjCk4pKCkfuNRiimbc9B6+UNqxjHuWu6ALpEaOl0WZhs7AOcVJkPDKOVI4jIeg06uCaedX0uIf+w+/Vkf0up1Kdx3bCCKL6/lx4oSRqv/KyT3f1XVXbeJ/l6O81rXOT2FW+jo9Q56XS1Y8qKIUpOS9of84l91U8VEf+nTced8PjKkosJgaexVLe/K5Q4BoxJDAqoNIbkwRF5QisoBCWn2BF6Hky//50XT5Zfs=
 before_install:
   - npm install -g npm@5
   - npm config set spin false
 
-script:
-  - npm run lint:js
-  - npm test
-
 jobs:
   include:
-    - stage: 'Staging Deployment'
+    - stage: test
+      script:
+        - npm run lint:js
+        - npm test
+    - stage: Staging Deployment
       if: branch = master AND NOT type = pull_request
       script: ember deploy production --activate
