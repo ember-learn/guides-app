@@ -1,4 +1,4 @@
-{{#if (eq model.errors.0.status '404')}}
+{{#if (contains model.errors.0.status (array "404" "403"))}}
   <h1 class="whoops">Ack! 404 friend, you're in the wrong place</h1>
 
   <p>
