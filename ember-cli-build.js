@@ -62,6 +62,9 @@ module.exports = function(defaults) {
     },
     prember: {
       urls,
+    },
+    fingerprint: {
+      extensions: ['js', 'css', 'map'],
     }
   });
 

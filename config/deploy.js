@@ -23,9 +23,10 @@ module.exports = function(deployTarget) {
       "type": "version-commit"
     },
     's3-standard': {
+      filePattern: '**/*.{js,css,ico,map,xml,txt,svg,swf,eot,ttf,woff,woff2,otf,wasm}'
     },
     's3-static': {
-      filePattern: '**/*.{json,html}',
+      filePattern: '**/*.{json,html,jpg,png,gif}',
       cacheControl: 'max-age=3600, public',
     },
     's3-index': {
