@@ -6,6 +6,7 @@ node_js:
 sudo: required
 dist: trusty
 
+
 branches:
   only:
     - master
@@ -21,7 +22,7 @@ env:
   global:
     # See https://git.io/vdao3 for details.
     - JOBS=1
-    - secure: qoD5AxH2LcHYhbYDvorNtvci+u3VVbpGHT1LHIKny6P2v0QKoOEJz5o6liWHom8V5Rj4MO/LLUipMPo0Xi18HycWJxRNZIWzPOUzq1lpwPqN4F3qRWtyEuuSbECY34GEoOOFhzOivXuOkmpWSGY2UWYTCmWXuNKJh4bRmX/iPnhUj6SI7+atj75aCeJ0ckWJfv/NYGlelK2eWoixoQCeKtM9EpWR3ZwATJeV0PSVLLgPGHP/dW2U8pUGvzSu4+9v7EClemLG/6rBsJAFI3znAitpgjV76oGt2MaxMr4eRhO05j5h3I88DSjarRjMTmx33bM1+kQdCNI+tlmFQ2sYSReMfv5oN8lfS2eK8tLIiVGJk+lcQZ4MhRPcU4xUeUb6h36uYi0ho5ydN3MewZLGSLld7CmhRo6zPJlOiY6e4lfxBQxtZABGhYcK3AKSDN0Mf2mEeDDjCk4pKCkfuNRiimbc9B6+UNqxjHuWu6ALpEaOl0WZhs7AOcVJkPDKOVI4jIeg06uCaedX0uIf+w+/Vkf0up1Kdx3bCCKL6/lx4oSRqv/KyT3f1XVXbeJ/l6O81rXOT2FW+jo9Q56XS1Y8qKIUpOS9of84l91U8VEf+nTced8PjKkosJgaexVLe/K5Q4BoxJDAqoNIbkwRF5QisoBCWn2BF6Hky//50XT5Zfs=
+
 before_install:
   - npm install -g npm@5
   - npm config set spin false
@@ -32,6 +33,14 @@ jobs:
       script:
         - npm run lint:js
         - npm test
-    - stage: Staging Deployment
+    - stage: Staging Deployment JSON
       if: branch = master AND NOT type = pull_request
       script: ember deploy production --activate
+      env:
+        - JSON_ONLY=true
+        - secure: "fdqVSvxFTeaJh30iChsKb6GDCJP1lMFIvyaOdE5X9Krkck+LTMPo6pzSLiSYTxeMZMnE/Cd7j/FxtKvj4bxiWtnrq4mW6ytnJKybvUMtKlB506w/ORoRWj0TDQuU8Gvn7i1l70ekAqcBPxhkhNfxQ0iJV0J2YHpa+BCIE5z4a9HB+QZJXijFkE7QOUdtHRyQBk0MvWHc3XNRMaFRVNblzNvoVfP3l5x35uzmC7cI4DUtDlDmrUhOxHzz3X9TUnzaxdo5S3GjZfYTpu1UDZmKgQHfEf6r7TS976HBzsCKRM2qXTb6q0ijT+4MFsT5FkIrSawW6OXvlNBmqpTx55/FLeJBUzjaNTQZxipedppcMk2wm0IVDKjxHhGJE6RzjUKqeE+HodYLyiuNHTuR6CROAGfQO0t/yL/yXff7qsbTlOamQkuOGhCjd15hb9JJYVWiqFRvYjc1PcBvon/afHz9U2qR04E9u1vt9ytc/PVd7TXVWSlCHOC9KJj68qwvpW+qRJNrCl9kz9WxEzh1ZeSIGwnKbRm40HXbgi4gUOExqxExapcmNPSqCTjthc4iCBQlH/kmeD7pqOw8MVs5tyo9uQ5BJl0x9tI58Y37TzL35/9mxJ5B6l0IOmRhKYhoRMAvhmxgyUyIkmMYkyzREmkGJNmPj/O+vsfmivO4Qz9DUJ4="
+    - stage: Staging Deployment Pre-Render
+      if: branch = master AND NOT type = pull_request
+      script: ember deploy production --activate
+      env:
+        - secure: "fdqVSvxFTeaJh30iChsKb6GDCJP1lMFIvyaOdE5X9Krkck+LTMPo6pzSLiSYTxeMZMnE/Cd7j/FxtKvj4bxiWtnrq4mW6ytnJKybvUMtKlB506w/ORoRWj0TDQuU8Gvn7i1l70ekAqcBPxhkhNfxQ0iJV0J2YHpa+BCIE5z4a9HB+QZJXijFkE7QOUdtHRyQBk0MvWHc3XNRMaFRVNblzNvoVfP3l5x35uzmC7cI4DUtDlDmrUhOxHzz3X9TUnzaxdo5S3GjZfYTpu1UDZmKgQHfEf6r7TS976HBzsCKRM2qXTb6q0ijT+4MFsT5FkIrSawW6OXvlNBmqpTx55/FLeJBUzjaNTQZxipedppcMk2wm0IVDKjxHhGJE6RzjUKqeE+HodYLyiuNHTuR6CROAGfQO0t/yL/yXff7qsbTlOamQkuOGhCjd15hb9JJYVWiqFRvYjc1PcBvon/afHz9U2qR04E9u1vt9ytc/PVd7TXVWSlCHOC9KJj68qwvpW+qRJNrCl9kz9WxEzh1ZeSIGwnKbRm40HXbgi4gUOExqxExapcmNPSqCTjthc4iCBQlH/kmeD7pqOw8MVs5tyo9uQ5BJl0x9tI58Y37TzL35/9mxJ5B6l0IOmRhKYhoRMAvhmxgyUyIkmMYkyzREmkGJNmPj/O+vsfmivO4Qz9DUJ4="
