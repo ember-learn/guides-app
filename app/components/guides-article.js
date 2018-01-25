@@ -1,8 +1,11 @@
 import Component from '@ember/component';
-
+import { inject as service } from '@ember/service';
+import { set } from '@ember/object';
 import PageMixin from '../mixins/page';
 
 export default Component.extend(PageMixin, {
+  headData: service(),
+
   tagName: 'article',
   classNames: 'chapter',
 
@@ -13,7 +16,7 @@ export default Component.extend(PageMixin, {
     if (nodeList) {
       // console.log(nodeList);
       nodeList.each((index, code) => {
-        code.parentNode.classList.add("line-numbers")
+        code.parentNode.classList.add('line-numbers');
       });
     }
 
@@ -21,7 +24,7 @@ export default Component.extend(PageMixin, {
 
     if (filenameNodeList) {
       filenameNodeList.each((index, code) => {
-        if(code.parentNode.parentNode.classList.contains('filename')) {
+        if (code.parentNode.parentNode.classList.contains('filename')) {
           //do nothing
           return;
         }
@@ -43,5 +46,9 @@ export default Component.extend(PageMixin, {
     }
 
     Prism.highlightAll();
+
+    const sectionTitle = this.get('currentSection.title');
+    const pageTitle = this.get('currentPage.title');
+    set(this.get('headData'), 'title', `Ember.js - ${sectionTitle}: ${pageTitle}`);
   }
 });
