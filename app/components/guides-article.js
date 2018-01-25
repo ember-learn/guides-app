@@ -1,6 +1,6 @@
 import Component from '@ember/component';
 import { inject as service } from '@ember/service';
-import { setProperties } from '@ember/object';
+import { set } from '@ember/object';
 import PageMixin from '../mixins/page';
 
 export default Component.extend(PageMixin, {
@@ -49,8 +49,6 @@ export default Component.extend(PageMixin, {
 
     const sectionTitle = this.get('currentSection.title');
     const pageTitle = this.get('currentPage.title');
-    setProperties(this.get('headData'), {
-      title: `Ember.js - ${sectionTitle}: ${pageTitle}`
-    });
+    set(this.get('headData'), 'title', `Ember.js - ${sectionTitle}: ${pageTitle}`);
   }
 });
