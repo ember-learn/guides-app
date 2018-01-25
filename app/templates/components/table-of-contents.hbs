@@ -3,15 +3,20 @@
   {{#unless (or page.skipToc (get page 'skip-toc'))}}
     <li class="{{tocLevel}} {{if (eq currentPage.url page.url) 'selected'}}">
       {{#if page.pages}}
-        {{#cp-panel open=(eq currentSection.id page.id) as |p|}}
-          {{#p.toggle}}
-            {{page.title}}
-          {{/p.toggle}}
+        {{!-- cp-panel doesn't work in fastboot :( --}}
+        {{#if fastboot.isFastBoot}}
 
-          {{#p.body}}
-            {{table-of-contents data=page.pages currentPage=currentPage level=(inc level)}}
-          {{/p.body}}
-        {{/cp-panel}}
+        {{else}}
+          {{#cp-panel open=(eq currentSection.id page.id) as |p|}}
+            {{#p.toggle}}
+              {{page.title}}
+            {{/p.toggle}}
+
+            {{#p.body}}
+              {{table-of-contents data=page.pages currentPage=currentPage level=(inc level)}}
+            {{/p.body}}
+          {{/cp-panel}}
+        {{/if}}
 
       {{else}}
         {{#link-to 'version.show' page.url activeClass="selected"}}

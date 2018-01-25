@@ -28,39 +28,6 @@ export default Mixin.create({
     }
   }),
 
-  isFirstPage: computed('currentSection', 'currentPage', function() {
-    let pages = get(this, 'currentSection.pages');
-
-    if(pages) {
-      return pages.indexOf(get(this, 'currentPage')) === 0;
-    }
-  }),
-
-  previousPage: computed('currentSection', 'currentPage', function() {
-    let pages = get(this, 'currentSection.pages');
-
-    if(pages) {
-      let index = pages.indexOf(get(this, 'currentPage'));
-
-      if (index > 0) {
-        return pages[index - 1];
-      }
-    }
-  }),
-
-  previousSection: computed('currentSection', 'pages.[]', function() {
-    let currentSection = get(this, 'currentSection');
-    let pages = get(this, 'pages');
-
-    if (pages) {
-      let index = pages.indexOf(currentSection);
-
-      if (index > 0) {
-        return pages.objectAt(index-1);
-      }
-    }
-  }),
-
   currentPage: computed('router.currentURL', 'currentSection.pages', function() {
     let match = get(this, 'router.currentURL').match(/^\/v\d+\.\d+\.\d+\/([\w-]+)\/?([\w-]+)?\/?(#[\w_-]+)?/);
 
@@ -68,46 +35,18 @@ export default Mixin.create({
       let pages = get(this, 'currentSection.pages');
 
       if (pages) {
-        return pages.find((page) => page.url === `${match[1]}/${match[2]}`);
+        let page = pages.find((page) => page.url === `${match[1]}/${match[2]}`);
+
+        if (!page) {
+          page = pages.find((page) => page.url === `${match[1]}/index`);
+        }
+        return page;
       }
     } else if (get(this, 'router.currentURL').match(/^\/v\d+\.\d+\.\d+\/?(#[\w_-]+)?$/)){
       let pages = get(this, 'currentSection.pages');
 
       if (pages) {
         return pages.find((page) => page.url === 'index/');
-      }
-    }
-  }),
-
-  isLastPage: computed('currentSection', 'currentPage', function() {
-    let pages = get(this, 'currentSection.pages');
-
-    if(pages) {
-      return pages.indexOf(get(this, 'currentPage')) === (pages.length-1);
-    }
-  }),
-
-  nextPage: computed('currentSection', 'currentPage', function() {
-    let pages = get(this, 'currentSection.pages');
-
-    if(pages) {
-      let index = pages.indexOf(get(this, 'currentPage'));
-
-      if (index < pages.length-1) {
-        return pages[index + 1];
-      }
-    }
-  }),
-
-  nextSection: computed('currentSection', 'pages.[]', function() {
-    let currentSection = get(this, 'currentSection')
-    let pages = get(this, 'pages');
-
-    if (pages) {
-      let index = pages.indexOf(currentSection);
-
-      if (index < get(pages, 'length') - 1) {
-        return pages.objectAt(index + 1);
       }
     }
   }),
