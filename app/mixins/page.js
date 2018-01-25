@@ -50,13 +50,13 @@ export default Mixin.create({
   }),
 
   currentPage: computed('router.currentURL', 'currentSection.pages', function() {
-    let match = get(this, 'router.currentURL').match(/^\/v\d+\.\d+\.\d+\/([\w-/]+)(#[\w_-]+)?/);
+    let match = get(this, 'router.currentURL').match(/^\/v\d+\.\d+\.\d+\/([\w-]+)\/?([\w-]+)?\/?(#[\w_-]+)?/);
 
-    if(match && match[1]) {
+    if(match && match[1] && match[2]) {
       let pages = get(this, 'currentSection.pages');
 
       if (pages) {
-        return pages.find((page) => page.url === match[1]);
+        return pages.find((page) => page.url === `${match[1]}/${match[2]}`);
       }
     } else if (get(this, 'router.currentURL').match(/^\/v\d+\.\d+\.\d+\/?(#[\w_-]+)?$/)){
       let pages = get(this, 'currentSection.pages');
