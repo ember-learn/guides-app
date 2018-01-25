@@ -28,7 +28,8 @@ export default Route.extend({
 
     return hash({
       content: contentPromise,
-      pages: get(this, 'store').query('page', { version })
+      pages: get(this, 'store').query('page', { version }),
+      path,
     })
   },
 });

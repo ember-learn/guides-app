@@ -1,7 +1,3 @@
-{{!-- <% if current_page.data.title == "404 - Not Found" %>
-<%= yield %>
-<% else %> --}}
-
 <aside class="sidebar">
   <label for="version-select" class="visually-hidden">Guides version</label>
   {{#power-select class="version-select" selected=model.version options=versions onchange=(action 'selectVersion') as |version|}}
@@ -12,7 +8,7 @@
   <label for="toc-toggle">Table of Contents <span class="visually-hidden">toggle</span></label>
 
   <nav class='toc-container' aria-label='table of contents'>
-    {{table-of-contents data=model.pages version=model.version currentPage=page.currentPage currentSection=page.currentSection}}
+    {{table-of-contents data=model.pages version=model.version currentPage=currentPage currentSection=currentSection}}
   </nav>
 
   {{!-- <%= link_to "&#11014; Back to Top".html_safe, "#", class: "back-to-top" %> --}}

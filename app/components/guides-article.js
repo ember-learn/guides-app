@@ -1,11 +1,7 @@
 import Component from '@ember/component';
-import { inject as service } from '@ember/service';
-import { set } from '@ember/object';
 import PageMixin from '../mixins/page';
 
 export default Component.extend(PageMixin, {
-  headData: service(),
-
   tagName: 'article',
   classNames: 'chapter',
 
@@ -46,9 +42,5 @@ export default Component.extend(PageMixin, {
     }
 
     Prism.highlightAll();
-
-    const sectionTitle = this.get('currentSection.title');
-    const pageTitle = this.get('currentPage.title');
-    set(this.get('headData'), 'title', `Ember.js - ${sectionTitle}: ${pageTitle}`);
   }
 });
