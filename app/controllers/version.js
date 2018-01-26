@@ -1,12 +1,15 @@
 import Controller, {
   inject as controller,
 } from '@ember/controller';
-import { inject as service } from '@ember/service';
 import { get, computed } from '@ember/object';
+import { alias } from '@ember/object/computed';
 
-export default Controller.extend({
-  page: service(),
+import PageMixin from '../mixins/page';
+
+export default Controller.extend(PageMixin, {
   application: controller(),
+
+  pages: alias('model.pages'),
 
   versions: computed('application.model.allVersions.[]', function () {
     let allVersions = get(this, 'application.model.allVersions');

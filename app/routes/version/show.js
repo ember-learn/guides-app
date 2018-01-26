@@ -6,6 +6,10 @@ export default Route.extend({
   model(params) {
     const path = params.path.replace(/\/$/, '');
 
+    if (path === 'index') {
+      return this.transitionTo('version');
+    }
+
     if (path.endsWith('/index')) {
       return this.transitionTo('version.show', path.replace(/\/index$/, ''))
     }
@@ -28,7 +32,8 @@ export default Route.extend({
 
     return hash({
       content: contentPromise,
-      pages: get(this, 'store').query('page', { version })
+      pages: get(this, 'store').query('page', { version }),
+      path,
     })
   },
 });
