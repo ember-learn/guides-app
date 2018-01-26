@@ -6,6 +6,29 @@
         {{!-- cp-panel doesn't work in fastboot :( --}}
         {{#if fastboot.isFastBoot}}
 
+          <div class="cp-Panel cp-is-{{if (eq currentSection.id page.id) 'open' 'closed'}}">
+            <a href="#" class="cp-Panel-toggle cp-is-open">
+              {{page.title}}
+            </a>
+            {{#if (eq currentSection.id page.id) }}
+            <div class="cp-Panel-body cp-is-{{if (eq currentSection.id page.id) 'open' 'closed'}}">
+              <div class="cp-Panel-body-inner">
+                {{!-- FASTBOOT BUG :( I will update the comment with link once it's reported --}}
+                {{!-- {{table-of-contents data=page.pages currentPage=currentPage level=(inc level)}} --}}
+                {{!-- <ol class="toc-level-1">
+                  {{#each page.pages as |innerPage|}}
+                    <li class="toc-level-1 {{if (eq currentPage.url page.url) 'selected'}}">
+                      {{#link-to 'version.show' innerPage.url}}
+                        {{innerPage.title}}
+                      {{/link-to}}
+                    </li>
+                  {{/each}}
+                </ol> --}}
+              </div>
+            </div>
+            {{/if}}
+          </div>
+
         {{else}}
           {{#cp-panel open=(eq currentSection.id page.id) as |p|}}
             {{#p.toggle}}
