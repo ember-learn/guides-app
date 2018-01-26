@@ -6,6 +6,10 @@ export default Route.extend({
   model(params) {
     const path = params.path.replace(/\/$/, '');
 
+    if (path === 'index') {
+      return this.transitionTo('version');
+    }
+
     if (path.endsWith('/index')) {
       return this.transitionTo('version.show', path.replace(/\/index$/, ''))
     }
