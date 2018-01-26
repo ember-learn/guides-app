@@ -51,7 +51,6 @@ export default Service.extend({
 
   isFirstPage: computed('currentSection', 'currentPage', function() {
     let promise = get(this, 'currentSection').then((currentSection) => {
-      // debugger
       let pages = get(currentSection, 'pages');
       if(pages) {
         return get(this, 'currentPage').then((currentPage) => {
@@ -140,7 +139,6 @@ export default Service.extend({
 
   isLastPage: computed('currentSection', 'currentPage', function() {
     let promise = get(this, 'currentSection').then((currentSection) => {
-      // debugger
       let pages = get(currentSection, 'pages');
       if(pages) {
         return get(this, 'currentPage').then((currentPage) => {
