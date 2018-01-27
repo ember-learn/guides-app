@@ -3,10 +3,10 @@ import Controller, {
 } from '@ember/controller';
 import { get, computed } from '@ember/object';
 import { alias } from '@ember/object/computed';
+import { inject as service } from '@ember/service';
 
-import PageMixin from '../mixins/page';
-
-export default Controller.extend(PageMixin, {
+export default Controller.extend({
+  page: service(),
   application: controller(),
 
   pages: alias('model.pages'),

@@ -36,10 +36,13 @@ export default Route.extend({
       content: contentPromise,
       pages: get(this, 'store').query('page', { version }),
       path,
+      version
     })
   },
   afterModel(model) {
     let content = get(model, 'content');
     set(get(this, 'page'), 'content', content);
+    let version = get(model, 'version');
+    set(get(this, 'page'), 'currentVersion', version);
   }
 });

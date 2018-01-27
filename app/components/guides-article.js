@@ -1,10 +1,10 @@
 import Component from '@ember/component';
-import PageMixin from '../mixins/page';
+import { inject as service } from '@ember/service';
 
-export default Component.extend(PageMixin, {
+export default Component.extend({
   tagName: 'article',
   classNames: 'chapter',
-
+  page: service(),
   didRender() {
 
     let nodeList = this.$('pre:not(.no-line-numbers) > code');

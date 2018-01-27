@@ -171,8 +171,4 @@ export default Service.extend({
       promise,
     })
   }),
-
-  currentVersion: computed('router.currentURL', function() {
-    return get(this, 'router.currentURL').match(/v\d+\.\d+\.\d+/)[0];
-  })
 });
