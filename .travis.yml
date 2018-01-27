@@ -55,4 +55,4 @@ before_install:
 script:
   - npm run lint:js
   - npm test
-  - ember deploy production --activate
+  - 'if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then ember deploy production --activate fi'
