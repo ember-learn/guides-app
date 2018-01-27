@@ -111,23 +111,15 @@ export default Service.extend({
     })
   }),
 
-  currentPage: computed('router.currentURL', 'currentSection.pages', function() {
-    let match = get(this, 'router.currentURL').match(/^\/v\d+\.\d+\.\d+\/([\w-]+)\/?([\w-]+)?\/?(#[\w_-]+)?/);
-
+  /**
+   * Find the TOC item that matches the current visible content. This is needed because the title comes
+   * from the TOC and not the content. Also we use this to compute nextPage and previousPage
+   * @return {Promise} the current page as a POJO
+   */
+  currentPage: computed('router.currentURL', 'currentSection.pages', 'content.id', function() {
     let promise = get(this, 'currentSection').then((currentSection) => {
       let pages = get(currentSection, 'pages');
-
-      if(match && match[1]) {
-        if (pages) {
-          return pages.find((page) => page.url === `${match[1]}/${match[2] || 'index'}`);
-        }
-      } else if (get(this, 'router.currentURL').match(/^\/v\d+\.\d+\.\d+\/?(#[\w_-]+)?$/)){
-        let pages = get(this, 'currentSection.pages');
-
-        if (pages) {
-          return pages.find((page) => page.url === 'index/');
-        }
-      }
+      return pages.find((page) => page.url === get(this, 'content.id'));
     });
 
     this.waitForPromise(promise);
