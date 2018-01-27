@@ -26,10 +26,7 @@ let premberVersions = [];
 
 if(!process.env.JSON_ONLY) {
   premberVersions = versions.allVersions;
-}
-
-if(process.env.PREMBER_VERSION && !process.env.JSON_ONLY) {
-  premberVersions = [process.env.PREMBER_VERSION];
+  premberVersions.push('current');
 }
 
 const urls = premberVersions.map(version => `/${version}`);
