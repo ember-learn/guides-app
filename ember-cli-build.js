@@ -28,6 +28,10 @@ if(!process.env.JSON_ONLY) {
   premberVersions = versions.allVersions;
 }
 
+if(process.env.PREMBER_VERSION) {
+  premberVersions = [process.env.PREMBER_VERSION];
+}
+
 const urls = premberVersions.map(version => `/${version}`);
 
 premberVersions.forEach((version) => {
