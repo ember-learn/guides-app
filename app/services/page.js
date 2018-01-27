@@ -1,6 +1,9 @@
 import Service from '@ember/service';
 import { inject as service } from '@ember/service';
 import { get, set, computed, observer } from '@ember/object';
+import { next } from '@ember/runloop';
+
+import { defer } from 'rsvp';
 
 export default Service.extend({
   router: service(),
@@ -8,17 +11,23 @@ export default Service.extend({
   fastboot: service(),
   headData: service(),
 
-  titleObserver: observer('currentSection.title', 'currentPage.title', function() {
-    const sectionTitle = this.get('currentSection.title');
-    const pageTitle = this.get('currentPage.title');
-    set(this.get('headData'), 'title', `Ember.js - ${sectionTitle}: ${pageTitle}`);
-  }),
+  titleObserver: observer('metaSection', 'metaPage', function() {
+    const sectionTitle = this.get('metaSection');
+    const pageTitle = this.get('metaPage');
 
-  waitForPromise(promise) {
+    let deferred = defer();
+
     if (this.get('fastboot.isFastBoot')) {
-      this.get('fastboot').deferRendering(promise);
+      this.get('fastboot').deferRendering(deferred.promise);
     }
-  },
+
+    next(this, function() {
+      set(this.get('headData'), 'title', `Ember.js - ${sectionTitle}${pageTitle ? ': ' + pageTitle: ''}`);
+
+      // this is only to make fastboot to wait for us to set the title before rendering
+      deferred.resolve("Don't judge me 😭");
+    })
+  }),
 
   currentSection: computed('router.currentURL', 'pages.[]', 'content.id', function() {
     let tocSections = get(this, 'pages');
@@ -28,7 +37,11 @@ export default Service.extend({
     if(!tocSections) { return; }
 
     let section = contentId.split('/')[0]
-    return tocSections.find((tocSection) => tocSection.id === section)
+    let currentSection = tocSections.find((tocSection) => tocSection.id === section);
+
+    set(this, 'metaSection', get(currentSection, 'title'));
+
+    return currentSection;
   }),
 
   /**
@@ -48,7 +61,11 @@ export default Service.extend({
 
     let pages = get(currentSection, 'pages');
 
-    return pages.find((page) => page.url === get(this, 'content.id'));
+    let currentPage = pages.find((page) => page.url === get(this, 'content.id'));
+
+    set(this, 'metaPage', get(currentPage, 'title'));
+
+    return currentPage;
   }),
 
   isFirstPage: computed('currentSection', 'currentPage', function() {
