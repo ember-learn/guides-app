@@ -7,6 +7,7 @@ const Router = EmberRouter.extend({
 });
 
 Router.map(function() {
+  this.route('current');
   this.route('version', { path: ':version' }, function() {
     this.route('show', { path: '*path' });
   });
