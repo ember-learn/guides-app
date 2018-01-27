@@ -25,28 +25,11 @@ export default Service.extend({
     return get(this, 'store').query('page', { version: get(this, 'currentVersion') });
   }),
 
-  currentSection: computed('router.currentURL', 'pages.[]', function() {
-    let match = get(this, 'router.currentURL').match(/^\/v\d+\.\d+\.\d+\/([\w-]+)(#[\w_-]+)?/);
-
-    if(match && match[1]) {
-      let promise = get(this, 'pages')
-        .then((pages) => pages.find((page) => page.id === match[1]));
-
-      this.waitForPromise(promise);
-
-      return DS.PromiseObject.create({
-        promise,
-      })
-    } else if (get(this, 'router.currentURL').match(/^\/v\d+\.\d+\.\d+\/?$/)){
-      let promise = get(this, 'pages')
-        .then((pages) => pages.find((page) => page.id === 'index'));
-
-      this.waitForPromise(promise);
-
-      return DS.PromiseObject.create({
-        promise,
-      })
-    }
+  currentSection: computed('router.currentURL', 'pages.[]', 'content.id', function() {
+    return get(this, 'pages').then((tocSections) => {
+      let section = get(this, 'content.id').split('/')[0]
+      return tocSections.find((tocSection) => tocSection.id === section)
+    });
   }),
 
   isFirstPage: computed('currentSection', 'currentPage', function() {
@@ -111,23 +94,15 @@ export default Service.extend({
     })
   }),
 
-  currentPage: computed('router.currentURL', 'currentSection.pages', function() {
-    let match = get(this, 'router.currentURL').match(/^\/v\d+\.\d+\.\d+\/([\w-]+)\/?([\w-]+)?\/?(#[\w_-]+)?/);
-
+  /**
+   * Find the TOC item that matches the current visible content. This is needed because the title comes
+   * from the TOC and not the content. Also we use this to compute nextPage and previousPage
+   * @return {Promise} the current page as a POJO
+   */
+  currentPage: computed('router.currentURL', 'currentSection.pages', 'content.id', function() {
     let promise = get(this, 'currentSection').then((currentSection) => {
       let pages = get(currentSection, 'pages');
-
-      if(match && match[1]) {
-        if (pages) {
-          return pages.find((page) => page.url === `${match[1]}/${match[2] || 'index'}`);
-        }
-      } else if (get(this, 'router.currentURL').match(/^\/v\d+\.\d+\.\d+\/?(#[\w_-]+)?$/)){
-        let pages = get(this, 'currentSection.pages');
-
-        if (pages) {
-          return pages.find((page) => page.url === 'index/');
-        }
-      }
+      return pages.find((page) => page.url === get(this, 'content.id'));
     });
 
     this.waitForPromise(promise);
@@ -196,8 +171,4 @@ export default Service.extend({
       promise,
     })
   }),
-
-  currentVersion: computed('router.currentURL', function() {
-    return get(this, 'router.currentURL').match(/v\d+\.\d+\.\d+/)[0];
-  })
 });

@@ -8,7 +8,7 @@
   <label for="toc-toggle">Table of Contents <span class="visually-hidden">toggle</span></label>
 
   <nav class='toc-container' aria-label='table of contents'>
-    {{table-of-contents data=model.pages version=model.version currentPage=currentPage currentSection=currentSection}}
+    {{table-of-contents data=model.pages version=model.version currentPage=page.currentPage currentSection=page.currentSection}}
   </nav>
 
   {{!-- <%= link_to "&#11014; Back to Top".html_safe, "#", class: "back-to-top" %> --}}
