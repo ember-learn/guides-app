@@ -48,4 +48,5 @@ jobs:
     - stage: Staging Deployment Pre-Render
       if: branch = master AND NOT type = pull_request
       script: ember deploy production --activate
+      env:
         - secure: "fdqVSvxFTeaJh30iChsKb6GDCJP1lMFIvyaOdE5X9Krkck+LTMPo6pzSLiSYTxeMZMnE/Cd7j/FxtKvj4bxiWtnrq4mW6ytnJKybvUMtKlB506w/ORoRWj0TDQuU8Gvn7i1l70ekAqcBPxhkhNfxQ0iJV0J2YHpa+BCIE5z4a9HB+QZJXijFkE7QOUdtHRyQBk0MvWHc3XNRMaFRVNblzNvoVfP3l5x35uzmC7cI4DUtDlDmrUhOxHzz3X9TUnzaxdo5S3GjZfYTpu1UDZmKgQHfEf6r7TS976HBzsCKRM2qXTb6q0ijT+4MFsT5FkIrSawW6OXvlNBmqpTx55/FLeJBUzjaNTQZxipedppcMk2wm0IVDKjxHhGJE6RzjUKqeE+HodYLyiuNHTuR6CROAGfQO0t/yL/yXff7qsbTlOamQkuOGhCjd15hb9JJYVWiqFRvYjc1PcBvon/afHz9U2qR04E9u1vt9ytc/PVd7TXVWSlCHOC9KJj68qwvpW+qRJNrCl9kz9WxEzh1ZeSIGwnKbRm40HXbgi4gUOExqxExapcmNPSqCTjthc4iCBQlH/kmeD7pqOw8MVs5tyo9uQ5BJl0x9tI58Y37TzL35/9mxJ5B6l0IOmRhKYhoRMAvhmxgyUyIkmMYkyzREmkGJNmPj/O+vsfmivO4Qz9DUJ4="
