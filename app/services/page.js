@@ -1,7 +1,6 @@
 import Service from '@ember/service';
 import { inject as service } from '@ember/service';
 import { get, set, computed, observer } from '@ember/object';
-import DS from 'ember-data';
 
 export default Service.extend({
   router: service(),
@@ -21,77 +20,15 @@ export default Service.extend({
     }
   },
 
-  pages: computed('currentVersion', function() {
-    return get(this, 'store').query('page', { version: get(this, 'currentVersion') });
-  }),
-
   currentSection: computed('router.currentURL', 'pages.[]', 'content.id', function() {
-    return get(this, 'pages').then((tocSections) => {
-      let section = get(this, 'content.id').split('/')[0]
-      return tocSections.find((tocSection) => tocSection.id === section)
-    });
-  }),
+    let tocSections = get(this, 'pages');
 
-  isFirstPage: computed('currentSection', 'currentPage', function() {
-    let promise = get(this, 'currentSection').then((currentSection) => {
-      let pages = get(currentSection, 'pages');
-      if(pages) {
-        return get(this, 'currentPage').then((currentPage) => {
-          return pages.indexOf(currentPage) === 0
-        })
-      }
-    })
+    let contentId = get(this, 'content.id');
 
-    this.waitForPromise(promise);
+    if(!tocSections) { return; }
 
-    return DS.PromiseObject.create({
-      promise,
-    });
-  }),
-
-  previousPage: computed('currentSection', 'currentPage', function() {
-    let promise = get(this, 'currentSection').then((currentSection) => {
-      let pages = get(currentSection, 'pages');
-
-      if(pages) {
-        return get(this, 'currentPage').then((currentPage) => {
-          let currentLocalPage = pages.find((page) => page.url === currentPage.url);
-          let index = pages.indexOf(currentLocalPage);
-
-          if (index > 0) {
-            return pages[index - 1];
-          }
-        })
-      }
-    });
-
-    this.waitForPromise(promise);
-
-    return DS.PromiseObject.create({
-      promise,
-    })
-  }),
-
-  previousSection: computed('currentSection', 'pages.[]', function() {
-    let promise = get(this, 'currentSection').then((currentSection) => {
-      return get(this, 'pages').then((pages) => {
-        if (pages) {
-          let page = pages.content.find((content) => content.id === currentSection.id);
-
-          let index = pages.content.indexOf(page);
-
-          if (index > 0) {
-            return pages.objectAt(index-1);
-          }
-        }
-      });
-    });
-
-    this.waitForPromise(promise);
-
-    return DS.PromiseObject.create({
-      promise,
-    })
+    let section = contentId.split('/')[0]
+    return tocSections.find((tocSection) => tocSection.id === section)
   }),
 
   /**
@@ -100,75 +37,112 @@ export default Service.extend({
    * @return {Promise} the current page as a POJO
    */
   currentPage: computed('router.currentURL', 'currentSection.pages', 'content.id', function() {
-    let promise = get(this, 'currentSection').then((currentSection) => {
-      let pages = get(currentSection, 'pages');
-      return pages.find((page) => page.url === get(this, 'content.id'));
-    });
+    let currentSection = get(this, 'currentSection');
 
-    this.waitForPromise(promise);
+    if(!currentSection) { return; }
 
-    return DS.PromiseObject.create({
-      promise,
-    })
+    // special case for the index section - there should always be only exactly 1 page in the "index" section
+    if (currentSection.id === 'index') {
+      return get(currentSection, 'pages')[0];
+    }
+
+    let pages = get(currentSection, 'pages');
+
+    return pages.find((page) => page.url === get(this, 'content.id'));
+  }),
+
+  isFirstPage: computed('currentSection', 'currentPage', function() {
+    let currentSection = get(this, 'currentSection');
+
+    if(!currentSection) { return; }
+
+    let pages = get(currentSection, 'pages');
+    if(pages) {
+      return pages.indexOf(get(this, 'currentPage')) === 0
+    }
   }),
 
   isLastPage: computed('currentSection', 'currentPage', function() {
-    let promise = get(this, 'currentSection').then((currentSection) => {
-      let pages = get(currentSection, 'pages');
-      if(pages) {
-        return get(this, 'currentPage').then((currentPage) => {
-          return pages.indexOf(currentPage) === (pages.length-1)
-        })
+    let currentSection = get(this, 'currentSection');
+
+    if(!currentSection) { return; }
+
+    let pages = get(currentSection, 'pages');
+    if(pages) {
+      return pages.indexOf(get(this, 'currentPage')) === (pages.length-1)
+    }
+  }),
+
+  previousPage: computed('currentSection', 'currentPage', function() {
+    let currentSection = get(this, 'currentSection');
+
+    if(!currentSection) { return; }
+
+    let pages = get(currentSection, 'pages');
+
+    if(pages) {
+      let currentPage = get(this, 'currentPage');
+
+      let currentLocalPage = pages.find((page) => page.url === currentPage.url);
+      let index = pages.indexOf(currentLocalPage);
+
+      if (index > 0) {
+        return pages[index - 1];
       }
-    })
-
-    this.waitForPromise(promise);
-
-    return DS.PromiseObject.create({
-      promise,
-    });
+    }
   }),
 
   nextPage: computed('currentSection', 'currentPage', function() {
-    let promise = get(this, 'currentSection').then((currentSection) => {
-      let pages = get(currentSection, 'pages');
+    let currentSection = get(this, 'currentSection');
 
-      if(pages) {
-        return get(this, 'currentPage').then((currentPage) => {
-          let currentLocalPage = pages.find((page) => page.url === currentPage.url);
-          let index = pages.indexOf(currentLocalPage);
+    if(!currentSection) { return; }
 
-          if (index < pages.length-1) {
-            return pages[index + 1];
-          }
-        })
+    let pages = get(currentSection, 'pages');
+
+    if(pages) {
+      let currentPage = get(this, 'currentPage');
+      let currentLocalPage = pages.find((page) => page.url === currentPage.url);
+      let index = pages.indexOf(currentLocalPage);
+
+      if (index < pages.length-1) {
+        return pages[index + 1];
       }
-    });
+    }
+  }),
 
-    this.waitForPromise(promise);
+  previousSection: computed('currentSection', 'pages.[]', function() {
+    let currentSection = get(this, 'currentSection');
 
-    return DS.PromiseObject.create({
-      promise,
-    });
+    if(!currentSection) { return; }
+
+    let pages = get(this, 'pages');
+
+    if (pages) {
+      let page = pages.content.find((content) => content.id === currentSection.id);
+
+      let index = pages.content.indexOf(page);
+
+      if (index > 0) {
+        return pages.objectAt(index-1);
+      }
+    }
   }),
 
   nextSection: computed('currentSection', 'pages.[]', function() {
-    let promise = get(this, 'currentSection').then((currentSection) => {
-      let pages = get(this, 'pages.content');
+    let currentSection = get(this, 'currentSection');
 
-      if (pages) {
-        let index = pages.indexOf(currentSection);
+    if(!currentSection) { return; }
 
-        if (index < get(pages, 'length') - 1) {
-          return pages.objectAt(index + 1);
-        }
+    let pages = get(this, 'pages');
+
+    if (pages) {
+      let page = pages.content.find((content) => content.id === currentSection.id);
+
+      let index = pages.content.indexOf(page);
+
+      if (index < get(pages, 'length') - 1) {
+        return pages.objectAt(index + 1);
       }
-    });
-
-    this.waitForPromise(promise);
-
-    return DS.PromiseObject.create({
-      promise,
-    })
+    }
   }),
 });
