@@ -25,28 +25,11 @@ export default Service.extend({
     return get(this, 'store').query('page', { version: get(this, 'currentVersion') });
   }),
 
-  currentSection: computed('router.currentURL', 'pages.[]', function() {
-    let match = get(this, 'router.currentURL').match(/^\/v\d+\.\d+\.\d+\/([\w-]+)(#[\w_-]+)?/);
-
-    if(match && match[1]) {
-      let promise = get(this, 'pages')
-        .then((pages) => pages.find((page) => page.id === match[1]));
-
-      this.waitForPromise(promise);
-
-      return DS.PromiseObject.create({
-        promise,
-      })
-    } else if (get(this, 'router.currentURL').match(/^\/v\d+\.\d+\.\d+\/?$/)){
-      let promise = get(this, 'pages')
-        .then((pages) => pages.find((page) => page.id === 'index'));
-
-      this.waitForPromise(promise);
-
-      return DS.PromiseObject.create({
-        promise,
-      })
-    }
+  currentSection: computed('router.currentURL', 'pages.[]', 'content.id', function() {
+    return get(this, 'pages').then((tocSections) => {
+      let section = get(this, 'content.id').split('/')[0]
+      return tocSections.find((tocSection) => tocSection.id === section)
+    });
   }),
 
   isFirstPage: computed('currentSection', 'currentPage', function() {
