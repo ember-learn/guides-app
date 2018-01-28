@@ -25,14 +25,14 @@ const versions = yaml.safeLoad(readFileSync('node_modules/@ember/guides-source/v
 let premberVersions = [];
 
 if(!process.env.JSON_ONLY) {
-  premberVersions = versions.allVersions;
-  premberVersions.push('current');
+  premberVersions = [...versions.allVersions, 'current'];
 }
 
 const urls = premberVersions.map(version => `/${version}`);
 
-premberVersions.forEach((version) => {
-  const paths = walkSync(`node_modules/@ember/guides-source/guides/${version}`);
+premberVersions.forEach((premberVersion) => {
+  const filesVersion = premberVersion === 'current' ? versions.currentVersion : premberVersion;
+  const paths = walkSync(`node_modules/@ember/guides-source/guides/${filesVersion}`);
 
   const mdFiles = paths.
     filter(path => extname(path) === '.md')
@@ -40,7 +40,7 @@ premberVersions.forEach((version) => {
     .map(path => path.replace(/\/index$/, ''));
 
   mdFiles.forEach((file) => {
-    urls.push(`/${version}/${file}`)
+    urls.push(`/${premberVersion}/${file}`)
   })
 });
 
