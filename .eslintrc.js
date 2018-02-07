@@ -15,10 +15,12 @@ module.exports = {
     browser: true
   },
   rules: {
+    'ember/no-jquery': 'error'
   },
   globals: {
     Prism: true,
-    compareVersions: true
+    compareVersions: true,
+    selectChoose: true
   },
   overrides: [
     // node files
