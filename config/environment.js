@@ -35,6 +35,11 @@ module.exports = function(environment) {
     'ember-body-class': {
       includeRouteName: false
     },
+
+    'ember-algolia': {
+      algoliaId: 'BH4D9OD16A',
+      algoliaKey: '760969ef081fcadc7e0e60faefdb0907'
+    },
   };
 
   if (environment === 'development') {
