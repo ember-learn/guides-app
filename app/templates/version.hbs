@@ -1,6 +1,10 @@
 <aside class="sidebar">
   <label for="version-select" class="visually-hidden">Guides version</label>
-  {{#power-select class="version-select" selected=model.version options=versions onchange=(action 'selectVersion') as |version|}}
+  {{#power-select
+    triggerClass="version-select"
+    selected=model.version
+    options=versions
+    onchange=(action 'selectVersion') as |version|}}
     {{version}}
   {{/power-select}}
 

@@ -66,7 +66,8 @@ module.exports = function(defaults) {
     },
     fingerprint: {
       extensions: ['js', 'css', 'map'],
-    }
+    },
+    vendorFiles: { 'jquery.js': null }
   });
 
   app.import('node_modules/compare-versions/index.js');

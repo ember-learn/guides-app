@@ -7,19 +7,19 @@ export default Component.extend({
   page: service(),
   didRender() {
 
-    let nodeList = this.$('pre:not(.no-line-numbers) > code');
+    let nodeList = this.element.querySelectorAll('pre:not(.no-line-numbers) > code');
 
     if (nodeList) {
       // console.log(nodeList);
-      nodeList.each((index, code) => {
+      nodeList.forEach((code) => {
         code.parentNode.classList.add('line-numbers');
       });
     }
 
-    let filenameNodeList = this.$('pre > code[data-filename]');
+    let filenameNodeList = this.element.querySelectorAll('pre > code[data-filename]');
 
     if (filenameNodeList) {
-      filenameNodeList.each((index, code) => {
+      filenameNodeList.forEach((code) => {
         if (code.parentNode.parentNode.classList.contains('filename')) {
           //do nothing
           return;
@@ -34,10 +34,18 @@ export default Component.extend({
           ext = match[1];
         }
 
-        this.$(code.parentNode).wrap(`<div class="filename ${ext}"></div>`);
+        const wrapper = document.createElement('div');
+        wrapper.classList.add('filename', ext);
+        code.parentNode.before(wrapper);
+        wrapper.append(code.parentNode);
 
-        this.$(code.parentNode.parentNode).prepend(this.$(`<span>${code.attributes['data-filename'].value}</span>`));
-        this.$(code.parentNode.parentNode).prepend('<div class="ribbon"></div>');
+        const filenameElement = document.createElement('span');
+        filenameElement.innerHTML = `${code.attributes['data-filename'].value}`;
+        code.parentNode.parentNode.insertBefore(filenameElement, code.parentNode.parentNode.firstChild);
+
+        const ribbon = document.createElement('div');
+        ribbon.classList.add('ribbon');
+        code.parentNode.parentNode.insertBefore(ribbon, code.parentNode.parentNode.firstChild);
       });
     }
 

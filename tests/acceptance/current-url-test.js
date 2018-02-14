@@ -1,13 +1,15 @@
-import { test } from 'qunit';
-import moduleForAcceptance from 'guides-app/tests/helpers/module-for-acceptance';
+import { module, test } from 'qunit';
+import { find } from 'ember-native-dom-helpers';
+import { visit } from '@ember/test-helpers';
+import { setupApplicationTest } from 'ember-qunit';
 
-moduleForAcceptance('Acceptance | current url');
+module('Acceptance | current url', function(hooks) {
+  setupApplicationTest(hooks);
 
-test('visiting /current-url', function(assert) {
-  visit('/current');
-  let page = this.application.__container__.lookup('service:page');
-  andThen(function() {
+  test('visiting /current-url', async function(assert) {
+    await visit('/current');
+    let page = this.owner.lookup('service:page');
     let currentVersion = page.get('currentVersion');
-    assert.equal(find('.ember-basic-dropdown-trigger').text().trim(), currentVersion);
+    assert.equal(find('.ember-basic-dropdown-trigger').textContent.trim(), currentVersion);
   });
 });

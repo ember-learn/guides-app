@@ -1,7 +1,7 @@
-import DS from 'ember-data';
+import ApplicationAdapter from './application';
 import { get } from '@ember/object'
 
-export default DS.JSONAPIAdapter.extend({
+export default ApplicationAdapter.extend({
   buildURL() {
     let url = ['content', 'versions.json'];
     let host = get(this, 'host');

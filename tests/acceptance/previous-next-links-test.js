@@ -1,23 +1,22 @@
-import { test } from 'qunit';
-import moduleForAcceptance from 'guides-app/tests/helpers/module-for-acceptance';
+import { module, test } from 'qunit';
+import { click } from 'ember-native-dom-helpers';
+import { currentURL, visit } from '@ember/test-helpers';
+import { setupApplicationTest } from 'ember-qunit';
 
-moduleForAcceptance('Acceptance | previous next links');
+module('Acceptance | previous next links', function(hooks) {
+  setupApplicationTest(hooks);
 
-test('navigation by previous and next links', function(assert) {
-  visit('/v2.17.0/models/');
-  andThen(function() {
+  test('navigation by previous and next links', async function(assert) {
+    await visit('/v2.17.0/models/');
     assert.equal(currentURL(), '/v2.17.0/models/');
-  });
-  click('.next-guide')
-  andThen(function() {
+
+    await click('.next-guide');
     assert.equal(currentURL(), '/v2.17.0/models/defining-models');
-  });
-  click('.next-guide')
-  andThen(function() {
+
+    await click('.next-guide');
     assert.equal(currentURL(), '/v2.17.0/models/finding-records');
-  });
-  click('.previous-guide')
-  andThen(function() {
+
+    await click('.previous-guide');
     assert.equal(currentURL(), '/v2.17.0/models/defining-models');
   });
 });

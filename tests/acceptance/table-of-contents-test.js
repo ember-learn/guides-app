@@ -1,13 +1,20 @@
-import { test } from 'qunit';
-import moduleForAcceptance from 'guides-app/tests/helpers/module-for-acceptance';
+import { module, test } from 'qunit';
+import { click, find, findAll } from 'ember-native-dom-helpers';
+import { currentURL, visit } from '@ember/test-helpers';
+import wait from 'ember-test-helpers/wait';
+import { setupApplicationTest } from 'ember-qunit';
 
-moduleForAcceptance('Acceptance | table of contents');
+module('Acceptance | table of contents', function(hooks) {
+  setupApplicationTest(hooks);
 
-test('navigation by TOC', function(assert) {
-  visit('/v2.17.0/');
-  click('a:contains("Routing")')
-  click('a:contains("Defining Your Routes")')
-  andThen(function() {
-    assert.equal(currentURL(), '/v2.17.0/routing/defining-your-routes');
+  test('navigation by TOC', async function(assert) {
+    await visit('/v2.17.0/');
+    const routing = find('a', findAll('.toc-level-0')[4]);
+    await click(routing);
+    const definingYourRoutes = find('a', findAll('.toc-level-1', )[2]);
+    await click(definingYourRoutes);
+    return wait().then(() => {
+      assert.equal(currentURL(), '/v2.17.0/routing/defining-your-routes');
+    });
   });
 });
