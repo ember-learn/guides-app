@@ -1,6 +1,6 @@
 import HistoryLocation from '@ember/routing/history-location';
 
-let trailingHistory = HistoryLocation.extend({
+export default HistoryLocation.extend({
   formatURL() {
     let url = this._super(...arguments);
 
@@ -11,11 +11,3 @@ let trailingHistory = HistoryLocation.extend({
     }
   }
 });
-
-export default {
-  name: 'registerTrailingLocationHistory',
-
-  initialize(application) {
-    application.register('location:trailing-history', trailingHistory);
-  }
-};
