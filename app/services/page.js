@@ -7,7 +7,6 @@ import { defer } from 'rsvp';
 
 export default Service.extend({
   router: service(),
-  store: service(),
   fastboot: service(),
   headData: service(),
 

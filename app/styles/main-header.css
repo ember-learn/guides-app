@@ -25,7 +25,7 @@
   min-width: 980px; //do we need this
 }
 
-.header a:hover {
+.header li > a:hover {
   border-bottom: none;
   color: white;
 }
@@ -61,7 +61,7 @@
   }
 }
 
-.header a {
+.header li > a {
   color: #fff;
   display: block;
   font-size: 1.1em;
@@ -71,7 +71,7 @@
 }
 
 @media screen and (max-width: 53.75rem) {
-  .responsive .header a {
+  .responsive .header li > a {
     line-height: 24px; //do we need this
   }
 }
@@ -145,52 +145,6 @@
 @media screen and (max-width: 53.75rem) {
   .responsive .header-logo a {
     margin: 0 auto;
-  }
-}
-
-
-.header-search {
-  margin-left: 4%;
-
-  .algolia-autocomplete {
-    display: block !important; // beats `inline-block` added by DocSearch script
-  }
-  .search-input {
-    width: 100%;
-    height: 35px;
-    margin-bottom: 0;
-    padding-left: 2.5em;
-    border: none;
-    border-radius: 35px;
-    outline: none;
-    appearance: none;
-    background: url("../images/search-icon.svg") rgba(white, 0.1) 10px 10px no-repeat;
-    box-shadow: none;
-    font-size: 0.9rem;
-    line-height: 35px;
-    color: white;
-
-    // @include placeholder {
-    //   color: white;
-    // }
-  }
-
-  .search-input::-webkit-input-placeholder {
-  color: white;
-  }
-  .search-input:-moz-placeholder {
-    color: white;
-  }
-  .search-input::-moz-placeholder {
-    color: white;
-  }
-  .search-input:-ms-input-placeholder {
-    color: white;
-  }
-}
-@media screen and (max-width: 53.75rem) {
-  .responsive .header-search {
-    margin-left: 0;
   }
 }
 
