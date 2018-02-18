@@ -41,6 +41,18 @@ export default Component.extend({
       });
     }
 
+    let allHeaders = document.querySelectorAll("h1, h2, h3, h4, h5, h6")
+
+    for (var element of allHeaders) {
+      if (element.id) {
+        element.className = 'anchorable-toc'
+        let link = document.createElement('a');
+        link.className = 'toc-anchor';
+        link.href = `#${element.id}`;
+        element.prepend(link)
+      }
+    }
+
     Prism.highlightAll();
   }
 });
