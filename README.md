@@ -1,4 +1,5 @@
-# guides-app [![Build Status](https://travis-ci.org/ember-learn/guides-app.svg?branch=master)](https://travis-ci.org/ember-learn/guides-app)
+# guides-app [![Build Status](https://travis-ci.org/ember-learn/guides-app.svg?branch=master)](https://travis-ci.org/ember-learn/guides-app) [![Build status](https://ci.appveyor.com/api/projects/status/leil0lxhqtuvh7ga/branch/master?svg=true)](https://ci.appveyor.com/project/sivakumar-kailasam/guides-app/branch/master)
+
 
 An ember app that powers the [emberjs guides](https://guides.emberjs.com).
 
