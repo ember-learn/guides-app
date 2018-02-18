@@ -50,7 +50,7 @@
     "ember-composable-helpers": "^2.1.0",
     "ember-data": "~2.18.0",
     "ember-export-application-global": "^2.0.0",
-    "ember-learn-search-components": "github:ember-learn/ember-learn-search-components#feature/project-version",
+    "ember-learn-search-components": "github:ember-learn/ember-learn-search-components#feature/common-styles",
     "ember-load-initializers": "^1.0.0",
     "ember-normalize": "^1.0.0",
     "ember-percy": "^1.2.21",
