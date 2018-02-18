@@ -6,7 +6,7 @@ import { hash } from 'rsvp';
 export default Route.extend({
   page: service(),
   model() {
-    let { version } = this.modelFor('version');
+    let { version, currentVersion } = this.modelFor('version');
 
     return hash({
       content: this.store.queryRecord('content', {
@@ -15,6 +15,7 @@ export default Route.extend({
       }),
       pages: get(this, 'store').query('page', { version }),
       version,
+      currentVersion,
     })
   },
 
