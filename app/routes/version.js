@@ -9,7 +9,9 @@ export default Route.extend({
     let applicationModel = this.modelFor('application');
     let version;
 
-    if (params.version === 'current') {
+    // We need to support legacy `current` urls, but we should use release
+    // in order to keep in step with ember-api-docs url convention
+    if (params.version === 'current' || params.version === 'release') {
       version = get(applicationModel, 'currentVersion');
     } else {
       version = params.version;
