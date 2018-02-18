@@ -1,7 +1,6 @@
-# guides-app
+# guides-app [![Build Status](https://travis-ci.org/ember-learn/guides-app.svg?branch=master)](https://travis-ci.org/ember-learn/guides-app)
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+An ember app that powers the [emberjs guides](https://guides.emberjs.com).
 
 ## Prerequisites
 
