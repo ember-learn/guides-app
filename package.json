@@ -18,12 +18,15 @@
   },
   "devDependencies": {
     "@ember/guides-source": "github:ember-learn/guides-source",
+    "algoliasearch": "^3.24.10",
     "broccoli-asset-rev": "^2.4.5",
     "broccoli-merge-trees": "^2.0.0",
     "broccoli-static-site-json": "^1.0.3",
     "compare-versions": "3.1.0",
     "ember-ajax": "^3.0.0",
+    "ember-algolia": "0.0.10",
     "ember-body-class": "^0.4.0",
+    "ember-browserify": "^1.2.1",
     "ember-cli": "~2.18.0",
     "ember-cli-app-version": "^3.0.0",
     "ember-cli-babel": "^6.6.0",
@@ -47,6 +50,7 @@
     "ember-composable-helpers": "^2.1.0",
     "ember-data": "~2.18.0",
     "ember-export-application-global": "^2.0.0",
+    "ember-learn-search-components": "github:ember-learn/ember-learn-search-components#feature/common-styles",
     "ember-load-initializers": "^1.0.0",
     "ember-normalize": "^1.0.0",
     "ember-percy": "^1.2.21",
@@ -54,12 +58,16 @@
     "ember-prism": "^0.2.0",
     "ember-resolver": "^4.0.0",
     "ember-source": "~2.18.0",
+    "ember-tether": "^1.0.0-beta.0",
     "ember-welcome-page": "^3.0.0",
     "eslint-plugin-ember": "^5.0.0",
     "loader.js": "^4.2.3",
     "normalize.css": "^4.1.1",
     "prember": "^0.2.2"
   },
+  "fastbootDependencies": [
+    "algoliasearch"
+  ],
   "engines": {
     "node": "^4.5 || 6.* || >= 7.*"
   }
