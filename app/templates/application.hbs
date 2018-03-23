@@ -6,7 +6,13 @@
   {{!-- <%= javascript_include_tag 'common-modern' %> --}}
 <!--<![endif]-->
 
-{{main-header}}
+{{#es-header}}
+  {{#es-navbar links=links}}
+    <form>
+      {{search-input projectVersion=page.currentVersion}}
+    </form>
+  {{/es-navbar}}
+{{/es-header}}
 
 <main class="container">
   {{outlet}}
