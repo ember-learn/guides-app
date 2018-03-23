@@ -66,6 +66,11 @@ module.exports = function(defaults) {
     },
     fingerprint: {
       extensions: ['js', 'css', 'map'],
+    },
+    "ember-bootstrap": {
+      bootstrapVersion: 4,
+      importBootstrapFont: false,
+      importBootstrapCSS: false
     }
   });
 
