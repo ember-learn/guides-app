@@ -1,3 +1,11 @@
+{{#unless (eq version currentVersion)}}
+ <div class="old-version-warning">
+   <i class="icon-attention-circled"></i><strong>Old Guides - </strong>You are viewing the guides for Ember {{version}}.
+
+   {{#link-to 'version.show' 'current' path class="btn"}} VIEW {{currentVersion}} {{/link-to}}
+ </div>
+{{/unless}}
+
 <h1>
   {{page.currentPage.title}}
   <a href="https://github.com/ember-learn/guides-source/edit/master/guides/{{page.currentVersion}}/{{page.currentPage.url}}.md"
