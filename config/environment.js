@@ -24,7 +24,7 @@ module.exports = function(environment) {
     },
 
     fastboot: {
-      hostWhitelist: ['emberguides.stonecircle.io', 'localhost:4200']
+      hostWhitelist: ["localhost:4200", "localhost:7784"]
     },
 
     showdown: {
