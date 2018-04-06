@@ -25,6 +25,10 @@ env:
 before_install:
   - npm config set spin false
 
+script:
+  - npm run lint:js
+  - npm test
+
 jobs:
   include:
     - stage: test
