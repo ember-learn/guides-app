@@ -64,12 +64,17 @@
     "eslint-plugin-ember": "^5.0.0",
     "loader.js": "^4.2.3",
     "normalize.css": "^4.1.1",
-    "prember": "^0.2.2"
+    "prember": "^0.3.0"
   },
   "fastbootDependencies": [
     "algoliasearch"
   ],
   "engines": {
     "node": "^4.5 || 6.* || >= 7.*"
+  },
+  "ember-addon": {
+    "paths": [
+      "lib/content-guides-generator"
+    ]
   }
 }
