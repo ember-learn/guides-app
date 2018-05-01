@@ -18,7 +18,7 @@
     "test": "ember test"
   },
   "devDependencies": {
-    "@ember/guides-source": "github:ember-learn/guides-source",
+    "@ember/guides-source": "github:ember-learn/guides-source#1a7f9737b5b894c8082e3ad838be21763f7e2295",
     "algoliasearch": "^3.24.10",
     "broccoli-asset-rev": "^2.4.5",
     "broccoli-merge-trees": "^2.0.0",
@@ -41,7 +41,7 @@
     "ember-cli-htmlbars-inline-precompile": "^1.0.0",
     "ember-cli-inject-live-reload": "^1.4.1",
     "ember-cli-qunit": "^4.1.1",
-    "ember-cli-sass": "^7.0.0",
+    "ember-cli-sass": "^7.1.7",
     "ember-cli-shims": "^1.2.0",
     "ember-cli-showdown": "^4.1.0",
     "ember-cli-spinkit": "^2.0.0",
