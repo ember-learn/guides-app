@@ -1,0 +1,21 @@
+{
+  "name": "guides-app",
+  "description": "The ember.js guides app",
+  "scripts": {
+  },
+  "env": {
+  },
+  "formation": {
+    "web": {
+      "quantity": 1
+    }
+  },
+  "addons": [
+
+  ],
+  "buildpacks": [
+    {
+      "url": "https://github.com/stonecircle/heroku-buildpack-ember-static"
+    }
+  ]
+}
