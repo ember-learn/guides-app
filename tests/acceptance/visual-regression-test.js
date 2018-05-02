@@ -1,30 +1,39 @@
 import { test } from 'qunit';
+import { get } from '@ember/object';
 import moduleForAcceptance from 'guides-app/tests/helpers/module-for-acceptance';
-
-import pages from './pages';
 
 moduleForAcceptance('Acceptance | visual regression');
 
-pages.data.forEach((section) => {
-  section.attributes.pages.forEach((page) => {
-    test(`visiting visual regressions on ${section.id}:${page.url} with Percy`, function(assert) {
-      assert.expect(0);
+test(`visiting visual regressions with Percy`, function(assert) {
+  assert.expect(0);
+  visit('/current');
 
-      visit(`/v2.17.0/${page.url}`);
+  andThen(() => {
+    let store = this.application.__container__.lookup('service:store');
+    let pages = store.peekAll('page');
 
-      andThen(function() {
-        let name;
+    pages.forEach((section) => {
+      section.get('pages').forEach((page) => {
 
-        if (page.url.endsWith('index')) {
-          name = `/${page.url}.html`;
-        } else if (page.url.endsWith('index/')) {
-          name = '/index.html';
-        } else {
-          name = `/${page.url}/index.html`;
-        }
+        let url = get(page, 'url');
 
-        percySnapshot(name);
-      });
-    });
+        visit(`/release/${url}`);
+
+        andThen(function() {
+          let name;
+
+          if (page.url.endsWith('index')) {
+            name = `/${page.url}.html`;
+          } else if (page.url.endsWith('index/')) {
+            name = '/index.html';
+          } else {
+            name = `/${page.url}/index.html`;
+          }
+
+          percySnapshot(name);
+        });
+      })
+    })
   })
-})
+
+});
