@@ -20,14 +20,12 @@ test(`visiting visual regressions with Percy`, function(assert) {
         visit(`/release/${url}`);
 
         andThen(function() {
-          let name;
+          let name = `/${page.url}/index.html`;
 
           if (page.url.endsWith('index')) {
             name = `/${page.url}.html`;
           } else if (page.url.endsWith('index/')) {
             name = '/index.html';
-          } else {
-            name = `/${page.url}/index.html`;
           }
 
           percySnapshot(name);
