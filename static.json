@@ -1,5 +1,10 @@
 {
   "https_only": true,
   "root": "dist",
-  "error_page": "_empty.html"
+  "error_page": "_empty.html",
+  "redirects": {
+    "/": {
+      "url": "/release/"
+    }
+  }
 }
