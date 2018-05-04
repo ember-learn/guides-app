@@ -2901,11 +2901,11 @@ ember-basic-dropdown@^1.0.0:
     ember-cli-htmlbars "^2.0.3"
     ember-maybe-in-element "^0.1.3"
 
-ember-body-class@^0.4.0:
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/ember-body-class/-/ember-body-class-0.4.0.tgz#0994243f9d4978ccaec287cfdbedcb78b46e28c5"
+ember-body-class@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/ember-body-class/-/ember-body-class-1.0.0.tgz#e25b75f3231b8cc042cd428098af8caa75159df7"
   dependencies:
-    ember-cli-babel "^5.0.0"
+    ember-cli-babel "^6.6.0"
 
 ember-bootstrap@^1.2.0:
   version "1.2.2"
@@ -2966,7 +2966,7 @@ ember-cli-app-version@^3.0.0:
     ember-cli-babel "^6.12.0"
     git-repo-version "^1.0.2"
 
-ember-cli-babel@6.12.0, ember-cli-babel@^5.0.0, ember-cli-babel@^5.1.6, ember-cli-babel@^6.0.0, ember-cli-babel@^6.0.0-beta.4, ember-cli-babel@^6.0.0-beta.7, ember-cli-babel@^6.1.0, ember-cli-babel@^6.10.0, ember-cli-babel@^6.11.0, ember-cli-babel@^6.12.0, ember-cli-babel@^6.3.0, ember-cli-babel@^6.6.0, ember-cli-babel@^6.7.2, ember-cli-babel@^6.8.1, ember-cli-babel@^6.8.2, ember-cli-babel@^6.9.0:
+ember-cli-babel@6.12.0, ember-cli-babel@^5.1.6, ember-cli-babel@^6.0.0, ember-cli-babel@^6.0.0-beta.4, ember-cli-babel@^6.0.0-beta.7, ember-cli-babel@^6.1.0, ember-cli-babel@^6.10.0, ember-cli-babel@^6.11.0, ember-cli-babel@^6.12.0, ember-cli-babel@^6.3.0, ember-cli-babel@^6.6.0, ember-cli-babel@^6.7.2, ember-cli-babel@^6.8.1, ember-cli-babel@^6.8.2, ember-cli-babel@^6.9.0:
   version "6.12.0"
   resolved "https://registry.yarnpkg.com/ember-cli-babel/-/ember-cli-babel-6.12.0.tgz#3adcdbe1278da1fcd0b9038f1360cb4ac5d4414c"
   dependencies:
