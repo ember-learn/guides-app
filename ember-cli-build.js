@@ -20,6 +20,7 @@ module.exports = function(defaults) {
   });
 
   app.import('node_modules/compare-versions/index.js');
+  app.import('node_modules/normalize.css/normalize.css');
 
   return app.toTree();
 };
