@@ -11,17 +11,17 @@ export default Service.extend({
   headData: service(),
 
   titleObserver: observer('metaSection', 'metaPage', function() {
-    const sectionTitle = this.get('metaSection');
-    const pageTitle = this.get('metaPage');
+    const sectionTitle = this.metaSection;
+    const pageTitle = this.metaPage;
 
     let deferred = defer();
 
     if (this.get('fastboot.isFastBoot')) {
-      this.get('fastboot').deferRendering(deferred.promise);
+      this.fastboot.deferRendering(deferred.promise);
     }
 
     next(this, function() {
-      set(this.get('headData'), 'title', `Ember.js - ${sectionTitle}${pageTitle ? ': ' + pageTitle: ''}`);
+      set(this.headData, 'title', `Ember.js - ${sectionTitle}${pageTitle ? ': ' + pageTitle: ''}`);
 
       // this is only to make fastboot to wait for us to set the title before rendering
       deferred.resolve("Don't judge me 😭");
@@ -29,7 +29,7 @@ export default Service.extend({
   }),
 
   currentSection: computed('router.currentURL', 'pages.[]', 'content.id', function() {
-    let tocSections = get(this, 'pages');
+    let tocSections = this.pages;
 
     let contentId = get(this, 'content.id');
 
@@ -49,7 +49,7 @@ export default Service.extend({
    * @return {Promise} the current page as a POJO
    */
   currentPage: computed('router.currentURL', 'currentSection.pages', 'content.id', function() {
-    let currentSection = get(this, 'currentSection');
+    let currentSection = this.currentSection;
 
     if(!currentSection) { return; }
 
@@ -68,36 +68,36 @@ export default Service.extend({
   }),
 
   isFirstPage: computed('currentSection', 'currentPage', function() {
-    let currentSection = get(this, 'currentSection');
+    let currentSection = this.currentSection;
 
     if(!currentSection) { return; }
 
     let pages = get(currentSection, 'pages');
     if(pages) {
-      return pages.indexOf(get(this, 'currentPage')) === 0
+      return pages.indexOf(this.currentPage) === 0;
     }
   }),
 
   isLastPage: computed('currentSection', 'currentPage', function() {
-    let currentSection = get(this, 'currentSection');
+    let currentSection = this.currentSection;
 
     if(!currentSection) { return; }
 
     let pages = get(currentSection, 'pages');
     if(pages) {
-      return pages.indexOf(get(this, 'currentPage')) === (pages.length-1)
+      return pages.indexOf(this.currentPage) === (pages.length-1);
     }
   }),
 
   previousPage: computed('currentSection', 'currentPage', function() {
-    let currentSection = get(this, 'currentSection');
+    let currentSection = this.currentSection;
 
     if(!currentSection) { return; }
 
     let pages = get(currentSection, 'pages');
 
     if(pages) {
-      let currentPage = get(this, 'currentPage');
+      let currentPage = this.currentPage;
 
       let currentLocalPage = pages.find((page) => page.url === currentPage.url);
       let index = pages.indexOf(currentLocalPage);
@@ -109,14 +109,14 @@ export default Service.extend({
   }),
 
   nextPage: computed('currentSection', 'currentPage', function() {
-    let currentSection = get(this, 'currentSection');
+    let currentSection = this.currentSection;
 
     if(!currentSection) { return; }
 
     let pages = get(currentSection, 'pages');
 
     if(pages) {
-      let currentPage = get(this, 'currentPage');
+      let currentPage = this.currentPage;
       let currentLocalPage = pages.find((page) => page.url === currentPage.url);
       let index = pages.indexOf(currentLocalPage);
 
@@ -127,11 +127,11 @@ export default Service.extend({
   }),
 
   previousSection: computed('currentSection', 'pages.[]', function() {
-    let currentSection = get(this, 'currentSection');
+    let currentSection = this.currentSection;
 
     if(!currentSection) { return; }
 
-    let pages = get(this, 'pages');
+    let pages = this.pages;
 
     if (pages) {
       let page = pages.content.find((content) => content.id === currentSection.id);
@@ -145,11 +145,11 @@ export default Service.extend({
   }),
 
   nextSection: computed('currentSection', 'pages.[]', function() {
-    let currentSection = get(this, 'currentSection');
+    let currentSection = this.currentSection;
 
     if(!currentSection) { return; }
 
-    let pages = get(this, 'pages');
+    let pages = this.pages;
 
     if (pages) {
       let page = pages.content.find((content) => content.id === currentSection.id);
