@@ -38,30 +38,21 @@ If you were hoping to help with the contents of the Guides instead of the App th
 
 You will need the following things properly installed on your computer.
 
-* [Git](https://git-scm.com/)
-* [Node.js](https://nodejs.org/) (with npm)
-* [Ember CLI](https://ember-cli.com/)
+- [Git](https://git-scm.com/)
+- [Node.js](https://nodejs.org/) (with npm)
+- [Ember CLI](https://ember-cli.com/)
 
 ## Installation
 
-* `git clone https://github.com/ember-learn/guides-app.git`
-* `cd guides-app`
-* `npm install`
+- `git clone https://github.com/ember-learn/guides-app.git`
+- `cd guides-app`
+- `npm install`
 
 ## Running / Development
 
-* `ember serve`
-* Visit your app at [http://localhost:4200](http://localhost:4200).
-* Visit your tests at [http://localhost:4200/tests](http://localhost:4200/tests).
-
-## Further Reading / Useful Links
-
-* [ember.js](https://emberjs.com/)
-* [ember-cli](https://ember-cli.com/)
-* Development Browser Extensions
-  * [ember inspector for chrome](https://chrome.google.com/webstore/detail/ember-inspector/bmdblncegkenkacieihfhpjfppoconhi)
-  * [ember inspector for firefox](https://addons.mozilla.org/en-US/firefox/addon/ember-inspector/)
-
+- `ember serve`
+- Visit your app at [http://localhost:4200](http://localhost:4200).
+- Visit your tests at [http://localhost:4200/tests](http://localhost:4200/tests).
 
 ## Local Development alongside the Guides Source
 
@@ -80,4 +71,12 @@ cd ../guides-app/
 npm i
 npm link guides-source
 npm start
-```  
+```
+
+## Further Reading / Useful Links
+
+- [ember.js](https://emberjs.com/)
+- [ember-cli](https://ember-cli.com/)
+- Development Browser Extensions
+  - [ember inspector for chrome](https://chrome.google.com/webstore/detail/ember-inspector/bmdblncegkenkacieihfhpjfppoconhi)
+  - [ember inspector for firefox](https://addons.mozilla.org/en-US/firefox/addon/ember-inspector/)
