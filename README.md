@@ -5,9 +5,14 @@ Guides](https://guides.emberjs.com).
 
 This app is essentially a static site generator that pulls in
 the markdown that makes up the [Guides Source](https://github.com/ember-learn/guides-source) and
-outputs JSON that contains that content, an Ember App that  is designed to consume that JSON and
-static html that is powered by [Prember](https://github.com/ef4/prember) and
-[FastBoot](https://www.ember-fastboot.com/). If that all sounds a bit scary don't worry, thanks to
+outputs three things:
+
+- JSON that contains that content
+- an Ember App that  is designed to consume that JSON
+- static html that is powered by [Prember](https://github.com/ef4/prember) and
+[FastBoot](https://www.ember-fastboot.com/)
+
+If that all sounds a bit scary don't worry, thanks to
 Ember's _Zero Config_ approach you don't need to worry about any of that to contribute 🎉
 
 Looking for repositories for the other parts of [emberjs.com](https://emberjs.com)? Check out
