@@ -1,10 +1,11 @@
+import { setProperties } from '@ember/object';
 import Route from '@ember/routing/route';
 import { inject as service } from '@ember/service';
-import { get, set } from '@ember/object';
 import { hash } from 'rsvp';
 
 export default Route.extend({
   page: service(),
+
   model() {
     let { version, currentVersion } = this.modelFor('version');
 
@@ -20,9 +21,7 @@ export default Route.extend({
   },
 
   afterModel(model) {
-    let content = get(model, 'content');
-    set(this.page, 'content', content);
-    let version = get(model, 'version');
-    set(this.page, 'currentVersion', version);
+    let { content, version: currentVersion } = model;
+    setProperties(this.page, {content, currentVersion});
   }
 });

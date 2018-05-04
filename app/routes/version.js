@@ -5,9 +5,14 @@ import { hash } from 'rsvp';
 
 export default Route.extend({
   page: service(),
+
   model(params) {
     let applicationModel = this.modelFor('application');
+<<<<<<< HEAD
     let currentVersion = get(applicationModel, 'currentVersion');
+=======
+    let { currentVersion } = applicationModel;
+>>>>>>> Upgrade fixes & utilize ember-styleguide components
     let version = params.version;
 
     if (params.version === 'release') {

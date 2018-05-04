@@ -1,0 +1,9 @@
+{
+  "name": "ember-website-helpers",
+  "keywords": [
+    "ember-addon"
+  ],
+  "dependencies": {
+    "ember-cli-babel": "*"
+  }
+}

@@ -6,7 +6,7 @@ module.exports = function(defaults) {
   let app = new EmberApp(defaults, {
     'ember-prism': {
       'theme': 'okaidia',
-      'components': ['scss', 'javascript', 'handlebars', 'http', 'json'],
+      'components': ['scss', 'javascript', 'handlebars', 'http', 'json', 'markup-templating', 'diff'],
       'plugins': ['line-numbers', 'normalize-whitespace']
     },
     fingerprint: {
