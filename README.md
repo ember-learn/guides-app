@@ -32,6 +32,8 @@ labeled "help wanted" or "good for new contributors." If you have questions or w
 with, you can join the #-team-learning channel in the [Ember Community
 Slack](https://ember-community-slackin.herokuapp.com/).
 
+If you were hoping to help with the contents of the Guides instead of the App that powers it then check out the [contributing instructions for the Guides Source](https://github.com/ember-learn/guides-source/blob/master/CONTRIBUTING.md)
+
 ## Prerequisites
 
 You will need the following things properly installed on your computer.
