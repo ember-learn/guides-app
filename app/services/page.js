@@ -1,9 +1,8 @@
-import Service from '@ember/service';
-import { inject as service } from '@ember/service';
-import { get, set, computed, observer } from '@ember/object';
+import { computed, get, observer, set } from '@ember/object';
 import { next } from '@ember/runloop';
-
+import Service, { inject as service } from '@ember/service';
 import { defer } from 'rsvp';
+
 
 export default Service.extend({
   router: service(),
@@ -38,10 +37,10 @@ export default Service.extend({
     let section = contentId.split('/')[0]
     let currentSection = tocSections.find((tocSection) => tocSection.id === section);
 
-    set(this, 'metaSection', get(currentSection, 'title'));
-
     return currentSection;
   }),
+
+  metaSection: computed.alias('currentSection.title'),
 
   /**
    * Find the TOC item that matches the current visible content. This is needed because the title comes
@@ -60,41 +59,37 @@ export default Service.extend({
 
     let pages = get(currentSection, 'pages');
 
-    let currentPage = pages.find((page) => page.url === get(this, 'content.id'));
-
-    set(this, 'metaPage', get(currentPage, 'title'));
-
-    return currentPage;
+    return pages.find((page) => page.url === get(this, 'content.id'));
   }),
 
-  isFirstPage: computed('currentSection', 'currentPage', function() {
+  metaPage: computed.alias('currentPage.title'),
+
+  currentSectionCurrentPage: computed('currentSection', 'currentPage', function() {
     let currentSection = this.currentSection;
 
     if(!currentSection) { return; }
 
-    let pages = get(currentSection, 'pages');
+    return get(currentSection, 'pages');
+  }),
+
+  isFirstPage: computed('currentSectionCurrentPage', function() {
+
+    let pages = this.currentSectionCurrentPage;
+
     if(pages) {
       return pages.indexOf(this.currentPage) === 0;
     }
   }),
 
-  isLastPage: computed('currentSection', 'currentPage', function() {
-    let currentSection = this.currentSection;
-
-    if(!currentSection) { return; }
-
-    let pages = get(currentSection, 'pages');
+  isLastPage: computed('currentSectionCurrentPage', function() {
+    let pages = this.currentSectionCurrentPage;
     if(pages) {
       return pages.indexOf(this.currentPage) === (pages.length-1);
     }
   }),
 
-  previousPage: computed('currentSection', 'currentPage', function() {
-    let currentSection = this.currentSection;
-
-    if(!currentSection) { return; }
-
-    let pages = get(currentSection, 'pages');
+  previousPage: computed('currentSectionCurrentPage', function() {
+    let pages = this.currentSectionCurrentPage;
 
     if(pages) {
       let currentPage = this.currentPage;
@@ -108,12 +103,8 @@ export default Service.extend({
     }
   }),
 
-  nextPage: computed('currentSection', 'currentPage', function() {
-    let currentSection = this.currentSection;
-
-    if(!currentSection) { return; }
-
-    let pages = get(currentSection, 'pages');
+  nextPage: computed('currentSectionCurrentPage', function() {
+    let pages = this.currentSectionCurrentPage;
 
     if(pages) {
       let currentPage = this.currentPage;
