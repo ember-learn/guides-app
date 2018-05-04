@@ -3625,9 +3625,9 @@ ember-power-select@^2.0.0:
     ember-text-measurer "^0.4.0"
     ember-truth-helpers "^2.0.0"
 
-"ember-prism@github:sivakumar-kailasam/ember-prism#upgrade":
-  version "0.2.0"
-  resolved "https://codeload.github.com/sivakumar-kailasam/ember-prism/tar.gz/30b711306f114ae024d1c6e8462ab33e19d869be"
+ember-prism@0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/ember-prism/-/ember-prism-0.3.0.tgz#487870c8ee3969511bd5d501a3c38385892d293f"
   dependencies:
     ember-cli-babel "^6.8.2"
     ember-cli-htmlbars "^2.0.3"

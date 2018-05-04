@@ -56,7 +56,7 @@
     "ember-maybe-import-regenerator": "^0.1.6",
     "ember-percy": "^1.2.21",
     "ember-power-select": "^2.0.0",
-    "ember-prism": "github:sivakumar-kailasam/ember-prism#upgrade",
+    "ember-prism": "0.3.0",
     "ember-resolver": "^4.0.0",
     "ember-source": "~3.1.0",
     "ember-styleguide": "github:ember-learn/ember-styleguide#6f4c4f905ce837a10f54a0d706643c39bd70fc26",
