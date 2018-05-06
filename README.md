@@ -34,18 +34,17 @@ Slack](https://ember-community-slackin.herokuapp.com/).
 
 If you were hoping to help with the contents of the Guides instead of the App that powers it then check out the [contributing instructions for the Guides Source](https://github.com/ember-learn/guides-source/blob/master/CONTRIBUTING.md)
 
-## Prerequisites
+## Prerequisites for running this app
 
 You will need the following things properly installed on your computer.
 
 * [Git](https://git-scm.com/)
 * [Node.js](https://nodejs.org/) (with npm)
 * [Ember CLI](https://ember-cli.com/)
-* [Google Chrome](https://google.com/chrome/)
 
 ## Installation
 
-* `git clone <repository-url>` this repository
+* `git clone https://github.com/ember-learn/guides-app.git`
 * `cd guides-app`
 * `npm install`
 
