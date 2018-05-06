@@ -6,7 +6,7 @@ moduleForAcceptance('Acceptance | visual regression');
 
 test(`visiting visual regressions with Percy`, function(assert) {
   assert.expect(0);
-  visit('/current');
+  visit('/release');
 
   andThen(() => {
     let store = this.application.__container__.lookup('service:store');
