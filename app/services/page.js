@@ -1,5 +1,5 @@
-import { alias } from '@ember/object/computed';
 import { computed, get, observer, set } from '@ember/object';
+import { alias } from '@ember/object/computed';
 import { next } from '@ember/runloop';
 import Service, { inject as service } from '@ember/service';
 import { defer } from 'rsvp';
@@ -93,9 +93,9 @@ export default Service.extend({
     let pages = this.currentSectionCurrentPage;
 
     if(pages) {
-      let currentPage = this.currentPage;
+      let currentPageURL = get(this, 'currentPage.url');
 
-      let currentLocalPage = pages.find((page) => page.url === currentPage.url);
+      let currentLocalPage = pages.find((page) => page.url === currentPageURL);
       let index = pages.indexOf(currentLocalPage);
 
       if (index > 0) {
@@ -108,8 +108,8 @@ export default Service.extend({
     let pages = this.currentSectionCurrentPage;
 
     if(pages) {
-      let currentPage = this.currentPage;
-      let currentLocalPage = pages.find((page) => page.url === currentPage.url);
+      let currentPageURL = get(this, 'currentPage.url');
+      let currentLocalPage = pages.find((page) => page.url === currentPageURL);
       let index = pages.indexOf(currentLocalPage);
 
       if (index < pages.length-1) {
