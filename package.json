@@ -24,7 +24,7 @@
     "broccoli-merge-trees": "^3.0.0",
     "broccoli-static-site-json": "^2.0.1",
     "compare-versions": "3.1.0",
-    "ember-ajax": "^3.0.0",
+    "ember-ajax": "3.1.0",
     "ember-algolia": "0.0.10",
     "ember-body-class": "^1.0.0",
     "ember-browserify": "1.2.2",
@@ -62,8 +62,7 @@
     "ember-welcome-page": "^3.0.0",
     "eslint-plugin-ember": "^5.0.0",
     "loader.js": "^4.2.3",
-    "normalize.css": "8.0.0",
-    "prember": "^0.4.0"
+    "normalize.css": "8.0.0"
   },
   "engines": {
     "node": ">= 6.*"

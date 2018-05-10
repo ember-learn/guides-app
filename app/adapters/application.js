@@ -1,6 +1,6 @@
-import JSONAPIAdapter from 'ember-data/adapters/json-api';
+import DS from 'ember-data';
 
-export default JSONAPIAdapter.extend({
+export default DS.JSONAPIAdapter.extend({
   buildURL(modelName, id, snapshot, requestType, query) {
     let url;
 

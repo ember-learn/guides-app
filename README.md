@@ -3,17 +3,8 @@
 This repository contains the Ember App that powers the [Ember.js
 Guides](https://guides.emberjs.com).
 
-This app is essentially a static site generator that pulls in
-the markdown that makes up the [Guides Source](https://github.com/ember-learn/guides-source) and
-outputs three things:
-
-- JSON that contains that content
-- an Ember App that  is designed to consume that JSON
-- static html that is powered by [Prember](https://github.com/ef4/prember) and
-[FastBoot](https://www.ember-fastboot.com/)
-
-If that all sounds a bit scary don't worry, thanks to
-Ember's _Zero Config_ approach you don't need to worry about any of that to contribute 🎉
+The content of the guides are available in the [guides source repo](https://github.com/ember-learn/guides-source). So if you need to fix any content please
+refer to that repo. This app consumes the markdown content from guides source as json-api files & ships with it.
 
 Looking for repositories for the other parts of [emberjs.com](https://emberjs.com)? Check out
 [website](https://github.com/emberjs/website),
