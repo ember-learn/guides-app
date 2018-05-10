@@ -2965,9 +2965,9 @@ ember-cli-eslint@^4.2.1:
     rsvp "^4.6.1"
     walk-sync "^0.3.0"
 
-ember-cli-fastboot@^1.1.4-beta.1:
-  version "1.1.4-beta.1"
-  resolved "https://registry.yarnpkg.com/ember-cli-fastboot/-/ember-cli-fastboot-1.1.4-beta.1.tgz#7063df36e62b92fd0f60c9a23dd03b5b57aec3fe"
+ember-cli-fastboot@^1.1.3:
+  version "1.1.3"
+  resolved "https://registry.yarnpkg.com/ember-cli-fastboot/-/ember-cli-fastboot-1.1.3.tgz#2ca968beaefd6f45e021242b6fe9d74d213f5045"
   dependencies:
     broccoli-concat "^3.2.2"
     broccoli-funnel "^2.0.0"
@@ -2978,7 +2978,7 @@ ember-cli-fastboot@^1.1.4-beta.1:
     ember-cli-lodash-subset "2.0.1"
     ember-cli-preprocess-registry "^3.1.0"
     ember-cli-version-checker "^2.1.0"
-    fastboot "^1.1.4-beta.1"
+    fastboot "^1.1.3"
     fastboot-express-middleware "^1.1.0"
     fastboot-transform "^0.1.2"
     fs-extra "^4.0.2"
@@ -4174,19 +4174,6 @@ fastboot-transform@^0.1.0, fastboot-transform@^0.1.2:
 fastboot@^1.1.2, fastboot@^1.1.3:
   version "1.1.3"
   resolved "https://registry.yarnpkg.com/fastboot/-/fastboot-1.1.3.tgz#56c5f56415c5ae8de2db539c0d3ecbcd65538f8b"
-  dependencies:
-    chalk "^2.0.1"
-    cookie "^0.3.1"
-    debug "^3.0.0"
-    exists-sync "0.0.4"
-    najax "^1.0.2"
-    rsvp "^4.7.0"
-    simple-dom "^1.0.0"
-    source-map-support "^0.5.0"
-
-fastboot@^1.1.4-beta.1:
-  version "1.1.4-beta.1"
-  resolved "https://registry.yarnpkg.com/fastboot/-/fastboot-1.1.4-beta.1.tgz#860f8af2bd032b3a7477fdf6e1a64b034a02829f"
   dependencies:
     chalk "^2.0.1"
     cookie "^0.3.1"
