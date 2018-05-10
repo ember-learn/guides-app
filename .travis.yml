@@ -27,3 +27,4 @@ install:
 script:
   - yarn lint:js
   - yarn test
+  - yarn build-production
