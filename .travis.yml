@@ -26,4 +26,8 @@ install:
 
 script:
   - yarn lint:js
-  - yarn test && yarn build-production
+  - yarn test
+  - if [[ $TRAVIS_BRANCH == 'master' ]]
+    then
+      yarn build-production
+    fi
