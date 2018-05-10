@@ -1,15 +1,15 @@
 {
   "name": "guides-app",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
-  "description": "Small description for guides-app goes here",
+  "description": "Ember app that powers https://guides.emberjs.com",
   "license": "MIT",
   "author": "Chris Manson <chris@stonecircle.io>",
   "directories": {
     "doc": "doc",
     "test": "tests"
   },
-  "repository": "https://github.com/stonecircle/guides-app",
+  "repository": "https://github.com/ember-learn/guides-app",
   "scripts": {
     "build": "ember build",
     "build-production": "ember build -e production",
@@ -18,7 +18,7 @@
     "test": "ember test"
   },
   "devDependencies": {
-    "@ember/guides-source": "github:ember-learn/guides-source#v3.1.1",
+    "@ember/guides-source": "github:ember-learn/guides-source#v3.1.2",
     "algoliasearch": "^3.24.10",
     "broccoli-asset-rev": "^2.4.5",
     "broccoli-merge-trees": "^3.0.0",
@@ -34,7 +34,7 @@
     "ember-cli-dependency-checker": "^2.0.0",
     "ember-cli-eslint": "^4.2.1",
     "ember-cli-fastboot": "^1.1.4-beta.1",
-    "ember-cli-head": "^0.4.0",
+    "ember-cli-head": "^0.4.1",
     "ember-cli-htmlbars": "^2.0.1",
     "ember-cli-htmlbars-inline-precompile": "^1.0.0",
     "ember-cli-inject-live-reload": "^1.4.1",
@@ -56,7 +56,7 @@
     "ember-power-select": "^2.0.0",
     "ember-prism": "0.3.0",
     "ember-resolver": "^4.0.0",
-    "ember-source": "~3.1.0",
+    "ember-source": "~3.1.2",
     "ember-styleguide": "github:ember-learn/ember-styleguide#6f4c4f905ce837a10f54a0d706643c39bd70fc26",
     "ember-tether": "^1.0.0-beta.0",
     "ember-welcome-page": "^3.0.0",
@@ -65,11 +65,8 @@
     "normalize.css": "8.0.0",
     "prember": "^0.4.0"
   },
-  "fastbootDependencies": [
-    "algoliasearch"
-  ],
   "engines": {
-    "node": "^4.5 || 6.* || >= 7.*"
+    "node": ">= 6.*"
   },
   "ember-addon": {
     "paths": [
@@ -77,6 +74,9 @@
       "lib/ember-website-helpers"
     ]
   },
+  "fastbootDependencies": [
+    "algoliasearch"
+  ],
   "resolutions": {
     "ember-cli-babel": "^6.6.0"
   }
