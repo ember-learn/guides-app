@@ -1,3 +1,4 @@
+import { alias } from '@ember/object/computed';
 import { computed, get, observer, set } from '@ember/object';
 import { next } from '@ember/runloop';
 import Service, { inject as service } from '@ember/service';
@@ -40,7 +41,7 @@ export default Service.extend({
     return currentSection;
   }),
 
-  metaSection: computed.alias('currentSection.title'),
+  metaSection: alias('currentSection.title'),
 
   /**
    * Find the TOC item that matches the current visible content. This is needed because the title comes
@@ -62,7 +63,7 @@ export default Service.extend({
     return pages.find((page) => page.url === get(this, 'content.id'));
   }),
 
-  metaPage: computed.alias('currentPage.title'),
+  metaPage: alias('currentPage.title'),
 
   currentSectionCurrentPage: computed('currentSection', 'currentPage', function() {
     let currentSection = this.currentSection;
