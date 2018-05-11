@@ -1,9 +1,6 @@
 import Component from '@ember/component';
 import { inject as service } from '@ember/service';
 
-let replaceAt = (string, index, replace) => {
-  return string.substring(0, index) + replace + string.substring(index + 1);
-}
 
 export default Component.extend({
   tagName: 'article',
