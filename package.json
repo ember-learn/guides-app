@@ -59,7 +59,6 @@
     "ember-source": "~3.1.2",
     "ember-styleguide": "github:ember-learn/ember-styleguide#6f4c4f905ce837a10f54a0d706643c39bd70fc26",
     "ember-tether": "^1.0.0-beta.0",
-    "ember-welcome-page": "^3.0.0",
     "eslint-plugin-ember": "^5.0.0",
     "loader.js": "^4.2.3",
     "normalize.css": "8.0.0"
