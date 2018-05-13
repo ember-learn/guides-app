@@ -24,7 +24,7 @@ module.exports = function(environment) {
     },
 
     fastboot: {
-      hostWhitelist: [/^[\w\-]+\.herokuapp\.com$/, /^localhost:\d+$/, /^127\.0\.0\.1:\d+$/, /^[\w\-]+\.fastly\.net$/]
+      hostWhitelist: [/^[\w-]+\.herokuapp\.com$/, /^localhost:\d+$/, /^127\.0\.0\.1:\d+$/, /^[\w-]+\.fastly\.net$/]
     },
 
     showdown: {
