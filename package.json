@@ -17,6 +17,19 @@
     "start": "ember serve",
     "test": "ember test"
   },
+  "dependencies": {
+    "@ember/guides-source": "github:ember-learn/guides-source#v3.1.4",
+    "algoliasearch": "^3.24.10",
+    "broccoli-file-creator": "2.1.1",
+    "broccoli-funnel": "2.0.1",
+    "broccoli-merge-trees": "^3.0.0",
+    "broccoli-static-site-json": "^2.0.1",
+    "express": "4.16.3",
+    "fastboot-app-server": "1.1.2-beta.1",
+    "js-yaml": "3.11.0",
+    "jsonapi-serializer": "3.5.6",
+    "minimist": "1.2.0"
+  },
   "devDependencies": {
     "broccoli-asset-rev": "^2.4.5",
     "compare-versions": "3.1.0",
@@ -46,6 +59,7 @@
     "ember-collapsible-panel": "^3.0.1",
     "ember-composable-helpers": "^2.1.0",
     "ember-data": "~3.1.0",
+    "ember-data-fastboot": "0.1.2",
     "ember-export-application-global": "^2.0.0",
     "ember-learn-search-components": "github:ember-learn/ember-learn-search-components#feature/styling",
     "ember-load-initializers": "^1.0.0",
@@ -64,6 +78,9 @@
   "engines": {
     "node": ">= 6.*"
   },
+  "cacheDirectories": [
+    "node_modules"
+  ],
   "ember-addon": {
     "paths": [
       "lib/content-guides-generator",
@@ -75,18 +92,5 @@
   ],
   "resolutions": {
     "ember-cli-babel": "^6.6.0"
-  },
-  "dependencies": {
-    "@ember/guides-source": "github:ember-learn/guides-source#standardize-docs",
-    "algoliasearch": "^3.24.10",
-    "broccoli-file-creator": "2.1.1",
-    "broccoli-funnel": "2.0.1",
-    "broccoli-merge-trees": "^3.0.0",
-    "broccoli-static-site-json": "^2.0.1",
-    "express": "4.16.3",
-    "fastboot-app-server": "1.1.2-beta.1",
-    "js-yaml": "3.11.0",
-    "jsonapi-serializer": "3.5.6",
-    "minimist": "1.2.0"
   }
 }
