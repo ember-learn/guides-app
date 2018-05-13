@@ -57,6 +57,18 @@ export default Component.extend({
 
     Prism.highlightAll();
 
+    /**
+     * Prism doesn't support diff & a secondary language highlighting.
+     *
+     * So first, we let prism convert the content of `<code></code>` blocks
+     * from a string into a different dom structure
+     * by calling `Prism.highlightAll()`
+     *
+     * In the following block, we add + & - symbols to the lines inside the
+     * code block based on the data-diff attribute on the code tag.
+     * e.g., data-diff="-4,+5,+6,+7"
+     *
+     **/
     filenameNodeList.each((_, codeBlock) => {
 
       let diffInfo = codeBlock.attributes['data-diff'] ? codeBlock.attributes["data-diff"].value.split(',') : [];
