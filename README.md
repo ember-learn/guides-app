@@ -3,17 +3,8 @@
 This repository contains the Ember App that powers the [Ember.js
 Guides](https://guides.emberjs.com).
 
-This app is essentially a static site generator that pulls in
-the markdown that makes up the [Guides Source](https://github.com/ember-learn/guides-source) and
-outputs three things:
-
-- JSON that contains that content
-- an Ember App that  is designed to consume that JSON
-- static html that is powered by [Prember](https://github.com/ef4/prember) and
-[FastBoot](https://www.ember-fastboot.com/)
-
-If that all sounds a bit scary don't worry, thanks to
-Ember's _Zero Config_ approach you don't need to worry about any of that to contribute 🎉
+The content of the guides are available in the [guides source repo](https://github.com/ember-learn/guides-source). So if you need to fix any content please
+refer to that repo. This app consumes the markdown content from guides source as json-api files & ships with it.
 
 Looking for repositories for the other parts of [emberjs.com](https://emberjs.com)? Check out
 [website](https://github.com/emberjs/website),
@@ -38,30 +29,21 @@ If you were hoping to help with the contents of the Guides instead of the App th
 
 You will need the following things properly installed on your computer.
 
-* [Git](https://git-scm.com/)
-* [Node.js](https://nodejs.org/) (with npm)
-* [Ember CLI](https://ember-cli.com/)
+- [Git](https://git-scm.com/)
+- [Node.js](https://nodejs.org/) (with npm)
+- [Ember CLI](https://ember-cli.com/)
 
 ## Installation
 
-* `git clone https://github.com/ember-learn/guides-app.git`
-* `cd guides-app`
-* `npm install`
+- `git clone https://github.com/ember-learn/guides-app.git`
+- `cd guides-app`
+- `npm install`
 
 ## Running / Development
 
-* `ember serve`
-* Visit your app at [http://localhost:4200](http://localhost:4200).
-* Visit your tests at [http://localhost:4200/tests](http://localhost:4200/tests).
-
-## Further Reading / Useful Links
-
-* [ember.js](https://emberjs.com/)
-* [ember-cli](https://ember-cli.com/)
-* Development Browser Extensions
-  * [ember inspector for chrome](https://chrome.google.com/webstore/detail/ember-inspector/bmdblncegkenkacieihfhpjfppoconhi)
-  * [ember inspector for firefox](https://addons.mozilla.org/en-US/firefox/addon/ember-inspector/)
-
+- `ember serve`
+- Visit your app at [http://localhost:4200](http://localhost:4200).
+- Visit your tests at [http://localhost:4200/tests](http://localhost:4200/tests).
 
 ## Local Development alongside the Guides Source
 
@@ -80,4 +62,12 @@ cd ../guides-app/
 npm i
 npm link guides-source
 npm start
-```  
+```
+
+## Further Reading / Useful Links
+
+- [ember.js](https://emberjs.com/)
+- [ember-cli](https://ember-cli.com/)
+- Development Browser Extensions
+  - [ember inspector for chrome](https://chrome.google.com/webstore/detail/ember-inspector/bmdblncegkenkacieihfhpjfppoconhi)
+  - [ember inspector for firefox](https://addons.mozilla.org/en-US/firefox/addon/ember-inspector/)

@@ -5,6 +5,7 @@ import { hash } from 'rsvp';
 
 export default Route.extend({
   page: service(),
+
   model(params) {
     let applicationModel = this.modelFor('application');
     let currentVersion = get(applicationModel, 'currentVersion');
@@ -23,6 +24,6 @@ export default Route.extend({
   },
 
   afterModel(model) {
-    set(get(this, 'page'), 'pages', get(model, 'pages'));
+    set(this.page, 'pages', get(model, 'pages'));
   }
 });

@@ -3,12 +3,8 @@ language: node_js
 node_js:
   - "8"
 
-sudo: required
+sudo: false
 dist: trusty
-
-branches:
-  only:
-    - master
 
 addons:
   chrome: stable

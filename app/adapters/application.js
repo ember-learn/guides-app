@@ -1,5 +1,4 @@
 import DS from 'ember-data';
-import { get } from '@ember/object';
 
 export default DS.JSONAPIAdapter.extend({
   buildURL(modelName, id, snapshot, requestType, query) {
@@ -13,7 +12,7 @@ export default DS.JSONAPIAdapter.extend({
       return this._super(...arguments);
     }
 
-    let host = get(this, 'host');
+    let host = this.host;
     let prefix = this.urlPrefix();
 
     if (prefix) { url.unshift(prefix); }

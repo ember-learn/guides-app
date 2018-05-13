@@ -1,37 +1,35 @@
-import { test } from 'qunit';
 import { get } from '@ember/object';
-import moduleForAcceptance from 'guides-app/tests/helpers/module-for-acceptance';
+import { visit } from '@ember/test-helpers';
+import { percySnapshot } from 'ember-percy';
+import { setupApplicationTest } from 'ember-qunit';
+import { module, test } from 'qunit';
 
-moduleForAcceptance('Acceptance | visual regression');
+module('Acceptance | visual regression', function(hooks) {
+  setupApplicationTest(hooks);
 
-test(`visiting visual regressions with Percy`, function(assert) {
-  assert.expect(0);
-  visit('/release');
+  test(`visiting visual regressions with Percy`, async function(assert) {
+    assert.expect(0);
+    await visit('/current');
 
-  andThen(() => {
-    let store = this.application.__container__.lookup('service:store');
+    let store = this.owner.lookup('service:store');
     let pages = store.peekAll('page');
 
     pages.forEach((section) => {
-      section.get('pages').forEach((page) => {
-
+      section.get('pages').forEach(async page => {
         let url = get(page, 'url');
 
-        visit(`/release/${url}`);
+        await visit(`/release/${url}`);
 
-        andThen(function() {
-          let name = `/${page.url}/index.html`;
+        let name = `/${page.url}/index.html`;
 
-          if (page.url.endsWith('index')) {
-            name = `/${page.url}.html`;
-          } else if (page.url.endsWith('index/')) {
-            name = '/index.html';
-          }
+        if (page.url.endsWith('index')) {
+          name = `/${page.url}.html`;
+        } else if (page.url.endsWith('index/')) {
+          name = '/index.html';
+        }
 
-          percySnapshot(name);
-        });
+        percySnapshot(name);
       })
     })
-  })
-
+  });
 });
