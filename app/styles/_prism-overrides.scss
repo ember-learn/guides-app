@@ -1,0 +1,17 @@
+.token.regex,
+.token.important,
+.token.variable {
+  color: #C3F590;
+}
+
+code > .diff-insertion {
+  background-color: #5D7D5D;
+}
+
+code > .diff-deletion {
+  background-color: #905454;
+}
+
+code .diff-operator {
+  user-select: none;
+}
