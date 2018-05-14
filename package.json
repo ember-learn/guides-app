@@ -18,7 +18,7 @@
     "test": "ember test"
   },
   "devDependencies": {
-    "@ember/guides-source": "github:ember-learn/guides-source#c18b8c5c3d9a404f509d64c187ff36e87b9ae374",
+    "@ember/guides-source": "github:ember-learn/guides-source#v3.1.4",
     "algoliasearch": "^3.24.10",
     "broccoli-asset-rev": "^2.4.5",
     "broccoli-merge-trees": "^2.0.0",
