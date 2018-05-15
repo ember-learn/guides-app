@@ -40,6 +40,17 @@ module.exports = function(environment) {
       algoliaId: 'BH4D9OD16A',
       algoliaKey: '760969ef081fcadc7e0e60faefdb0907'
     },
+
+    metricsAdapters: [
+      {
+        name: 'GoogleAnalytics',
+        environments: ['production'],
+        config: {
+          id: 'UA-27675533-1',
+          require: ['linkid']
+        }
+      },
+    ],
   };
 
   if (environment === 'development') {
