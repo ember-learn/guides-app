@@ -53,6 +53,7 @@
     "ember-export-application-global": "^2.0.0",
     "ember-learn-search-components": "github:ember-learn/ember-learn-search-components#feature/styling",
     "ember-load-initializers": "^1.0.0",
+    "ember-metrics": "^0.12.1",
     "ember-normalize": "^1.0.0",
     "ember-percy": "^1.2.21",
     "ember-power-select": "^1.10.3",
