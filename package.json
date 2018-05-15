@@ -2,14 +2,14 @@
   "name": "guides-app",
   "version": "0.1.0",
   "private": true,
-  "description": "Small description for guides-app goes here",
+  "description": "Ember app that powers https://guides.emberjs.com",
   "license": "MIT",
   "author": "Chris Manson <chris@stonecircle.io>",
   "directories": {
     "doc": "doc",
     "test": "tests"
   },
-  "repository": "https://github.com/stonecircle/guides-app",
+  "repository": "https://github.com/ember-learn/guides-app",
   "scripts": {
     "build": "ember build",
     "build-production": "ember build -e production",
