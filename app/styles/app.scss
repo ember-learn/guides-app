@@ -1448,7 +1448,6 @@ article.x404 img {
   }
 }
 
-// @import 'old-highlight'; // this is deprecated because we're using Prism now - delete when done
 @import 'table-of-contents';
 
 .old-version-warning {
@@ -1580,5 +1579,5 @@ article.x404 img {
 }
 
 @import "ember-power-select";
-@import "highlight";
+@import "code-block-file-name";
 @import "prism-overrides";
