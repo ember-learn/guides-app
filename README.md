@@ -78,6 +78,6 @@ npm link
 
 cd ../guides-app/
 npm i
-npm link guides-source
+npm link @ember/guides-source
 npm start
 ```  
