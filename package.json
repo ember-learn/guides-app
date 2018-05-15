@@ -2,14 +2,14 @@
   "name": "guides-app",
   "version": "0.1.0",
   "private": true,
-  "description": "Small description for guides-app goes here",
+  "description": "Ember app that powers https://guides.emberjs.com",
   "license": "MIT",
   "author": "Chris Manson <chris@stonecircle.io>",
   "directories": {
     "doc": "doc",
     "test": "tests"
   },
-  "repository": "https://github.com/stonecircle/guides-app",
+  "repository": "https://github.com/ember-learn/guides-app",
   "scripts": {
     "build": "ember build",
     "build-production": "ember build -e production",
@@ -18,7 +18,7 @@
     "test": "ember test"
   },
   "devDependencies": {
-    "@ember/guides-source": "github:ember-learn/guides-source#c18b8c5c3d9a404f509d64c187ff36e87b9ae374",
+    "@ember/guides-source": "github:ember-learn/guides-source#v3.1.4",
     "algoliasearch": "^3.24.10",
     "broccoli-asset-rev": "^2.4.5",
     "broccoli-merge-trees": "^2.0.0",
