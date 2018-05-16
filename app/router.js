@@ -20,7 +20,7 @@ const Router = EmberRouter.extend({
 
   _trackPage() {
     if(get(this, 'fastboot.isFastBoot')) {
-      return
+      return;
     }
 
     scheduleOnce('afterRender', this, () => {
