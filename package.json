@@ -60,7 +60,7 @@
     "ember-prism": "^0.2.0",
     "ember-resolver": "^4.0.0",
     "ember-source": "~2.18.0",
-    "ember-styleguide": "github:ember-learn/ember-styleguide#092d4877b0c75a2ecf978edade6c39cea1ad7953",
+    "ember-styleguide": "github:ember-learn/ember-styleguide#feature/home-link",
     "ember-tether": "^1.0.0-beta.0",
     "ember-welcome-page": "^3.0.0",
     "eslint-plugin-ember": "^5.0.0",
