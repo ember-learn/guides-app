@@ -38,6 +38,10 @@ export default Service.extend({
     let section = contentId.split('/')[0]
     let currentSection = tocSections.find((tocSection) => tocSection.id === section);
 
+    if(!currentSection) {
+      return;
+    }
+
     set(this, 'metaSection', get(currentSection, 'title'));
 
     return currentSection;
@@ -61,6 +65,10 @@ export default Service.extend({
     let pages = get(currentSection, 'pages');
 
     let currentPage = pages.find((page) => page.url === get(this, 'content.id'));
+
+    if(!currentPage) {
+      return;
+    }
 
     set(this, 'metaPage', get(currentPage, 'title'));
 
@@ -91,14 +99,13 @@ export default Service.extend({
 
   previousPage: computed('currentSection', 'currentPage', function() {
     let currentSection = get(this, 'currentSection');
+    let currentPage = get(this, 'currentPage');
 
-    if(!currentSection) { return; }
+    if(!currentSection || !currentPage) { return; }
 
     let pages = get(currentSection, 'pages');
 
     if(pages) {
-      let currentPage = get(this, 'currentPage');
-
       let currentLocalPage = pages.find((page) => page.url === currentPage.url);
       let index = pages.indexOf(currentLocalPage);
 
@@ -110,13 +117,13 @@ export default Service.extend({
 
   nextPage: computed('currentSection', 'currentPage', function() {
     let currentSection = get(this, 'currentSection');
+    let currentPage = get(this, 'currentPage');
 
-    if(!currentSection) { return; }
+    if(!currentSection || !currentPage) { return; }
 
     let pages = get(currentSection, 'pages');
 
     if(pages) {
-      let currentPage = get(this, 'currentPage');
       let currentLocalPage = pages.find((page) => page.url === currentPage.url);
       let index = pages.indexOf(currentLocalPage);
 
