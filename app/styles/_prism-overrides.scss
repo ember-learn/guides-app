@@ -15,3 +15,8 @@ code > .diff-deletion {
 code .diff-operator {
   user-select: none;
 }
+
+code .token.comment {
+  color: #E6E6E6;
+
+}
