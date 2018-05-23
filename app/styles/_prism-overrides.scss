@@ -5,11 +5,27 @@
 }
 
 code > .diff-insertion {
-  background-color: #5D7D5D;
+  background-color: rgba(93, 125, 93, 0.5);
+
+  .token.property,
+  .token.tag,
+  .token.constant,
+  .token.symbol,
+  .token.deleted {
+    color: #ff95bb;
+  }
 }
 
 code > .diff-deletion {
-  background-color: #905454;
+  background-color: rgba(144, 84, 84, .7);
+
+  .token.property,
+  .token.tag,
+  .token.constant,
+  .token.symbol,
+  .token.deleted {
+    color: #ffaac8;
+  }
 }
 
 code .diff-operator {
@@ -18,4 +34,14 @@ code .diff-operator {
 
 code .token.comment {
   color: #E6E6E6;
+}
+
+code {
+   .token.property,
+   .token.tag,
+   .token.constant,
+   .token.symbol,
+   .token.deleted {
+     color: #ff6fa3;
+   }
 }
