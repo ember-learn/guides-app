@@ -16,7 +16,11 @@ export default Route.extend({
       return this.transitionTo('version.show', path.replace(/\/index$/, ''))
     }
 
-    const { version, currentVersion } = this.modelFor('version');
+    const {
+      version,
+      currentVersion,
+      pages,
+    } = this.modelFor('version');
 
     let contentPromise = this.store.queryRecord('content', {
       path,
@@ -34,7 +38,7 @@ export default Route.extend({
 
     return hash({
       content: contentPromise,
-      pages: get(this, 'store').query('page', { version }),
+      pages,
       path,
       version,
       currentVersion,
