@@ -56,7 +56,7 @@
     "ember-metrics": "^0.12.1",
     "ember-normalize": "^1.0.0",
     "ember-percy": "^1.2.21",
-    "ember-power-select": "^1.10.3",
+    "ember-power-select": "^2.0.2",
     "ember-prism": "^0.2.0",
     "ember-resolver": "^4.0.0",
     "ember-source": "~2.18.0",
