@@ -20,7 +20,7 @@
   "devDependencies": {
     "@ember/guides-source": "github:ember-learn/guides-source#v3.1.5",
     "algoliasearch": "^3.24.10",
-    "broccoli-asset-rev": "^2.4.5",
+    "broccoli-asset-rev": "^2.7.0",
     "broccoli-merge-trees": "^2.0.0",
     "broccoli-static-site-json": "^1.0.3",
     "compare-versions": "3.1.0",
