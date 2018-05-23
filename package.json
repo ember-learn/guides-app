@@ -27,7 +27,7 @@
     "ember-ajax": "^3.0.0",
     "ember-algolia": "0.0.10",
     "ember-body-class": "^0.4.0",
-    "ember-browserify": "^1.2.1",
+    "ember-browserify": "^1.2.2",
     "ember-cli": "~2.18.0",
     "ember-cli-app-version": "^3.0.0",
     "ember-cli-babel": "^6.6.0",
