@@ -24,7 +24,7 @@ module.exports = function(environment) {
     },
 
     fastboot: {
-      hostWhitelist: ["localhost:4200", "localhost:7784"]
+      hostWhitelist: [/^localhost:\d+$/]
     },
 
     showdown: {
