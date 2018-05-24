@@ -14,8 +14,12 @@ module('Acceptance | visual regression', function(hooks) {
     let store = this.owner.lookup('service:store');
     let pages = store.peekAll('page');
 
-    pages.forEach((section) => {
-      section.get('pages').forEach(async page => {
+    await pages.reduce(async (prev, section) => {
+      await prev;
+
+      return section.get('pages').reduce(async (prev, page) => {
+        await prev;
+
         let url = get(page, 'url');
 
         await visit(`/release/${url}`);
@@ -29,7 +33,7 @@ module('Acceptance | visual regression', function(hooks) {
         }
 
         await percySnapshot(name);
-      })
-    })
+      }, Promise.resolve());
+    }, Promise.resolve());
   });
 });
