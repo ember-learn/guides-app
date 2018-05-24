@@ -46,8 +46,8 @@ export default Route.extend({
   },
   afterModel(model) {
     let content = get(model, 'content');
-    set(get(this, 'page'), 'content', content);
+    set(this.page, 'content', content);
     let version = get(model, 'version');
-    set(get(this, 'page'), 'currentVersion', version);
+    set(this.page, 'currentVersion', version);
   }
 });

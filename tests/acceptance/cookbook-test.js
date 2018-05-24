@@ -1,28 +1,23 @@
-import { test } from 'qunit';
-import moduleForAcceptance from 'guides-app/tests/helpers/module-for-acceptance';
+import { click, currentURL, visit } from '@ember/test-helpers';
+import { module, test } from 'qunit';
+import { setupApplicationTest } from 'ember-qunit';
 
-moduleForAcceptance('Acceptance | cookbook');
+module('Acceptance | cookbook', function(hooks) {
+  setupApplicationTest(hooks);
 
-/*
-Cookbook gets its own tests because it has one additional layer of nesting than
-the rest of the guides
-*/
+  /*
+  Cookbook gets its own tests because it has one additional layer of nesting than
+  the rest of the guides
+  */
 
-test('visiting /cookbook', function(assert) {
-  visit('/v1.10.0/cookbook/');
-  andThen(function() {
+  test('visiting /cookbook', async function(assert) {
+    await visit('/v1.10.0/cookbook/');
     assert.equal(currentURL(), '/v1.10.0/cookbook/');
-  });
-  click('.next-guide')
-  andThen(function() {
+    await click('.next-guide')
     assert.equal(currentURL(), '/v1.10.0/cookbook/contributing');
-  });
-  click('.next-guide')
-  andThen(function() {
+    await click('.next-guide')
     assert.equal(currentURL(), '/v1.10.0/cookbook/contributing/understanding_the_cookbook_format');
-  });
-  click('.previous-guide')
-  andThen(function() {
+    await click('.previous-guide')
     assert.equal(currentURL(), '/v1.10.0/cookbook/contributing');
   });
 });

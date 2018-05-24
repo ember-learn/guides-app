@@ -15,7 +15,7 @@ export default Route.extend({
       errorMessage = '404 - Not Found';
     }
 
-    return setProperties(this.get('headData'), {
+    return setProperties(this.headData, {
       title: `Ember.js - ${errorMessage}`
     });
   }

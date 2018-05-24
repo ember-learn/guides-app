@@ -24,13 +24,13 @@ const Router = EmberRouter.extend({
     }
 
     scheduleOnce('afterRender', this, () => {
-      const page = this.get('url');
+      const page = this.url;
       const title = this.getWithDefault('currentRouteName', 'unknown');
 
       // this is constant for this app and is only used to identify page views in the GA dashboard
       const hostname = 'guides.emberjs.com';
 
-      get(this, 'metrics').trackPage({ page, title, hostname });
+      this.metrics.trackPage({ page, title, hostname });
     });
   },
 });
