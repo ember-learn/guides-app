@@ -27,4 +27,5 @@ before_install:
 
 script:
   - npm run lint:js
+  - ember build --prod
   - npm test
