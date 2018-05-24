@@ -44,9 +44,6 @@ module.exports = {
     {
       files: ['tests/**/*.js'],
       excludedFiles: ['tests/dummy/**/*.js'],
-      globals: {
-        percySnapshot: true
-      },
       env: {
         embertest: true
       }

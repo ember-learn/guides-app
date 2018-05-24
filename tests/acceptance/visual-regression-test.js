@@ -2,6 +2,7 @@ import { visit } from '@ember/test-helpers';
 import { module, test } from 'qunit';
 import { setupApplicationTest } from 'ember-qunit';
 import { get } from '@ember/object';
+import { percySnapshot } from 'ember-percy';
 
 module('Acceptance | visual regression', function(hooks) {
   setupApplicationTest(hooks);
@@ -10,7 +11,7 @@ module('Acceptance | visual regression', function(hooks) {
     assert.expect(0);
     await visit('/release');
 
-    let store = this.application.__container__.lookup('service:store');
+    let store = this.owner.lookup('service:store');
     let pages = store.peekAll('page');
 
     pages.forEach((section) => {
@@ -27,7 +28,7 @@ module('Acceptance | visual regression', function(hooks) {
           name = '/index.html';
         }
 
-        percySnapshot(name);
+        await percySnapshot(name);
       })
     })
   });

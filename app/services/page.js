@@ -42,6 +42,7 @@ export default Service.extend({
       return;
     }
 
+    // eslint-disable-next-line ember/no-side-effects
     set(this, 'metaSection', get(currentSection, 'title'));
 
     return currentSection;
@@ -70,6 +71,7 @@ export default Service.extend({
       return;
     }
 
+    // eslint-disable-next-line ember/no-side-effects
     set(this, 'metaPage', get(currentPage, 'title'));
 
     return currentPage;

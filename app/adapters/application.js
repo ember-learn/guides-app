@@ -1,5 +1,4 @@
 import DS from 'ember-data';
-import { get } from '@ember/object';
 
 export default DS.JSONAPIAdapter.extend({
   buildURL(modelName, id, snapshot, requestType, query) {
