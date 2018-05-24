@@ -10,11 +10,12 @@ module.exports = function(defaults) {
         'apacheconf',
         'bash',
         'css',
-        'ruby',
         'handlebars',
         'http',
         'javascript',
         'json',
+        'markup-templating',
+        'ruby',
         'scss',
       ],
       'plugins': ['line-numbers', 'normalize-whitespace']

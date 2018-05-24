@@ -8,14 +8,14 @@ module('Acceptance | current url', function(hooks) {
 
   test('visiting /release-url', async function(assert) {
     await visit('/release');
-    let page = this.application.__container__.lookup('service:page');
+    let page = this.owner.lookup('service:page');
     let currentVersion = page.get('currentVersion');
     assert.equal(find('.ember-basic-dropdown-trigger').textContent.trim(), currentVersion);
   });
 
   test('visiting / redirects you to /release', async function(assert) {
     await visit('/');
-    let page = this.application.__container__.lookup('service:page');
+    let page = this.owner.lookup('service:page');
     assert.equal(currentURL(), "/release");
 
     let currentVersion = page.get('currentVersion');

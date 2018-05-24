@@ -31,7 +31,7 @@
 
         {{else}}
           {{#cp-panel open=(eq currentSection.id page.id) as |p|}}
-            {{#p.toggle}}
+            {{#p.toggle data-test-toc-title=page.title}}
               {{page.title}}
             {{/p.toggle}}
 
@@ -42,7 +42,7 @@
         {{/if}}
 
       {{else}}
-        {{#link-to 'version.show' page.url activeClass="selected"}}
+        {{#link-to 'version.show' page.url activeClass="selected" data-test-toc-link=page.title}}
           {{page.title}}
         {{/link-to}}
       {{/if}}
