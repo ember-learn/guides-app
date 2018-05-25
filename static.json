@@ -5,10 +5,10 @@
   "force_redirect": true,
   "redirects": {
     "/": {
-      "url": "/release/"
+      "url": "https://$host/release/"
     },
     "/current/(.*)": {
-      "url": "/release/$1"
+      "url": "https://$host/release/$1"
     }
   },
   "headers": {
