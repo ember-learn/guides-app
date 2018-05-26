@@ -47,7 +47,7 @@
     "ember-cli-spinkit": "^2.0.0",
     "ember-cli-sri": "^2.1.0",
     "ember-cli-uglify": "^2.0.0",
-    "ember-collapsible-panel": "^2.1.1",
+    "ember-collapsible-panel": "^3.0.1",
     "ember-composable-helpers": "^2.1.0",
     "ember-data": "~3.1.0",
     "ember-export-application-global": "^2.0.0",
