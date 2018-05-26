@@ -57,7 +57,7 @@
     "ember-metrics": "^0.12.1",
     "ember-percy": "^1.2.21",
     "ember-power-select": "^1.10.3",
-    "ember-prism": "^0.2.0",
+    "ember-prism": "^0.3.0",
     "ember-resolver": "^4.0.0",
     "ember-source": "~3.1.0",
     "ember-styleguide": "github:ember-learn/ember-styleguide#v0.1",
