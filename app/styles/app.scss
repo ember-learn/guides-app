@@ -1575,6 +1575,10 @@ article.x404 img {
   width: 1px !important;
 }
 
+.footer a {
+  text-decoration: none;
+}
+
 @import "ember-power-select";
 @import "code-block-file-name";
 @import "prism-overrides";
