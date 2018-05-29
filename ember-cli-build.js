@@ -1,6 +1,7 @@
 'use strict';
 
 const EmberApp = require('ember-cli/lib/broccoli/ember-app');
+const resolve = require('resolve');
 
 module.exports = function(defaults) {
   let app = new EmberApp(defaults, {
@@ -31,6 +32,12 @@ module.exports = function(defaults) {
   });
 
   app.import('node_modules/compare-versions/index.js');
+
+  app.import(resolve.sync('downsize-cjs'), {
+    using: [
+      { transformation: 'cjs', as: 'downsize'}
+    ]
+  });
 
   return app.toTree();
 };
