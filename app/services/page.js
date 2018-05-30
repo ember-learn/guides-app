@@ -78,7 +78,7 @@ export default Service.extend({
     }
   }),
 
-  previousPage: computed('currentSection', 'currentPage', function() {
+  previousPage: computed('currentSection.pages', 'currentPage.url', function() {
     let currentSection = this.currentSection;
     let currentPage = this.currentPage;
 
@@ -96,7 +96,7 @@ export default Service.extend({
     }
   }),
 
-  nextPage: computed('currentSection', 'currentPage', function() {
+  nextPage: computed('currentSection.pages', 'currentPage.url', function() {
     let currentSection = this.currentSection;
     let currentPage = this.currentPage;
 
