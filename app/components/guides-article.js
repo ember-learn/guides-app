@@ -10,7 +10,6 @@ export default Component.extend({
     let nodeList = this.$('pre:not(.no-line-numbers) > code');
 
     if (nodeList) {
-      // console.log(nodeList);
       nodeList.each((index, code) => {
         code.parentNode.classList.add('line-numbers');
       });
