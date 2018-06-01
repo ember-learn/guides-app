@@ -2,6 +2,8 @@ import HeadData from 'ember-meta/services/head-data';
 import { computed } from '@ember/object';
 import { getOwner } from '@ember/application';
 import { inject as service } from '@ember/service';
+import { isEmpty } from '@ember/utils';
+
 import config from '../config/environment';
 
 export default HeadData.extend({
@@ -22,9 +24,25 @@ export default HeadData.extend({
 
   slug: computed('routeName', function() {
     if(this.currentRouteModel.id === 'index') {
-      return 'release';
+      return this.page.currentVersion;
     }
 
-    return `release/${this.currentRouteModel.id.replace(/\/index$/, '')}`;
-  })
+    return `${this.page.currentVersion}/${this.currentRouteModel.id.replace(/\/index$/, '')}`;
+  }),
+
+  canonical: computed('routeName', function() {
+    if (!isEmpty(this.currentRouteModel.canonical)) {
+      return this.currentRouteModel.canonical;
+    }
+
+    let slug;
+
+    if (this.currentRouteModel.id === 'index') {
+      slug = 'release';
+    } else {
+      slug = `release/${this.currentRouteModel.id.replace(/\/index$/, '')}`
+    }
+
+    return `${config['ember-meta'].url}${slug}/`;
+  }),
 });
