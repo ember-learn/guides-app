@@ -1,39 +1,18 @@
 import Service from '@ember/service';
 import { inject as service } from '@ember/service';
-import { get, set, computed, observer } from '@ember/object';
-import { next } from '@ember/runloop';
-
-import { defer } from 'rsvp';
+import { get, set, computed } from '@ember/object';
 
 export default Service.extend({
   router: service(),
   fastboot: service(),
   headData: service(),
 
-  titleObserver: observer('metaSection', 'metaPage', function() {
-    const sectionTitle = this.metaSection;
-    const pageTitle = this.metaPage;
-
-    let deferred = defer();
-
-    if (this.get('fastboot.isFastBoot')) {
-      this.fastboot.deferRendering(deferred.promise);
-    }
-
-    next(this, function() {
-      set(this.headData, 'title', `Ember.js - ${sectionTitle}${pageTitle ? ': ' + pageTitle: ''}`);
-
-      // this is only to make fastboot to wait for us to set the title before rendering
-      deferred.resolve("Don't judge me 😭");
-    })
-  }),
-
   currentSection: computed('router.currentURL', 'pages.[]', 'content.id', function() {
     let tocSections = this.pages;
 
     let contentId = get(this, 'content.id');
 
-    if(!tocSections) { return; }
+    if(!tocSections || !contentId) { return; }
 
     let section = contentId.split('/')[0]
     let currentSection = tocSections.find((tocSection) => tocSection.id === section);

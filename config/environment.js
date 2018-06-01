@@ -51,6 +51,15 @@ module.exports = function(environment) {
         }
       },
     ],
+
+    'ember-meta': {
+      description: 'Ember.js helps developers be more productive out of the box. Designed with developer ergonomics in mind, its friendly APIs help you get your job done—fast.',
+      imgSrc: '/images/logos/ember.png',
+      siteName: 'Ember',
+      title: 'Ember Guides',
+      twitterUsername: '@emberjs',
+      url: 'https://guides.emberjs.com/'
+    },
   };
 
   if (environment === 'development') {
