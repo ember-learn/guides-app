@@ -21,6 +21,10 @@ export default HeadData.extend({
   }),
 
   slug: computed('routeName', function() {
-    return `release/${this.get('currentRouteModel.id').replace(/\/index$/, '')}`;
+    if(this.currentRouteModel.id === 'index') {
+      return 'release';
+    }
+
+    return `release/${this.currentRouteModel.id.replace(/\/index$/, '')}`;
   })
 });
