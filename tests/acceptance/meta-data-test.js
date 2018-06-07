@@ -12,13 +12,16 @@ module('Acceptance | meta data', function(hooks) {
 
     assert.equal(currentURL(), '/release/routing/defining-your-routes');
 
-    let title = document.head.querySelector('title');
+    // lookup title from service because testem modifies title https://github.com/testem/testem/issues/195
+    let headData = this.owner.lookup('service:head-data');
+    let title = headData.title;
+
     let description = document.head.querySelector('meta[name="description"]');
 
     assert.ok(title);
     assert.ok(description);
 
-    assert.equal(title.innerText,
+    assert.equal(title,
       'Defining Your Routes - Routing - Ember Guides');
     assert.ok(description.content.startsWith('When your application starts, the router matches the current URL to the routes'));
   });
