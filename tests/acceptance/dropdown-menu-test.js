@@ -12,11 +12,11 @@ module('Acceptance | dropdown menu', function(hooks) {
   test('version navigation by dropdown menu', async function(assert) {
     await visit('/v2.17.0/models/');
     await click('.ember-basic-dropdown-trigger')
-    await click(selectOption("v2.10.0"))
+    await click(selectOption("2.10"))
     assert.equal(currentURL(), '/v2.10.0');
 
     await click('.ember-basic-dropdown-trigger')
-    await click(selectOption("v1.10.0"))
+    await click(selectOption("1.10"))
     assert.equal(currentURL(), '/v1.10.0');
   });
 });
