@@ -16,6 +16,8 @@ export default HeadData.extend({
     if(!this.page.currentPage || !this.page.currentSection) {
       return 'Ember Guides';
     }
+
+    return `${this.page.currentPage.title} - ${this.page.currentSection.title} - Ember Guides`
   }),
 
   description: computed('routeName', function() {
