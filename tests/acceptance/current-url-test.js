@@ -10,6 +10,7 @@ module('Acceptance | current url', function(hooks) {
     await visit('/release');
     let page = this.owner.lookup('service:page');
     let currentVersion = page.get('currentVersion');
+    currentVersion = currentVersion.slice(currentVersion.indexOf('v') + 1 || 0, currentVersion.lastIndexOf('.') === currentVersion.indexOf('.') ? currentVersion.length : currentVersion.lastIndexOf('.'))
     assert.equal(find('.ember-basic-dropdown-trigger').textContent.trim(), currentVersion);
   });
 
@@ -19,6 +20,7 @@ module('Acceptance | current url', function(hooks) {
     assert.equal(currentURL(), "/release");
 
     let currentVersion = page.get('currentVersion');
+    currentVersion = currentVersion.slice(currentVersion.indexOf('v') + 1 || 0, currentVersion.lastIndexOf('.') === currentVersion.indexOf('.') ? currentVersion.length : currentVersion.lastIndexOf('.'))
     assert.equal(find('.ember-basic-dropdown-trigger').textContent.trim(), currentVersion);
   });
 });
