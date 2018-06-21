@@ -47,6 +47,13 @@ pre[class*="language-"] {
   background-image: url("../images/ribbon-hbs.svg");
 }
 
+code {
+  -webkit-font-feature-settings: "kern", "tnum";
+  -moz-font-feature-settings: "kern", "tnum";
+  -ms-font-feature-settings: "kern", "tnum";
+  font-feature-settings: "kern", "tnum";
+}
+
 code:not([class*="language-"]) {
   background-color: #F8E7CF;
   border-radius: 3px;
@@ -54,8 +61,4 @@ code:not([class*="language-"]) {
   font-size: 0.9em;
   padding: 0.2em 0.5em;
   margin: 0 0.1em;
-  -webkit-font-feature-settings: "kern", "tnum";
-  -moz-font-feature-settings: "kern", "tnum";
-  -ms-font-feature-settings: "kern", "tnum";
-  font-feature-settings: "kern", "tnum";
 }
