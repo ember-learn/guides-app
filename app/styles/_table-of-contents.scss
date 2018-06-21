@@ -112,14 +112,14 @@ li.toc-level-0 {
 
 .toc-container {
   .cp-Panel-toggle {
-    color: #865931;
+    color: #9b2918;
     display: block;
     line-height: 1.25;
     padding: 0.33em 0;
   }
 
   .cp-Panel-toggle:hover {
-    color: #dd6a58;
+    color: darken(#9b2918, 5);
   }
 }
 
@@ -129,7 +129,7 @@ li.toc-level-0 > div > a {
 }
 
 ol.toc-level-1 {
-  border-left: 1px solid #F8E7CF;
+  border-left: 1px solid #74B0CE;
   font-size: 0.9rem;
 }
 
@@ -144,7 +144,7 @@ ol.toc-level-1 li {
 
 ol.toc-level-1 li.selected,
 ol.toc-level-1 li:hover {
-  border-left-color: #F8E7CF;
+  border-left-color: #74B0CE;
 }
 
 ol.toc-level-1 li:hover {
