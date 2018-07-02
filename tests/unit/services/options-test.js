@@ -11,12 +11,12 @@ module('Unit | Service | options', function(hooks) {
 
   test('code styles include Ember and ES6', function(assert) {
     let service = this.owner.lookup('service:options');
-
-    let ember = service.codeStyles.filter(s => s.name ==='Ember Traditional');
+    let codeStyles = service.get('codeStyles');
+    let ember = codeStyles.filter(s => s.name ==='Ember Traditional');
     assert.ok(ember);
     assert.equal(ember.mdStyle, 'ember');
 
-    let es6 = service.codeStyles.filter(s => s.name ==='ES6');
+    let es6 = codeStyles.filter(s => s.name ==='ES6');
     assert.ok(es6);
     assert.equal(es6.mdStyle, 'es6');
   });
