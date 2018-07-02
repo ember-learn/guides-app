@@ -1,10 +1,13 @@
 import Component from '@ember/component';
+import { observer } from '@ember/object';
 import { inject as service } from '@ember/service';
 
 export default Component.extend({
   tagName: 'article',
   classNames: 'chapter',
   page: service(),
+  options: service(),
+
   didRender() {
 
     let nodeList = this.$('pre:not(.no-line-numbers) > code');
@@ -39,6 +42,8 @@ export default Component.extend({
         this.$(code.parentNode.parentNode).prepend('<div class="ribbon"></div>');
       });
     }
+
+    this.showCodeExamplesInCorrectStyle();
 
     let allHeaders = document.querySelectorAll("h1, h2, h3, h4, h5, h6")
 
@@ -89,5 +94,25 @@ export default Component.extend({
       codeBlock.innerHTML = lines.join('\n');
     })
 
-  }
+  },
+
+  showCodeExamplesInCorrectStyle() {
+    let filenameNodeList = this.$('pre > code[style]');
+    
+    if (filenameNodeList) {
+      let selectedStyle = this.get('options.codeStyle.mdStyle');
+      filenameNodeList.each((index, code) => {
+        let containingDiv = this.$(code.parentNode.parentNode);
+        if (code.attributes['style'].value === selectedStyle) {
+          containingDiv.removeClass('visually-hidden');
+        } else {
+          containingDiv.addClass('visually-hidden');
+        }
+      });
+    }
+  },
+
+  codeStyleChanged: observer('options.codeStyle.tag', function() {
+    this.rerender();
+  })
 });

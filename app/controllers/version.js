@@ -7,6 +7,7 @@ import { inject as service } from '@ember/service';
 
 export default Controller.extend({
   page: service(),
+  options: service(),
   application: controller(),
 
   pages: alias('model.pages'),
@@ -20,6 +21,10 @@ export default Controller.extend({
   actions: {
     selectVersion(version) {
       this.transitionToRoute('version', version)
+    },
+
+    selectStyle(style) {
+      this.get('options').set('codeStyle', style);
     }
   }
 });
