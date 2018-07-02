@@ -4,6 +4,15 @@
     {{shorten-version version}}
   {{/power-select}}
 
+  {{!-- choose code style --}}
+  <label for="codestyle-select" class="visually-hidden">Example code style</label>
+  {{#power-select class="codestyle-select" ariaLabel=options.codeStyle.name selected=options.codeStyle 
+                                           options=options.codeStyles onchange=(action 'selectStyle')
+                                           searchEnabled=false
+                                           as |codeStyle|}}
+    {{codeStyle.name}}
+  {{/power-select}}
+
   <input id="toc-toggle" class="toc-toggle visually-hidden" type="checkbox" />
   <label for="toc-toggle">Table of Contents <span class="visually-hidden">toggle</span></label>
 
