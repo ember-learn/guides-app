@@ -55,7 +55,7 @@
     "ember-meta": "^0.3.0",
     "ember-metrics": "^0.12.1",
     "ember-percy": "^1.4.4",
-    "ember-power-select": "^2.0.4",
+    "ember-power-select": "^2.0.5",
     "ember-prism": "^0.2.0",
     "ember-resolver": "^5.0.1",
     "ember-source": "~3.1.0",
