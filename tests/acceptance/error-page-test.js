@@ -5,7 +5,7 @@ import { setupApplicationTest } from 'ember-qunit';
 module('Acceptance | error page', function(hooks) {
   setupApplicationTest(hooks);
 
-  test('visiting /error-page', async function(assert) {
+  test('visiting noncense page shows the 404 error-page', async function(assert) {
     await visit('/v1.12.0/nonsense/route/');
 
     assert.equal(currentURL(), '/v1.12.0/nonsense/route/');
