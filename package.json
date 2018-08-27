@@ -65,7 +65,8 @@
     "eslint-plugin-ember": "^5.0.0",
     "loader.js": "^4.2.3",
     "normalize.css": "^4.1.1",
-    "prember": "^0.3.0"
+    "prember": "^0.3.0",
+    "qunit-dom": "^0.7.1"
   },
   "fastbootDependencies": [
     "algoliasearch"
