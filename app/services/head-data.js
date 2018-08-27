@@ -25,6 +25,11 @@ export default HeadData.extend({
   }),
 
   slug: computed('routeName', function() {
+    // if there is no current model
+    if (!this.currentRouteModel) {
+      return null;
+    }
+    
     if(this.currentRouteModel.id === 'index') {
       return this.page.currentVersion;
     }
@@ -33,6 +38,11 @@ export default HeadData.extend({
   }),
 
   canonical: computed('routeName', function() {
+    // if there is no current model
+    if (!this.currentRouteModel) {
+      return null;
+    }
+
     if (!isEmpty(this.currentRouteModel.canonical)) {
       return this.currentRouteModel.canonical;
     }

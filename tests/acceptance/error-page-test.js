@@ -10,5 +10,6 @@ module('Acceptance | error page', function(hooks) {
 
     assert.equal(currentURL(), '/v1.12.0/nonsense/route/');
     assert.dom('[data-test-error-page]').exists();
+    assert.dom('[data-test-error-message]').hasText(`Ack! 404 friend, you're in the wrong place`);
   });
 });
