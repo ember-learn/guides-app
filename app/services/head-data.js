@@ -2,7 +2,7 @@ import HeadData from 'ember-meta/services/head-data';
 import { computed } from '@ember/object';
 import { getOwner } from '@ember/application';
 import { inject as service } from '@ember/service';
-import { isEmpty, isPresent } from '@ember/utils';
+import { isPresent } from '@ember/utils';
 
 import config from '../config/environment';
 
