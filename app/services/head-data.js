@@ -2,7 +2,7 @@ import HeadData from 'ember-meta/services/head-data';
 import { computed } from '@ember/object';
 import { getOwner } from '@ember/application';
 import { inject as service } from '@ember/service';
-import { isEmpty } from '@ember/utils';
+import { isPresent } from '@ember/utils';
 
 import config from '../config/environment';
 
@@ -25,6 +25,11 @@ export default HeadData.extend({
   }),
 
   slug: computed('routeName', function() {
+    // if there is no current model
+    if (!this.currentRouteModel) {
+      return null;
+    }
+
     if(this.currentRouteModel.id === 'index') {
       return this.page.currentVersion;
     }
@@ -33,7 +38,12 @@ export default HeadData.extend({
   }),
 
   canonical: computed('routeName', function() {
-    if (!isEmpty(this.currentRouteModel.canonical)) {
+    // if there is no current model
+    if (!this.currentRouteModel) {
+      return null;
+    }
+
+    if (isPresent(this.currentRouteModel.canonical)) {
       return this.currentRouteModel.canonical;
     }
 
