@@ -1,4 +1,4 @@
-import { currentURL, find, visit } from '@ember/test-helpers';
+import { currentURL, visit } from '@ember/test-helpers';
 import { module, test } from 'qunit';
 
 import { setupApplicationTest } from 'ember-qunit';
@@ -11,7 +11,7 @@ module('Acceptance | current url', function(hooks) {
     let page = this.owner.lookup('service:page');
     let currentVersion = page.get('currentVersion');
     currentVersion = currentVersion.slice(currentVersion.indexOf('v') + 1 || 0, currentVersion.lastIndexOf('.') === currentVersion.indexOf('.') ? currentVersion.length : currentVersion.lastIndexOf('.'))
-    assert.equal(find('.ember-basic-dropdown-trigger').textContent.trim(), currentVersion);
+    assert.dom('.ember-basic-dropdown-trigger').hasText(currentVersion);
   });
 
   test('visiting / redirects you to /release', async function(assert) {
@@ -21,6 +21,6 @@ module('Acceptance | current url', function(hooks) {
 
     let currentVersion = page.get('currentVersion');
     currentVersion = currentVersion.slice(currentVersion.indexOf('v') + 1 || 0, currentVersion.lastIndexOf('.') === currentVersion.indexOf('.') ? currentVersion.length : currentVersion.lastIndexOf('.'))
-    assert.equal(find('.ember-basic-dropdown-trigger').textContent.trim(), currentVersion);
+    assert.dom('.ember-basic-dropdown-trigger').hasText(currentVersion);
   });
 });
