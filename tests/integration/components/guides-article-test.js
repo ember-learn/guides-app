@@ -47,11 +47,9 @@ module('Integration | Component | guides-article', function(hooks) {
 
     await render(hbs`{{guides-article model=model version=version currentVersion=currentVersion}}`);
 
-    let pageTitle = this.element.querySelector('h1');
-    let pageLink = this.element.querySelector('h1 a');
-    assert.notOk(this.element.querySelector('.old-version-warning'), 'no warning shown on current version');
-    assert.equal(pageTitle.textContent.trim(), 'Fresh Fish\n  Edit Page');
-    assert.equal(pageLink.href, `${GH_LINK}/v3.2.0/123.md`, 'correct guides OSS link is shown');
+    assert.dom('.old-version-warning').doesNotExist();
+    assert.dom('h1').hasText('Fresh Fish Edit Page');
+    assert.dom('h1 a').hasAttribute('href', `${GH_LINK}/v3.2.0/123.md`, 'correct guides OSS link is shown');
   });
 
   test('it formats code blocks', async function(assert) {
@@ -64,11 +62,10 @@ module('Integration | Component | guides-article', function(hooks) {
 
     await render(hbs`{{guides-article model=model version=version currentVersion=currentVersion}}`);
 
-    let filenameNode = this.element.querySelector('div.filename span');
-    assert.ok(this.element.querySelector('.old-version-warning'), 'warning is shown on older versions');
-    assert.equal(this.element.querySelectorAll('.line-numbers-rows span').length, 14, '14 lines are shown');
-    assert.equal(this.element.querySelectorAll('.diff-deletion').length, 3, '3 lines were removed');
-    assert.equal(this.element.querySelectorAll('.diff-insertion').length, 4, '4 lines were added');
-    assert.equal(filenameNode.textContent.trim(), 'tests/acceptance/list-rentals-test.js', 'filename is shown');
+    assert.dom('.old-version-warning').exists();
+    assert.dom('.line-numbers-rows span').exists({ count: 14 });
+    assert.dom('.diff-deletion').exists({ count: 3 });
+    assert.dom('.diff-insertion').exists({ count: 4 });
+    assert.dom('div.filename span').hasText('tests/acceptance/list-rentals-test.js', 'filename is shown');
   });
 });
