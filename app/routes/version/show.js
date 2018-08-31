@@ -45,6 +45,10 @@ export default Route.extend({
     })
   },
   afterModel(model) {
+    if(model.content.redirect) {
+      this.transitionTo('version.show', model.content.redirect)
+    }
+
     let content = get(model, 'content');
     set(this.page, 'content', content);
     let version = get(model, 'version');
