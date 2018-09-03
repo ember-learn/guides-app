@@ -6,6 +6,11 @@
   font-style: normal;
 }
 
+// fixing a rendering issue on safari
+code[class*=language-], pre[class*=language-] {
+  text-shadow: unset;
+}
+
 [class^="icon-"]:before,
 [class*=" icon-"]:before {
   font-family: "fontello";
