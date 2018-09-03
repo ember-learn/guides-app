@@ -19,7 +19,13 @@ export default Controller.extend({
 
   actions: {
     selectVersion(version) {
-      this.transitionToRoute('version', version)
+      // Navigate to same section/page if it exists
+      const path = get(this, 'page.currentPage.url');
+      this.store.queryRecord('content', {version, path}).then(() => {
+        this.transitionToRoute(`/${version}/${path}`);
+      }).catch(() => {
+        this.transitionToRoute('version', version);
+      })
     }
   }
 });
