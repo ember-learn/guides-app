@@ -30,12 +30,7 @@ script:
   - ember build --prod
   - npm test
 
-after_success:
-  - wget https://gist.githubusercontent.com/sivakumar-kailasam/730c6d2e5d0847cf9e0bc17df386c852/raw/3e0f114d52c27f00428e37e053cdac6ec14c48f2/discord_notifier.sh
-  - chmod +x discord_notifier.sh
-  - ./discord_notifier.sh $WEBHOOK_URL
-
 after_failure:
-  - wget https://gist.githubusercontent.com/sivakumar-kailasam/730c6d2e5d0847cf9e0bc17df386c852/raw/3e0f114d52c27f00428e37e053cdac6ec14c48f2/discord_notifier.sh
+  - wget https://gist.github.com/sivakumar-kailasam/730c6d2e5d0847cf9e0bc17df386c852/raw/discord_notifier.sh
   - chmod +x discord_notifier.sh
-  - ./discord_notifier.sh $WEBHOOK_URL
+  - ./discord_notifier.sh
