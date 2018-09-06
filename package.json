@@ -66,7 +66,7 @@
     "loader.js": "^4.2.3",
     "normalize.css": "^4.1.1",
     "prember": "^0.3.0",
-    "qunit-dom": "^0.7.1"
+    "qunit-dom": "^0.8.0"
   },
   "fastbootDependencies": [
     "algoliasearch"
