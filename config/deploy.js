@@ -1,13 +1,21 @@
 /* eslint-env node */
 'use strict';
 
+let credentials;
+
+try {
+  credentials = require('./credentials.json');
+} catch (e) {
+  credentials = {};
+}
+
 module.exports = function(deployTarget) {
   let ENV = {
     build: {},
     'prember-algolia': {
       indexName: 'ember-guides',
       applicationId: 'EUXSOLYEM4',
-      apiKey: 'get-from-env',
+      apiKey: credentials.algoliaKey || process.env.ALGOLIA_KEY,
       tagsToExclude: '.old-version-warning,.edit-page,code,pre',
       versionsToIgnore: ['1.x'],
       versionPattern: /^(v\d+\.\d+\.\d+)\//,
