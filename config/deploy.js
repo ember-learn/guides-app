@@ -13,8 +13,8 @@ module.exports = function(deployTarget) {
   let ENV = {
     build: {},
     'prember-algolia': {
-      indexName: 'ember-guides',
-      applicationId: 'EUXSOLYEM4',
+      indexName: credentials.algoliaIndex || process.env.ALGOLIA_INDEX,
+      applicationId: credentials.algoliaApplication || process.env.ALGOLIA_APPLICATION,
       apiKey: credentials.algoliaKey || process.env.ALGOLIA_KEY,
       tagsToExclude: '.old-version-warning,.edit-page,code,pre',
       versionsToIgnore: ['1.x'],
