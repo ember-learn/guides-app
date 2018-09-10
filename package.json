@@ -25,13 +25,15 @@
     "broccoli-static-site-json": "^2.1.2",
     "compare-versions": "3.4.0",
     "ember-ajax": "^3.1.1",
-    "ember-algolia": "0.0.10",
+    "ember-auto-import": "^1.2.13",
     "ember-body-class": "^0.4.0",
-    "ember-browserify": "^1.2.1",
     "ember-cli": "~3.4.3",
     "ember-cli-app-version": "^3.0.0",
     "ember-cli-babel": "^7.1.2",
     "ember-cli-dependency-checker": "^3.0.0",
+    "ember-cli-deploy": "^1.0.2",
+    "ember-cli-deploy-build": "^1.1.1",
+    "ember-cli-deploy-prember-algolia": "^0.0.1",
     "ember-cli-eslint": "^4.2.1",
     "ember-cli-fastboot": "^2.0.0",
     "ember-cli-head": "^0.4.0",
@@ -49,7 +51,6 @@
     "ember-composable-helpers": "^2.1.0",
     "ember-data": "~3.4.2",
     "ember-export-application-global": "^2.0.0",
-    "ember-learn-search-components": "github:ember-learn/ember-learn-search-components#feature/styling",
     "ember-load-initializers": "^1.0.0",
     "ember-maybe-import-regenerator": "^0.1.6",
     "ember-meta": "^0.3.0",
@@ -68,9 +69,6 @@
     "prember": "^0.3.0",
     "qunit-dom": "^0.8.0"
   },
-  "fastbootDependencies": [
-    "algoliasearch"
-  ],
   "engines": {
     "node": "^4.5 || 6.* || >= 7.*"
   },
