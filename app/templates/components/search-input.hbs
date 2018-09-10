@@ -1,0 +1,39 @@
+<input
+  id='search-input'
+  type='search'
+  value={{value}}
+    oninput={{perform search value='target.value'}}
+  placeholder="Search the guides"
+  autocomplete="off"
+>
+
+{{!-- Search results dropdown --}}
+{{#ember-tether
+  target='#search-input'
+  targetAttachment='bottom left'
+  attachment='top left'
+  constraints=_resultTetherConstraints
+  class='ds-dropdown-results'
+}}
+  <span class="ds-suggestions ds-dropdown-menu">
+    {{#each _results as |result|}}
+      <div class="ds-suggestion">
+        <div class="algolia-docsearch-suggestion
+        algolia-docsearch-suggestion__secondary">
+          <div class="algolia-docsearch-suggestion--wrapper">
+            <div class="algolia-docsearch-suggestion--content">
+              <a href="https://guides.emberjs.com/v3.1.0/routing/specifying-a-routes-model/#ember323698">
+                {{{result._highlightResult.content.value}}}
+                {{!-- <div class="algolia-docsearch-suggestion--subcategory-inline">
+                    Specifying a Route's <span class="algolia-docsearch-suggestion--highlight">Model</span>
+                </div>
+                <div class="algolia-docsearch-suggestion--title"></div> --}}
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    {{/each}}
+  </span>
+{{/ember-tether}}
