@@ -1,4 +1,5 @@
 import showdown from 'showdown';
+import showdownSectionGroups from 'showdown-section-groups';
 
 export function initialize() {
   showdown.subParser('ellipsis', function (text, options, globals) {
@@ -7,6 +8,7 @@ export function initialize() {
     return text;
   });
 
+  showdown.extension('showdown-section-groups', showdownSectionGroups);
 
   showdown.subParser('githubCodeBlocks', function (text, options, globals) {
     'use strict';
