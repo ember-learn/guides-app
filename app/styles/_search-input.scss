@@ -179,8 +179,9 @@ $dropdown-min-width-large: 600px;
 }
 
 // Highlight
-.algolia-docsearch-suggestion--highlight {
+.algolia-docsearch-suggestion--subcategory-column-text em, .algolia-docsearch-suggestion--title em {
   padding: 0;
+  font-style: normal;
   color: $color-highlight-text;
   background: none;
   font-weight: 600;

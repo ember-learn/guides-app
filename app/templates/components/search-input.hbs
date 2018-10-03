@@ -15,25 +15,19 @@
   constraints=_resultTetherConstraints
   class='ds-dropdown-results'
 }}
-  <span class="ds-suggestions ds-dropdown-menu">
-    {{#each _results as |result|}}
-      <div class="ds-suggestion">
-        <div class="algolia-docsearch-suggestion
-        algolia-docsearch-suggestion__secondary">
-          <div class="algolia-docsearch-suggestion--wrapper">
-            <div class="algolia-docsearch-suggestion--content">
-              <a href="https://guides.emberjs.com/v3.1.0/routing/specifying-a-routes-model/#ember323698">
-                {{{result._highlightResult.content.value}}}
-                {{!-- <div class="algolia-docsearch-suggestion--subcategory-inline">
-                    Specifying a Route's <span class="algolia-docsearch-suggestion--highlight">Model</span>
-                </div>
-                <div class="algolia-docsearch-suggestion--title"></div> --}}
-              </a>
-            </div>
-          </div>
+  {{#if response.hits}}
+    <span class="ds-suggestions ds-dropdown-menu">
+      <div id="ember753" class="ds-suggestion ember-view"><div class="algolia-docsearch-suggestion algolia-docsearch-suggestion__main">
+        <div class="algolia-docsearch-suggestion--category-header">
+          <span class="algolia-docsearch-suggestion--category-header-lvl0">
+                  Search Results
+          </span>
         </div>
-
-      </div>
-    {{/each}}
-  </span>
+        <div class="algolia-docsearch-suggestion--wrapper"></div>
+      </div></div>
+      {{#each response.hits as |result|}}
+        {{search-result result=result}}
+      {{/each}}
+    </span>
+  {{/if}}
 {{/ember-tether}}

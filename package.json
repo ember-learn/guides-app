@@ -51,6 +51,7 @@
     "ember-composable-helpers": "^2.1.0",
     "ember-data": "~3.4.2",
     "ember-export-application-global": "^2.0.0",
+    "ember-href-to": "^1.15.1",
     "ember-load-initializers": "^1.0.0",
     "ember-maybe-import-regenerator": "^0.1.6",
     "ember-meta": "^0.3.0",
@@ -68,7 +69,7 @@
     "normalize.css": "^4.1.1",
     "prember": "^0.3.0",
     "qunit-dom": "^0.8.0",
-    "showdown-section-groups": "^0.2.0"
+    "showdown-section-groups": "^0.3.0"
   },
   "engines": {
     "node": "^4.5 || 6.* || >= 7.*"

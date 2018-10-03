@@ -50,13 +50,8 @@ export default Component.extend({
   }),
 
   search: task(function * (query) {
-
-    console.log(this.pageIndex);
-
     yield timeout(SEARCH_DEBOUNCE_PERIOD);
 
-    const client = get(this, '_searchClient');
-    // const projectVersion = get(this, '_projectVersion');
     const projectVersion = get(this, 'projectVersion');
 
     const searchObj = {
@@ -68,11 +63,7 @@ export default Component.extend({
 
     let res = yield this.searchFunction(searchObj);
 
-    const results = get(res, 'hits');
-
-    console.log('results', results, searchObj);
-
-    return set(this, '_results', results);
+    return set(this, 'response', res);
   }).restartable(),
 
   actions: {
