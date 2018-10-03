@@ -2,14 +2,12 @@ import Component from '@ember/component';
 
 import { later } from '@ember/runloop';
 import { denodeify } from 'rsvp';
-import { A } from '@ember/array';
-import { alias } from '@ember/object/computed';
 import { computed } from '@ember/object';
 import { inject as service } from '@ember/service';
-import { isPresent } from '@ember/utils';
 import { task, timeout } from 'ember-concurrency';
 import algoliasearch from 'algoliasearch';
 import { get, set } from '@ember/object';
+import { getOwner } from '@ember/application';
 
 const SEARCH_DEBOUNCE_PERIOD = 300;
 
@@ -27,7 +25,7 @@ export default Component.extend({
 
   init() {
     this._super(...arguments);
-    const config = Ember.getOwner(this).resolveRegistration('config:environment');
+    const config = getOwner(this).resolveRegistration('config:environment');
 
     this.client = algoliasearch(config['ember-algolia'].algoliaId, config['ember-algolia'].algoliaKey);
     this.index = this.client.initIndex('ember-guides');
@@ -51,6 +49,10 @@ export default Component.extend({
 
   search: task(function * (query) {
     yield timeout(SEARCH_DEBOUNCE_PERIOD);
+
+    if(!query) {
+      return set(this, 'response', null);
+    }
 
     const projectVersion = get(this, 'projectVersion');
 
