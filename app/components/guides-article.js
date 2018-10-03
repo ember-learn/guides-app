@@ -6,11 +6,19 @@ export default Component.extend({
   classNames: 'chapter',
   page: service(),
   didRender() {
-    this._addLineNumbers();
-    let filenameNodeList = this.element.querySelectorAll('pre > code[data-filename]');
+
+    let nodeList = this.$('pre:not(.no-line-numbers) > code');
+
+    if (nodeList) {
+      nodeList.each((index, code) => {
+        code.parentNode.classList.add('line-numbers');
+      });
+    }
+
+    let filenameNodeList = this.$('pre > code[data-filename]');
 
     if (filenameNodeList) {
-      filenameNodeList.forEach((code) => {
+      filenameNodeList.each((index, code) => {
         if (code.parentNode.parentNode.classList.contains('filename')) {
           //do nothing
           return;
@@ -25,49 +33,13 @@ export default Component.extend({
           ext = match[1];
         }
 
-        let preNode = code.parentNode;
+        this.$(code.parentNode).wrap(`<div class="filename ${ext}"></div>`);
 
-        this._wrapCodeBlock(preNode, ext);
-        this._addFilename(preNode, filename);
-        this._addRibbon(preNode);
+        this.$(code.parentNode.parentNode).prepend(this.$(`<span>${code.attributes['data-filename'].value}</span>`));
+        this.$(code.parentNode.parentNode).prepend('<div class="ribbon"></div>');
       });
     }
 
-    this._addLinkAnchors();
-    this._addSymbolsAndHighlight(filenameNodeList);
-  },
-
-  // private
-  _addLineNumbers() {
-    let nodeList = this.element.querySelectorAll('pre:not(.no-line-numbers) > code');
-
-    if (nodeList.length) {
-      nodeList.forEach((code) => {
-        code.parentNode.classList.add('line-numbers');
-      });
-    }
-  },
-
-  _wrapCodeBlock(preNode, ext) {
-    let wrapper = document.createElement('div');
-    wrapper.classList.add('filename', ext);
-    preNode.parentNode.insertBefore(wrapper, preNode);
-    wrapper.appendChild(preNode);
-  },
-
-  _addFilename(preNode, filename) {
-    let span = document.createElement('span');
-    span.textContent = filename;
-    preNode.parentNode.insertBefore(span, preNode);
-  },
-
-  _addRibbon(preNode) {
-    let div = document.createElement('span');
-    div.classList.add('ribbon');
-    preNode.parentNode.insertBefore(div, preNode);
-  },
-
-  _addLinkAnchors() {
     let allHeaders = document.querySelectorAll("h1, h2, h3, h4, h5, h6")
 
     for (var element of allHeaders) {
@@ -79,24 +51,22 @@ export default Component.extend({
         element.insertBefore(link, element.firstElementChild);
       }
     }
-  },
 
-  /**
-   * Prism doesn't support diff & a secondary language highlighting.
-   *
-   * So first, we let prism convert the content of `<code></code>` blocks
-   * from a string into a different dom structure
-   * by calling `Prism.highlightAll()`
-   *
-   * In the following block, we add + & - symbols to the lines inside the
-   * code block based on the data-diff attribute on the code tag.
-   * e.g., data-diff="-4,+5,+6,+7"
-   *
-   **/
-
-  _addSymbolsAndHighlight(filenameNodeList) {
     Prism.highlightAll();
-    filenameNodeList.forEach((codeBlock) => {
+
+    /**
+     * Prism doesn't support diff & a secondary language highlighting.
+     *
+     * So first, we let prism convert the content of `<code></code>` blocks
+     * from a string into a different dom structure
+     * by calling `Prism.highlightAll()`
+     *
+     * In the following block, we add + & - symbols to the lines inside the
+     * code block based on the data-diff attribute on the code tag.
+     * e.g., data-diff="-4,+5,+6,+7"
+     *
+     **/
+    filenameNodeList.each((_, codeBlock) => {
 
       let diffInfo = codeBlock.attributes['data-diff'] ? codeBlock.attributes["data-diff"].value.split(',') : [];
 
@@ -117,6 +87,7 @@ export default Component.extend({
         }
       });
       codeBlock.innerHTML = lines.join('\n');
-    });
+    })
+
   }
 });
