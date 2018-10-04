@@ -7,7 +7,6 @@ export function initialize() {
     return text;
   });
 
-
   showdown.subParser('githubCodeBlocks', function (text, options, globals) {
     'use strict';
 
