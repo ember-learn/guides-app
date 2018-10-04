@@ -26,7 +26,7 @@
     "compare-versions": "3.4.0",
     "ember-ajax": "^3.1.1",
     "ember-algolia": "0.0.10",
-    "ember-body-class": "^0.4.0",
+    "ember-body-class": "^1.0.2",
     "ember-browserify": "^1.2.1",
     "ember-cli": "~3.4.3",
     "ember-cli-app-version": "^3.0.0",
