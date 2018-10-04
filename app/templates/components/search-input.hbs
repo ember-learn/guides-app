@@ -17,17 +17,24 @@
 }}
   {{#if response.hits}}
     <span class="ds-suggestions ds-dropdown-menu">
-      <div id="ember753" class="ds-suggestion ember-view"><div class="algolia-docsearch-suggestion algolia-docsearch-suggestion__main">
-        <div class="algolia-docsearch-suggestion--category-header">
-          <span class="algolia-docsearch-suggestion--category-header-lvl0">
-                  Search Results
-          </span>
+      <div class="ds-suggestion">
+        <div class="algolia-docsearch-suggestion algolia-docsearch-suggestion__main">
+          <div class="algolia-docsearch-suggestion--category-header">
+            <span class="algolia-docsearch-suggestion--category-header-lvl0">
+                    Search Results
+            </span>
+          </div>
+          <div class="algolia-docsearch-suggestion--wrapper"></div>
         </div>
-        <div class="algolia-docsearch-suggestion--wrapper"></div>
-      </div></div>
+      </div>
       {{#each response.hits as |result|}}
         {{search-result result=result}}
       {{/each}}
+      <div class="powered-by-algolia">
+        <a href="https://www.algolia.com/" target="_blank">
+          <img src="/images/logos/search-by-algolia.svg" alt="Search Powered by Algolia">
+        </a>
+      </div>
     </span>
   {{/if}}
 {{/ember-tether}}
