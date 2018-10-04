@@ -37,8 +37,8 @@ module.exports = function(environment) {
     },
 
     'ember-algolia': {
-      algoliaId: 'BH4D9OD16A',
-      algoliaKey: '760969ef081fcadc7e0e60faefdb0907'
+      algoliaId: 'Y1OMR4C7MF',
+      algoliaKey: '5d01c83734dc36754d9e94cbf6f8964d'
     },
 
     metricsAdapters: [
