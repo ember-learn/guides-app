@@ -8,9 +8,11 @@
 
 <h1>
   {{page.currentPage.title}}
-  <a href="https://github.com/ember-learn/guides-source/edit/master/guides/{{page.currentVersion}}/{{model.id}}.md"
-     target="_blank" class="edit-page icon-pencil">Edit Page</a>
 </h1>
+<div>
+  <a href="https://github.com/ember-learn/guides-source/edit/master/guides/{{page.currentVersion}}/{{model.id}}.md"
+  target="_blank" class="edit-page icon-pencil">Edit Page</a>
+</div>
 <hr>
 
 {{markdown-to-html model.content}}
