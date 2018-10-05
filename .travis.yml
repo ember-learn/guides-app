@@ -21,6 +21,7 @@ env:
   global:
     # See https://git.io/vdao3 for details.
     - JOBS=1
+    - PERCY_TOKEN=877df6aad8486060f69a34864b6cd33f870633743b23411343737c46a875a762
 
 before_install:
   - npm config set spin false
