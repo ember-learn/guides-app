@@ -18,6 +18,12 @@ export default Component.extend({
   }),
 
   remainingHeadings: computed('result._highlightResult.headings.[]', function() {
-    return this.result._highlightResult.headings;
+    let headings = this.result._highlightResult.headings;
+    headings.forEach((heading) => {
+        // Remove <em></em> tags and 'Edit Page'
+        heading.value = heading.value.replace(/<em>|<\/em>|Edit Page/g, '');
+    });
+
+    return headings;
   })
 });
