@@ -5,4 +5,5 @@ export default DS.Model.extend({
   content: DS.attr(),
   description: DS.attr(),
   canonical: DS.attr(),
+  redirect: DS.attr(),
 });
