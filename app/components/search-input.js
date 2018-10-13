@@ -54,7 +54,7 @@ export default Component.extend({
       return set(this, 'response', null);
     }
 
-    const projectVersion = get(this, 'projectVersion');
+    const projectVersion = this.projectVersion;
 
     const searchObj = {
       hitsPerPage: 15,
@@ -72,7 +72,7 @@ export default Component.extend({
     oninput(value) {
       set(this, 'value', value);
       if(value) {
-        get(this, 'search').perform(value);
+        this.search.perform(value);
       }
     },
 

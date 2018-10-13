@@ -9,7 +9,7 @@ import config from '../config/environment';
 export default HeadData.extend({
   page: service(),
   currentRouteModel: computed('routeName', function() {
-    return getOwner(this).lookup(`route:${this.get('routeName')}`).get('currentModel.content');
+    return getOwner(this).lookup(`route:${this.routeName}`).get('currentModel.content');
   }),
 
   title: computed('routeName', function() {
