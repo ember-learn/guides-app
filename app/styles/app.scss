@@ -880,7 +880,7 @@ article ol > li {
 
 article ol > li::before {
   position: absolute;
-  top: 1.25em;
+  top: 0.95em;
   left: 0;
   height: 2em;
   width: 2em;
@@ -890,7 +890,7 @@ article ol > li::before {
   color: #b67d47;
   float: left;
   font-size: 0.75rem;
-  line-height: calc(2em - 4px);
+  line-height: 2;
   overflow: hidden;
   text-align: center;
 }
