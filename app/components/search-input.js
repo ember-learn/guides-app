@@ -27,7 +27,9 @@ export default Component.extend({
     this._super(...arguments);
     const config = getOwner(this).resolveRegistration('config:environment');
 
-    this.client = algoliasearch(config['ember-algolia'].algoliaId, config['ember-algolia'].algoliaKey);
+    const { algoliaId, algoliaKey } = config['ember-algolia'];
+
+    this.client = algoliasearch(algoliaId, algoliaKey);
     this.index = this.client.initIndex('ember-guides');
     this.searchFunction = denodeify(this.index.search.bind(this.index));
   },
