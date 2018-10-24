@@ -1,13 +1,12 @@
-import Component from '@ember/component';
-
-import { later } from '@ember/runloop';
-import { denodeify } from 'rsvp';
-import { computed } from '@ember/object';
-import { inject as service } from '@ember/service';
-import { task, timeout } from 'ember-concurrency';
-import algoliasearch from 'algoliasearch';
-import { get, set } from '@ember/object';
 import { getOwner } from '@ember/application';
+import Component from '@ember/component';
+import { computed, set } from '@ember/object';
+import { later } from '@ember/runloop';
+import { inject as service } from '@ember/service';
+import algoliasearch from 'algoliasearch';
+import { task, timeout } from 'ember-concurrency';
+import { denodeify } from 'rsvp';
+
 
 const SEARCH_DEBOUNCE_PERIOD = 300;
 
@@ -56,7 +55,7 @@ export default Component.extend({
       return set(this, 'response', null);
     }
 
-    const projectVersion = get(this, 'projectVersion');
+    const projectVersion = this.projectVersion;
 
     const searchObj = {
       hitsPerPage: 15,
@@ -74,7 +73,7 @@ export default Component.extend({
     oninput(value) {
       set(this, 'value', value);
       if(value) {
-        get(this, 'search').perform(value);
+        this.search.perform(value);
       }
     },
 
