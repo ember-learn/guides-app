@@ -25,3 +25,5 @@ package.json.ember-try
 
 # Deployment credentials
 config/credentials.json
+
+.vscode
