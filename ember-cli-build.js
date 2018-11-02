@@ -25,7 +25,14 @@ module.exports = function(defaults) {
     },
     guidemaker: {
       source: '@ember-learn/guides-source'
-    }
+    },
+    'ember-cli-uglify': {
+      uglify: {
+        compress: {
+          collapse_vars: false
+        }
+      }
+    },
   });
 
   app.import('node_modules/compare-versions/index.js');
