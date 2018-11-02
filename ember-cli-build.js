@@ -22,6 +22,9 @@ module.exports = function(defaults) {
     },
     fingerprint: {
       extensions: ['js', 'css', 'map'],
+    },
+    guidemaker: {
+      source: '@ember-learn/guides-source'
     }
   });
 
