@@ -51,7 +51,7 @@
     "ember-welcome-page": "^3.2.0",
     "eslint-plugin-ember": "^5.2.0",
     "guidemaker": "^0.2.2",
-    "guidemaker-ember-template": "^0.2.1",
+    "guidemaker-ember-template": "^0.2.3",
     "loader.js": "^4.7.0",
     "percy-client": "^3.0.1",
     "prember": "^1.0.0",
