@@ -67,7 +67,7 @@
     "eslint-plugin-ember": "^5.4.0",
     "loader.js": "^4.2.3",
     "normalize.css": "^8.0.1",
-    "percy-client": "^3.0.1",
+    "percy-client": "^3.0.2",
     "prember": "^1.0.0",
     "qunit-dom": "^0.8.0",
     "showdown-section-groups": "^0.3.0"
