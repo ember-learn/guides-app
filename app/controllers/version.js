@@ -1,31 +1,38 @@
-import Controller, {
-  inject as controller,
-} from '@ember/controller';
-import { get, computed } from '@ember/object';
-import { alias } from '@ember/object/computed';
-import { inject as service } from '@ember/service';
+import Controller from '@ember/controller';
+import { controller } from '@ember-decorators/controller';
+import { get } from '@ember/object';
+import { action, computed } from '@ember-decorators/object';
+import { alias } from '@ember-decorators/object/computed';
+import { service } from '@ember-decorators/service';
 
-export default Controller.extend({
-  page: service(),
-  application: controller(),
+export default class Version extends Controller {
+  @service()
+  page;
 
-  pages: alias('model.pages'),
+  @controller()
+  application;
 
-  versions: computed('application.model.allVersions.[]', function () {
+  @alias('model.pages')
+  pages;
+
+  @computed('application.model.allVersions.[]')
+  get versions() {
     let allVersions = get(this, 'application.model.allVersions');
 
     return allVersions.sort(compareVersions).reverse();
-  }),
-
-  actions: {
-    selectVersion(version) {
-      // Navigate to same section/page if it exists
-      const path = get(this, 'page.currentPage.url');
-      this.store.queryRecord('content', {version, path}).then(() => {
-        this.transitionToRoute(`/${version}/${path}`);
-      }).catch(() => {
-        this.transitionToRoute('version', version);
-      })
-    }
   }
-});
+
+  @action
+  selectVersion(version) {
+    // Navigate to same section/page if it exists
+    const path = get(this, 'page.currentPage.url');
+    this.store
+      .queryRecord('content', { version, path })
+      .then(() => {
+        this.transitionToRoute(`/${version}/${path}`);
+      })
+      .catch(() => {
+        this.transitionToRoute('version', version);
+      });
+  }
+}

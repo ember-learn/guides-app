@@ -1,23 +1,25 @@
 import Route from '@ember/routing/route';
-import { inject as service } from '@ember/service';
+import { service } from '@ember-decorators/service';
 import { get, set } from '@ember/object';
 import { hash } from 'rsvp';
 
-export default Route.extend({
-  page: service(),
+export default class IndexRoute extends Route {
+  @service()
+  page;
+
   model() {
     let { version, currentVersion } = this.modelFor('version');
 
     return hash({
       content: this.store.queryRecord('content', {
         path: 'index',
-        version,
+        version
       }),
       pages: this.store.query('page', { version }),
       version,
-      currentVersion,
+      currentVersion
     });
-  },
+  }
 
   afterModel(model) {
     let content = get(model, 'content');
@@ -25,4 +27,4 @@ export default Route.extend({
     let version = get(model, 'version');
     set(this.page, 'currentVersion', version);
   }
-});
+}

@@ -1,25 +1,28 @@
 import EmberRouter from '@ember/routing/router';
 
 import { get } from '@ember/object';
-import { inject as service } from '@ember/service';
+import { service } from '@ember-decorators/service';
 import { scheduleOnce } from '@ember/runloop';
 
 import config from './config/environment';
 
-const Router = EmberRouter.extend({
-  location: config.locationType,
-  rootURL: config.rootURL,
+class Router extends EmberRouter {
+  location = config.locationType;
+  rootURL = config.rootURL;
 
-  metrics: service(),
-  fastboot: service(),
+  @service()
+  metrics;
+
+  @service()
+  fastboot;
 
   didTransition() {
-    this._super(...arguments);
+    super.didTransition(...arguments);
     this._trackPage();
-  },
+  }
 
   _trackPage() {
-    if(get(this, 'fastboot.isFastBoot')) {
+    if (get(this, 'fastboot.isFastBoot')) {
       return;
     }
 
@@ -32,8 +35,8 @@ const Router = EmberRouter.extend({
 
       this.metrics.trackPage({ page, title, hostname });
     });
-  },
-});
+  }
+}
 
 Router.map(function() {
   this.route('version', { path: ':version' }, function() {

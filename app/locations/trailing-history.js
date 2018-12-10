@@ -1,8 +1,8 @@
 import HistoryLocation from '@ember/routing/history-location';
 
-export default HistoryLocation.extend({
+export default class TrailingHistory extends HistoryLocation {
   formatURL() {
-    let url = this._super(...arguments);
+    let url = super.formatURL(...arguments);
 
     if (url.includes('#')) {
       return url.replace(/([^/])#(.*)/, '$1/#$2');
@@ -10,4 +10,4 @@ export default HistoryLocation.extend({
       return url.replace(/\/?$/, '/');
     }
   }
-});
+}

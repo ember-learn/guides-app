@@ -1,14 +1,18 @@
+import { className, tagName } from '@ember-decorators/component';
 import Component from '@ember/component';
-import { computed } from '@ember/object';
-import { inject as service } from '@ember/service';
+import { computed } from '@ember-decorators/object';
+import { service } from '@ember-decorators/service';
 
-export default Component.extend({
-  fastboot: service(),
+@tagName('ol')
+export default class TableOfContents extends Component {
+  @service()
+  fastboot;
 
-  level: '0',
-  tagName: 'ol',
-  tocLevel: computed('level', function() {
+  level = '0';
+
+  @computed('level')
+  @className
+  get tocLevel() {
     return `toc-level-${this.level}`;
-  }),
-  classNameBindings: ['tocLevel'],
-});
+  }
+}

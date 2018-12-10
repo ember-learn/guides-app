@@ -1,10 +1,12 @@
 import Route from '@ember/routing/route';
-import { inject as service } from '@ember/service';
+import { service } from '@ember-decorators/service';
 import { get, set } from '@ember/object';
 import { hash } from 'rsvp';
 
-export default Route.extend({
-  page: service(),
+export default class Show extends Route {
+  @service()
+  page;
+
   model(params) {
     const path = params.path.replace(/\/$/, '');
 
@@ -13,40 +15,38 @@ export default Route.extend({
     }
 
     if (path.endsWith('/index')) {
-      return this.transitionTo('version.show', path.replace(/\/index$/, ''))
+      return this.transitionTo('version.show', path.replace(/\/index$/, ''));
     }
 
-    const {
-      version,
-      currentVersion,
-      pages,
-    } = this.modelFor('version');
+    const { version, currentVersion, pages } = this.modelFor('version');
 
-    let contentPromise = this.store.queryRecord('content', {
-      path,
-      version
-    })
-    .catch((e) => {
-      if (['404', '403'].includes(get(e, 'errors.0.status'))) {
-        return this.store.queryRecord('content', {
-          path: `${path}/index`,
-          version
-        });
-      }
-      throw e;
-    });
+    let contentPromise = this.store
+      .queryRecord('content', {
+        path,
+        version
+      })
+      .catch(e => {
+        if (['404', '403'].includes(get(e, 'errors.0.status'))) {
+          return this.store.queryRecord('content', {
+            path: `${path}/index`,
+            version
+          });
+        }
+        throw e;
+      });
 
     return hash({
       content: contentPromise,
       pages,
       path,
       version,
-      currentVersion,
-    })
-  },
+      currentVersion
+    });
+  }
+
   afterModel(model) {
-    if(model.content.redirect) {
-      this.transitionTo('version.show', model.content.redirect)
+    if (model.content.redirect) {
+      this.transitionTo('version.show', model.content.redirect);
     }
 
     let content = get(model, 'content');
@@ -54,4 +54,4 @@ export default Route.extend({
     let version = get(model, 'version');
     set(this.page, 'currentVersion', version);
   }
-});
+}

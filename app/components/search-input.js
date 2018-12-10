@@ -7,7 +7,6 @@ import algoliasearch from 'algoliasearch';
 import { task, timeout } from 'ember-concurrency';
 import { denodeify } from 'rsvp';
 
-
 const SEARCH_DEBOUNCE_PERIOD = 300;
 
 export default Component.extend({
@@ -18,7 +17,7 @@ export default Component.extend({
   _resultTetherConstraints: Object.freeze([
     {
       to: 'window',
-      pin: ['left','right']
+      pin: ['left', 'right']
     }
   ]),
 
@@ -34,24 +33,24 @@ export default Component.extend({
   },
 
   pageIndex: computed('page.pages.[]', function() {
-    let pages = this.page.pages.map((section) => {
+    let pages = this.page.pages.map(section => {
       return section.pages.map(page => {
-          return {
-            section: section.title,
-            page: page.title,
-            fullTitle: `${section.title} > ${page.title}`,
-            url: page.url.replace(/\/index$/, '')
-          }
-      })
+        return {
+          section: section.title,
+          page: page.title,
+          fullTitle: `${section.title} > ${page.title}`,
+          url: page.url.replace(/\/index$/, '')
+        };
+      });
     });
 
     return pages.reduce((a, b) => a.concat(b), []);
   }),
 
-  search: task(function * (query) {
+  search: task(function*(query) {
     yield timeout(SEARCH_DEBOUNCE_PERIOD);
 
-    if(!query) {
+    if (!query) {
       return set(this, 'response', null);
     }
 
@@ -72,7 +71,7 @@ export default Component.extend({
   actions: {
     oninput(value) {
       set(this, 'value', value);
-      if(value) {
+      if (value) {
         this.search.perform(value);
       }
     },
@@ -82,10 +81,13 @@ export default Component.extend({
     },
 
     onblur() {
-      later(this, function () {
-        set(this, '_focused', false);
-      }, 200);
+      later(
+        this,
+        function() {
+          set(this, '_focused', false);
+        },
+        200
+      );
     }
-
   }
 });

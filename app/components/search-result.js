@@ -1,23 +1,28 @@
+import { classNames } from '@ember-decorators/component';
 import Component from '@ember/component';
-import { computed } from '@ember/object';
-import { inject as service } from '@ember/service';
+import { computed } from '@ember-decorators/object';
+import { service } from '@ember-decorators/service';
 
-export default Component.extend({
-  classNames: ['ds-suggestion'],
+@classNames('ds-suggestion')
+export default class SearchResult extends Component {
+  @service()
+  page;
 
-  page: service(),
-  sectionTitle: computed('result.path', function() {
+  @computed('result.path')
+  get sectionTitle() {
     let sectionId = this.result.path.split('/')[0];
 
-    let section = this.page.pages.find((page) => page.id === sectionId);
+    let section = this.page.pages.find(page => page.id === sectionId);
     return section.title;
-  }),
+  }
 
-  pageHeading: computed('result._highlightResult.headings.[]', function() {
+  @computed('result._highlightResult.headings.[]')
+  get pageHeading() {
     return this.result._highlightResult.headings[0];
-  }),
+  }
 
-  remainingHeadings: computed('result._highlightResult.headings.[]', function() {
+  @computed('result._highlightResult.headings.[]')
+  get remainingHeadings() {
     return this.result._highlightResult.headings;
-  })
-});
+  }
+}

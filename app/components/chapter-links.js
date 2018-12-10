@@ -1,24 +1,29 @@
+import { tagName } from '@ember-decorators/component';
 import Component from '@ember/component';
-import { get, computed } from '@ember/object';
-import { inject as service } from '@ember/service';
+import { get } from '@ember/object';
+import { computed } from '@ember-decorators/object';
+import { service } from '@ember-decorators/service';
 
-export default Component.extend({
-  tagName: 'footer',
+@tagName('footer')
+export default class ChapterLinks extends Component {
+  @service()
+  page;
 
-  page: service(),
-
-  nextSectionPage: computed('page.nextSection.pages.[]', function() {
+  @computed('page.nextSection.pages.[]')
+  get nextSectionPage() {
     let pages = get(this, 'page.nextSection.pages');
 
-    if(pages && pages.length) {
+    if (pages && pages.length) {
       return pages[0];
     }
-  }),
-  previousSectionPage: computed('page.previousSection.pages.[]', function() {
+  }
+
+  @computed('page.previousSection.pages.[]')
+  get previousSectionPage() {
     let pages = get(this, 'page.previousSection.pages');
 
-    if(pages && pages.length) {
+    if (pages && pages.length) {
       return pages[pages.length - 1];
     }
-  })
-});
+  }
+}
