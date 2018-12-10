@@ -19,7 +19,7 @@
   },
   "devDependencies": {
     "@ember-learn/guides-source": "^3.5.4",
-    "algoliasearch": "^3.30.0",
+    "algoliasearch": "^3.31.0",
     "broccoli-asset-rev": "^3.0.0",
     "broccoli-merge-trees": "^3.0.1",
     "broccoli-static-site-json": "^2.1.2",
