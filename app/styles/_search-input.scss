@@ -155,6 +155,15 @@ $dropdown-min-width-large: 600px;
   text-align: left;
 }
 
+// No Results
+.algolia-docsearch-suggestion--noresults {
+  padding: 0 5px 10px 10px;
+  a {
+    color: $ember-orange;
+    text-decoration: none;
+  }
+}
+
 // Each suggestion
 .algolia-docsearch-suggestion {
   color: #333;
