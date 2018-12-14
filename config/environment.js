@@ -60,6 +60,8 @@ module.exports = function(environment) {
       twitterUsername: '@emberjs',
       url: 'https://guides.emberjs.com/'
     },
+
+    deprecationsGuideURL: 'https://www.emberjs.com/deprecations/'
   };
 
   if (environment === 'development') {
@@ -80,6 +82,11 @@ module.exports = function(environment) {
 
     ENV.APP.rootElement = '#ember-testing';
     ENV.APP.autoboot = false;
+
+    ENV['ember-tether'] = {
+      bodyElementId: 'ember-testing'
+    };
+
   }
 
   if (environment === 'production') {

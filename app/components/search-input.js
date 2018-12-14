@@ -1,19 +1,18 @@
 import { getOwner } from '@ember/application';
 import Component from '@ember/component';
-import { computed, set } from '@ember/object';
-import { later } from '@ember/runloop';
+import { get, set } from '@ember/object';
+import { and } from '@ember/object/computed';
 import { inject as service } from '@ember/service';
-import algoliasearch from 'algoliasearch';
 import { task, timeout } from 'ember-concurrency';
-import { denodeify } from 'rsvp';
-
 
 const SEARCH_DEBOUNCE_PERIOD = 300;
+const SEARCH_CLOSE_PERIOD = 200;
 
 export default Component.extend({
   classNames: ['search-input'],
 
-  page: service(),
+  // page: service(),
+  searchService: service('search'),
 
   _resultTetherConstraints: Object.freeze([
     {
@@ -22,69 +21,47 @@ export default Component.extend({
     }
   ]),
 
+  _focused: false,
+
   init() {
     this._super(...arguments);
     const config = getOwner(this).resolveRegistration('config:environment');
-
-    const { algoliaId, algoliaKey } = config['ember-algolia'];
-
-    this.client = algoliasearch(algoliaId, algoliaKey);
-    this.index = this.client.initIndex('ember-guides');
-    this.searchFunction = denodeify(this.index.search.bind(this.index));
+    this.deprecationsGuideURL = config['deprecationsGuideURL'];
   },
 
-  pageIndex: computed('page.pages.[]', function() {
-    let pages = this.page.pages.map((section) => {
-      return section.pages.map(page => {
-          return {
-            section: section.title,
-            page: page.title,
-            fullTitle: `${section.title} > ${page.title}`,
-            url: page.url.replace(/\/index$/, '')
-          }
-      })
-    });
-
-    return pages.reduce((a, b) => a.concat(b), []);
-  }),
+  showDropdown: and('query', '_focused'),
 
   search: task(function * (query) {
+
     yield timeout(SEARCH_DEBOUNCE_PERIOD);
 
-    if(!query) {
-      return set(this, 'response', null);
+    set(this, 'query', query);
+
+    // Hide and don't run query if there's no search query
+    if (!query) {
+      return set(this, '_focused', false);
     }
 
-    const projectVersion = this.projectVersion;
+    // ensure search results are visible if the menu was previously closed above
+    set(this, '_focused', true);
 
-    const searchObj = {
-      hitsPerPage: 15,
-      restrictSearchableAttributes: ['content'],
-      facetFilters: [[`version:${projectVersion}`]],
-      query
-    };
+    yield get(this, 'searchService.search').perform(query, this.projectVersion);
 
-    let res = yield this.searchFunction(searchObj);
-
-    return set(this, 'response', res);
   }).restartable(),
 
-  actions: {
-    oninput(value) {
-      set(this, 'value', value);
-      if(value) {
-        this.search.perform(value);
-      }
-    },
+  closeMenu: task(function * () {
+    yield timeout(SEARCH_CLOSE_PERIOD);
 
+    set(this, '_focused', false);
+  }),
+
+  actions: {
     onfocus() {
       set(this, '_focused', true);
     },
 
     onblur() {
-      later(this, function () {
-        set(this, '_focused', false);
-      }, 200);
+      this.get('closeMenu').perform();
     }
 
   }
