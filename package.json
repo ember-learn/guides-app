@@ -60,7 +60,7 @@
     "ember-power-select": "^2.2.0",
     "ember-prism": "^0.3.0",
     "ember-resolver": "^5.0.1",
-    "ember-source": "~3.5.0",
+    "ember-source": "~3.6.0",
     "ember-styleguide": "^2.4.0",
     "ember-test-selectors": "^2.0.0",
     "ember-tether": "^1.0.0",
