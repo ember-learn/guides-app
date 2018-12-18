@@ -51,7 +51,7 @@
     "ember-composable-helpers": "^2.1.0",
     "ember-data": "~3.6.0",
     "ember-export-application-global": "^2.0.0",
-    "ember-href-to": "^1.15.1",
+    "ember-href-to": "^2.0.1",
     "ember-load-initializers": "^1.0.0",
     "ember-maybe-import-regenerator": "^0.1.6",
     "ember-meta": "^0.4.2",
