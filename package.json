@@ -21,7 +21,7 @@
     "@ember-learn/guides-source": "^3.6.1",
     "algoliasearch": "^3.31.0",
     "broccoli-asset-rev": "^3.0.0",
-    "broccoli-merge-trees": "^3.0.1",
+    "broccoli-merge-trees": "^3.0.2",
     "broccoli-static-site-json": "^2.1.2",
     "compare-versions": "3.4.0",
     "ember-ajax": "^4.0.1",
