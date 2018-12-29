@@ -6,7 +6,7 @@ const links = [{
   type: 'dropdown',
   items: [{
     href: 'https://guides.emberjs.com',
-    name: 'Guides',
+    name: 'Ember.js Guides',
     type: 'link'
   }, {
     href: 'https://emberjs.com/api',
