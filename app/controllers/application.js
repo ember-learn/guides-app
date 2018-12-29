@@ -13,6 +13,10 @@ const links = [{
     name: 'API Reference',
     type: 'link'
   }, {
+    href: 'https://cli.emberjs.com',
+    name: 'CLI Guides',
+    type: 'link'
+  }, {
     type: 'divider'
   }, {
     href: 'https://emberjs.com/learn',
