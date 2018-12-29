@@ -27,3 +27,4 @@ package.json.ember-try
 config/credentials.json
 
 .vscode
+jsconfig.json
