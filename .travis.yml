@@ -4,8 +4,7 @@ os:
   - "windows"
 
 language: node_js
-node_js:
-  - "lts/argon"
+node_js: 10.15
 
 sudo: required
 dist: trusty
