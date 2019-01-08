@@ -54,7 +54,7 @@
     "ember-href-to": "^2.0.1",
     "ember-load-initializers": "^1.0.0",
     "ember-maybe-import-regenerator": "^0.1.6",
-    "ember-meta": "^0.4.2",
+    "ember-meta": "^0.5.0",
     "ember-metrics": "^0.13.0",
     "ember-percy": "^1.5.0",
     "ember-power-select": "^2.2.1",
