@@ -64,7 +64,7 @@
     "ember-styleguide": "^2.5.0",
     "ember-test-selectors": "^2.0.0",
     "ember-tether": "^1.0.0",
-    "eslint-plugin-ember": "^6.1.0",
+    "eslint-plugin-ember": "^6.2.0",
     "loader.js": "^4.2.3",
     "normalize.css": "^8.0.1",
     "percy-client": "^3.0.3",
