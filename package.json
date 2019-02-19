@@ -22,7 +22,7 @@
     "algoliasearch": "^3.32.0",
     "broccoli-asset-rev": "^3.0.0",
     "broccoli-merge-trees": "^3.0.2",
-    "broccoli-static-site-json": "^3.0.0",
+    "broccoli-static-site-json": "^3.2.0",
     "compare-versions": "3.4.0",
     "ember-ajax": "^4.0.2",
     "ember-auto-import": "^1.2.19",
