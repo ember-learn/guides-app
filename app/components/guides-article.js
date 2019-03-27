@@ -89,5 +89,10 @@ export default Component.extend({
       codeBlock.innerHTML = lines.join('\n');
     })
 
+  },
+  actions: {
+    selectVersion (currentVersion) {
+      this.selectVersion(currentVersion);
+    }
   }
 });
